@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sanctions/Screen/unsigned_page.dart';
+import 'package:sanctions/Screen/sended_page.dart';
 
 class menuPage extends StatefulWidget {
   const menuPage({super.key});
@@ -18,7 +18,7 @@ class _menuPageState extends State<menuPage> {
       body: Row(
         children: [
           Container(
-            width: 270,
+            width: 280,
             height: Get.height,
             decoration: BoxDecoration(
               border: Border(right: BorderSide(color: Colors.red, width: .7)),
@@ -40,7 +40,7 @@ class _menuPageState extends State<menuPage> {
                   color: Color.fromRGBO(23, 0, 53, .8),
                   shadowColor: Colors.red,
                   child: Container(
-                    width: 270,
+                    width: 280,
                     height: 56,
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
@@ -72,8 +72,8 @@ class _menuPageState extends State<menuPage> {
                   ),
                 ),
                 Container(
-                  width: 230,
-                  height: 38,
+                  width: 240,
+                  height: 40,
                   margin: EdgeInsets.only(top: 24, left: 18),
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   alignment: Alignment.centerLeft,
@@ -108,7 +108,7 @@ class _menuPageState extends State<menuPage> {
                   ),
                 ),
                 Container(
-                  width: 230,
+                  width: 242,
                   height: 38,
                   margin: EdgeInsets.only(top: 16, left: 18),
                   padding: EdgeInsets.symmetric(horizontal: 16),
@@ -134,7 +134,7 @@ class _menuPageState extends State<menuPage> {
                   ),
                 ),
                 Container(
-                  width: 230,
+                  width: 242,
                   height: 38,
                   margin: EdgeInsets.only(top: 16, left: 18),
                   padding: EdgeInsets.symmetric(horizontal: 16),
@@ -190,7 +190,7 @@ class _menuPageState extends State<menuPage> {
               ],
             ),
           ),
-          UnsignedPage(),
+          SendedPage(),
         ],
       ),
     );
