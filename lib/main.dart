@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:sanctions/Screen/menu_page.dart';
-import 'package:sanctions/Screen/sended_page.dart';
+import 'package:sanctions/library.dart';
 
 void main() {
   runApp(MyApp());

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:animation_search_bar/animation_search_bar.dart';
+import 'package:sanctions/library.dart';
 
 class SendedPage extends StatefulWidget {
   const SendedPage({super.key});

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:sanctions/Screen/sended_page.dart';
+import 'package:sanctions/library.dart';
 
 class menuPage extends StatefulWidget {
   const menuPage({super.key});
