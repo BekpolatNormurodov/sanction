@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:sanctions/Screen/menu_page.dart';
 import 'package:sanctions/Screen/unsigned_page.dart';
 
 void main() {
@@ -26,7 +27,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           home: GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            home: UnsignedPage()
+            home: menuPage()
             ),
         );
       },
