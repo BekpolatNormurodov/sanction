@@ -21,6 +21,7 @@ class _menuPageState extends State<menuPage> {
             width: 270,
             height: Get.height,
             decoration: BoxDecoration(
+              border: Border(right: BorderSide(color: Colors.red, width: .7)),
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -34,31 +35,73 @@ class _menuPageState extends State<menuPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 270,
-                  height: 52,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(23, 0, 53, .8),
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(Icons.menu, color: Colors.white, size: 24),
-                      SizedBox(width: 14),
-                      Text(
-                        "SANKSIYA",
-                        style: GoogleFonts.slabo13px(
-                          textStyle: TextStyle(
-                              fontSize: 18,
+                Material(
+                  elevation: 1,
+                  color: Color.fromRGBO(23, 0, 53, .8),
+                  shadowColor: Colors.red,
+                  child: Container(
+                    width: 270,
+                    height: 56,
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Color.fromRGBO(23, 0, 53, .8),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(Icons.menu, color: Colors.white, size: 26),
+                        SizedBox(width: 14),
+                        Text(
+                          "SANKSIYA",
+                          style: GoogleFonts.slabo13px(
+                            textStyle: TextStyle(
+                              fontSize: 20,
                               color: Colors.white,
-                              letterSpacing: 1,
+                              letterSpacing: 1.5,
                               shadows: [
                                 BoxShadow(
-                                  offset: Offset(2, 1),
-                                  blurRadius: 5,
+                                  offset: Offset(4, 2),
+                                  blurRadius: 2,
                                   color: Colors.red,
                                 ),
-                              ]),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 230,
+                  height: 38,
+                  margin: EdgeInsets.only(top: 24, left: 18),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                      color: const Color.fromARGB(255, 101, 45, 255),
+                      borderRadius: BorderRadius.circular(4),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(2, 2),
+                          color: const Color.fromARGB(255, 101, 45, 255),
+                        ),
+                        BoxShadow(
+                          offset: Offset(1, 1),
+                          color: Colors.white,
+                        )
+                      ]),
+                  child: Row(
+                    children: [
+                      Icon(Icons.send, color: Colors.white, size: 18),
+                      SizedBox(width: 12),
+                      Text(
+                        "Yuborilgan",
+                        style: GoogleFonts.slabo13px(
+                          textStyle: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            letterSpacing: .7,
+                          ),
                         ),
                       ),
                     ],
@@ -67,36 +110,81 @@ class _menuPageState extends State<menuPage> {
                 Container(
                   width: 230,
                   height: 38,
-                  margin: EdgeInsets.only(top: 20, left: 18),
+                  margin: EdgeInsets.only(top: 16, left: 18),
                   padding: EdgeInsets.symmetric(horizontal: 16),
                   alignment: Alignment.centerLeft,
                   decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(.3),
+                      color: Colors.grey.withOpacity(.2),
                       borderRadius: BorderRadius.circular(4)),
                   child: Row(
                     children: [
-                      Icon(Icons.send, color: Colors.white, size: 15),
+                      Icon(Icons.check, color: Colors.white, size: 18),
                       SizedBox(width: 10),
                       Text(
-                        "Yuborilgan",
+                        "Tayyorlangan",
                         style: GoogleFonts.slabo13px(
                           textStyle: TextStyle(
-                              fontSize: 14,
-                              color: Colors.white,
-                              letterSpacing: .7,
-                              ),
+                            fontSize: 14,
+                            color: Colors.white,
+                            letterSpacing: .7,
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
-                Text(
-                  "Tayyorlangan",
-                  style: GoogleFonts.poppins(
-                    textStyle: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white,
+                Container(
+                  width: 230,
+                  height: 38,
+                  margin: EdgeInsets.only(top: 16, left: 18),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(.2),
+                      borderRadius: BorderRadius.circular(4)),
+                  child: Row(
+                    children: [
+                      Icon(Icons.add, color: Colors.white, size: 21),
+                      SizedBox(width: 8),
+                      Text(
+                        "Yaratish",
+                        style: GoogleFonts.slabo13px(
+                          textStyle: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
+                            letterSpacing: .7,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                    width: 230,
+                    height: 38,
+                    margin: EdgeInsets.only(bottom: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    alignment: Alignment.centerLeft,
+                    child: Row(
+                      children: [
+                        Icon(Icons.settings, color: Colors.white, size: 22),
+                        SizedBox(width: 8),
+                        Text(
+                          "Sozlamalar",
+                          style: GoogleFonts.slabo13px(
+                            textStyle: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              letterSpacing: 1,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+                                    ),
                   ),
                 ),
               ],
