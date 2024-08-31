@@ -1,16 +1,16 @@
 import 'package:sanctions/library.dart';
 
-class menuPage extends StatefulWidget {
-  menuPage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
 
   @override
-  State<menuPage> createState() => _menuPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _menuPageState extends State<menuPage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    MenuProviderPage menuProvider = Provider.of<MenuProviderPage>(context);
+    HomeProviderPage homeProvider = Provider.of<HomeProviderPage>(context);
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 248, 248, 1),
       body: Row(
@@ -64,7 +64,7 @@ class _menuPageState extends State<menuPage> {
                     ),
                   ),
                 ),
-                menuProvider.activeIndex == 1
+                homeProvider.activeIndex == 1
                     ? Container(
                         width: 240,
                         height: 40,
@@ -101,7 +101,7 @@ class _menuPageState extends State<menuPage> {
                         ),
                       )
                     : GestureDetector(
-                        onTap: () => menuProvider.onClickSended(),
+                        onTap: () => homeProvider.onClickSended(),
                         child: Container(
                           width: 242,
                           height: 38,
@@ -128,7 +128,7 @@ class _menuPageState extends State<menuPage> {
                           ),
                         ),
                       ),
-                menuProvider.activeIndex == 2
+                homeProvider.activeIndex == 2
                     ? Container(
                         width: 240,
                         height: 40,
@@ -151,7 +151,7 @@ class _menuPageState extends State<menuPage> {
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.check, color: Colors.white, size: 18),
+                            Icon(Icons.check, color: Colors.white, size: 20),
                             SizedBox(width: 10),
                             Text(
                               "Tayyorlangan",
@@ -165,7 +165,7 @@ class _menuPageState extends State<menuPage> {
                         ),
                       )
                     : GestureDetector(
-                        onTap: () => menuProvider.onClickSigned(),
+                        onTap: () => homeProvider.onClickSigned(),
                         child: Container(
                           width: 242,
                           height: 38,
@@ -177,7 +177,7 @@ class _menuPageState extends State<menuPage> {
                               borderRadius: BorderRadius.circular(4)),
                           child: Row(
                             children: [
-                              Icon(Icons.check, color: Colors.white, size: 18),
+                              Icon(Icons.check, color: Colors.white, size: 20),
                               SizedBox(width: 10),
                               Text(
                                 "Tayyorlangan",
@@ -191,7 +191,7 @@ class _menuPageState extends State<menuPage> {
                           ),
                         ),
                       ),
-                menuProvider.activeIndex == 3
+                homeProvider.activeIndex == 3
                     ? Container(
                         width: 240,
                         height: 40,
@@ -214,7 +214,7 @@ class _menuPageState extends State<menuPage> {
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.add, color: Colors.white, size: 21),
+                            Icon(Icons.add, color: Colors.white, size: 22),
                             SizedBox(width: 8),
                             Text(
                               "Yaratish",
@@ -228,7 +228,7 @@ class _menuPageState extends State<menuPage> {
                         ),
                       )
                     : GestureDetector(
-                        onTap: () => menuProvider.onClickCreate(),
+                        onTap: () => homeProvider.onClickCreate(),
                         child: Container(
                           width: 242,
                           height: 38,
@@ -240,7 +240,7 @@ class _menuPageState extends State<menuPage> {
                               borderRadius: BorderRadius.circular(4)),
                           child: Row(
                             children: [
-                              Icon(Icons.add, color: Colors.white, size: 21),
+                              Icon(Icons.add, color: Colors.white, size: 22),
                               SizedBox(width: 8),
                               Text(
                                 "Yaratish",
@@ -283,7 +283,7 @@ class _menuPageState extends State<menuPage> {
               ],
             ),
           ),
-          SignedPage(),
+         homeProvider.activeIndex == 1 ? SendedPage() : homeProvider.activeIndex == 2 ? SignedPage() : CreatePage(),
         ],
       ),
     );

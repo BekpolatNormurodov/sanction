@@ -1,19 +1,13 @@
 import 'package:sanctions/library.dart';
 
 class SignedProviderPage with ChangeNotifier {
-  List<bool> removeList = List.generate(1000, (i) => false);
-  bool isDelete = false;
+  List<bool> starList = List.generate(1000, (i) => false);
 
-  onTapDelete() {
-    isDelete = !isDelete;
-    notifyListeners();
-  }
-
-  onClickRemove(index) {
-    if (!removeList[index]) {
-      removeList[index] = true;
+  onClickStar(index) {
+    if (!starList[index]) {
+      starList[index] = true;
     } else {
-      removeList[index] = false;
+      starList[index] = false;
     }
     notifyListeners();
   }

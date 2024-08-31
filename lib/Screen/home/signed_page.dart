@@ -12,6 +12,8 @@ class _SignedPageState extends State<SignedPage> {
 
   @override
   Widget build(BuildContext context) {
+    SignedProviderPage signedProvider =
+        Provider.of<SignedProviderPage>(context);
     return Container(
       child: Column(
         children: [
@@ -37,7 +39,7 @@ class _SignedPageState extends State<SignedPage> {
                 Container(),
                 Container(),
                 Text(
-                  "IMZOLANGAN TAYYOR SANKSIYALAR",
+                  "IMZOLANGAN SANKSIYALAR",
                   style: GoogleFonts.slabo13px(
                     textStyle: TextStyle(
                       fontSize: 16,
@@ -130,23 +132,30 @@ class _SignedPageState extends State<SignedPage> {
                     children: [
                       Row(
                         children: [
-                          Icon(
-                            Icons.star_border_outlined,
-                            size: 24,
-                            color: Colors.grey,
+                          GestureDetector(
+                            onTap: () => signedProvider.onClickStar(index),
+                            child: Icon(
+                              signedProvider.starList[index]
+                                  ? Icons.star
+                                  : Icons.star_border_outlined,
+                              size: 24,
+                              color: signedProvider.starList[index]
+                                  ? Colors.orange
+                                  : Colors.grey,
+                            ),
                           ),
                           SizedBox(width: 20),
-                          Text(
-                            "Pul ko'paytirish:",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
+                          Container(
+                            width: 160,
+                            child: Text(
+                              "Pul ko'paytirish:",
+                              style: TextStyle(
                                 fontSize: 14,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                          SizedBox(width: 20),
                         ],
                       ),
                       Row(

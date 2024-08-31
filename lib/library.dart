@@ -9,14 +9,16 @@ export 'package:get/get.dart';
 
 
 // Screen
-export 'package:sanctions/Screen/menu_page.dart';
-export 'package:sanctions/Screen/sended_page.dart';
-export 'package:sanctions/Screen/signed_page.dart';
+export 'package:sanctions/Screen/home/home_page.dart';
+export 'package:sanctions/Screen/home/sended_page.dart';
+export 'package:sanctions/Screen/home/signed_page.dart';
+export 'package:sanctions/Screen/home/create_page.dart';
+
 
 
 // Provider
 export 'package:sanctions/Provider/signed_provider_page.dart';
-export 'Provider/menu_provider_page.dart';
+export 'Provider/home_provider_page.dart';
 
 
 // Other

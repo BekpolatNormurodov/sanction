@@ -3,8 +3,8 @@ import 'package:sanctions/library.dart';
 main(List<String> args) {
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider<MenuProviderPage>(
-        create: (context) => MenuProviderPage(),
+      ChangeNotifierProvider<HomeProviderPage>(
+        create: (context) => HomeProviderPage(),
       ),
       ChangeNotifierProvider<SignedProviderPage>(
         create: (context) => SignedProviderPage(),
@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
             theme: ThemeData(
               textTheme: GoogleFonts.slabo13pxTextTheme(),
             ),
-            home: menuPage(),
+            home: HomePage(),
           ),
         );
       },
