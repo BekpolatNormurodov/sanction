@@ -1,7 +1,17 @@
 import 'package:sanctions/library.dart';
 
-void main() {
-  runApp(MyApp());
+main(List<String> args) {
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<MenuProviderPage>(
+        create: (context) => MenuProviderPage(),
+      ),
+      ChangeNotifierProvider<SignedProviderPage>(
+        create: (context) => SignedProviderPage(),
+      ),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -23,8 +33,11 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           home: GetMaterialApp(
             debugShowCheckedModeBanner: false,
-            home: menuPage()
+            theme: ThemeData(
+              textTheme: GoogleFonts.slabo13pxTextTheme(),
             ),
+            home: menuPage(),
+          ),
         );
       },
     );

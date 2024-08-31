@@ -8,16 +8,9 @@ class menuPage extends StatefulWidget {
 }
 
 class _menuPageState extends State<menuPage> {
-  int? activeIndex;
-
-  @override
-  void initState() {
-    activeIndex = 1;
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    MenuProviderPage menuProvider = Provider.of<MenuProviderPage>(context);
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 248, 248, 1),
       body: Row(
@@ -54,26 +47,24 @@ class _menuPageState extends State<menuPage> {
                         SizedBox(width: 14),
                         Text(
                           "SANKSIYA",
-                          style: GoogleFonts.slabo13px(
-                            textStyle: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              letterSpacing: 1.5,
-                              shadows: [
-                                BoxShadow(
-                                  offset: Offset(4, 2),
-                                  blurRadius: 2,
-                                  color: Colors.red,
-                                ),
-                              ],
-                            ),
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            letterSpacing: 1.5,
+                            shadows: [
+                              BoxShadow(
+                                offset: Offset(4, 2),
+                                blurRadius: 2,
+                                color: Colors.red,
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                activeIndex == 1
+                menuProvider.activeIndex == 1
                     ? Container(
                         width: 240,
                         height: 40,
@@ -100,22 +91,17 @@ class _menuPageState extends State<menuPage> {
                             SizedBox(width: 12),
                             Text(
                               "Yuborilgan",
-                              style: GoogleFonts.slabo13px(
-                                textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                  letterSpacing: .7,
-                                ),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                letterSpacing: .7,
                               ),
                             ),
                           ],
                         ),
                       )
                     : GestureDetector(
-                       onTap: () {
-                          activeIndex = 1;
-                          setState(() {});
-                        },
+                        onTap: () => menuProvider.onClickSended(),
                         child: Container(
                           width: 242,
                           height: 38,
@@ -132,19 +118,17 @@ class _menuPageState extends State<menuPage> {
                               SizedBox(width: 12),
                               Text(
                                 "Yuborilgan",
-                                style: GoogleFonts.slabo13px(
-                                  textStyle: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    letterSpacing: .7,
-                                  ),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                  letterSpacing: .7,
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                activeIndex == 2
+                menuProvider.activeIndex == 2
                     ? Container(
                         width: 240,
                         height: 40,
@@ -171,22 +155,17 @@ class _menuPageState extends State<menuPage> {
                             SizedBox(width: 10),
                             Text(
                               "Tayyorlangan",
-                              style: GoogleFonts.slabo13px(
-                                textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                  letterSpacing: .7,
-                                ),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                letterSpacing: .7,
                               ),
                             ),
                           ],
                         ),
                       )
                     : GestureDetector(
-                       onTap: () {
-                          activeIndex = 2;
-                          setState(() {});
-                        },
+                        onTap: () => menuProvider.onClickSigned(),
                         child: Container(
                           width: 242,
                           height: 38,
@@ -202,19 +181,17 @@ class _menuPageState extends State<menuPage> {
                               SizedBox(width: 10),
                               Text(
                                 "Tayyorlangan",
-                                style: GoogleFonts.slabo13px(
-                                  textStyle: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    letterSpacing: .7,
-                                  ),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                  letterSpacing: .7,
                                 ),
                               ),
                             ],
                           ),
                         ),
                       ),
-                activeIndex == 3
+                menuProvider.activeIndex == 3
                     ? Container(
                         width: 240,
                         height: 40,
@@ -241,22 +218,17 @@ class _menuPageState extends State<menuPage> {
                             SizedBox(width: 8),
                             Text(
                               "Yaratish",
-                              style: GoogleFonts.slabo13px(
-                                textStyle: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.white,
-                                  letterSpacing: .7,
-                                ),
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                letterSpacing: .7,
                               ),
                             ),
                           ],
                         ),
                       )
                     : GestureDetector(
-                        onTap: () {
-                          activeIndex = 3;
-                          setState(() {});
-                        },
+                        onTap: () => menuProvider.onClickCreate(),
                         child: Container(
                           width: 242,
                           height: 38,
@@ -272,12 +244,10 @@ class _menuPageState extends State<menuPage> {
                               SizedBox(width: 8),
                               Text(
                                 "Yaratish",
-                                style: GoogleFonts.slabo13px(
-                                  textStyle: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.white,
-                                    letterSpacing: .7,
-                                  ),
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                  letterSpacing: .7,
                                 ),
                               ),
                             ],
@@ -299,12 +269,10 @@ class _menuPageState extends State<menuPage> {
                           SizedBox(width: 8),
                           Text(
                             "Sozlamalar",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                letterSpacing: 1,
-                              ),
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              letterSpacing: 1,
                             ),
                           ),
                         ],
@@ -315,7 +283,7 @@ class _menuPageState extends State<menuPage> {
               ],
             ),
           ),
-          SendedPage(),
+          SignedPage(),
         ],
       ),
     );

@@ -39,6 +39,7 @@ dependencies:
   get: ^4.6.6
   google_fonts: ^6.2.1
   animation_search_bar: ^0.0.10
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

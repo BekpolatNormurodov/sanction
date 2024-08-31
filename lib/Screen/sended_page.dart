@@ -14,11 +14,10 @@ class _SendedPageState extends State<SendedPage> {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Container(
             width: Get.width - 280,
-            padding: EdgeInsets.symmetric(horizontal: 56),
+            padding: EdgeInsets.symmetric(horizontal: 50),
             decoration: BoxDecoration(
               color: Colors.green,
               border: Border(
@@ -39,14 +38,12 @@ class _SendedPageState extends State<SendedPage> {
                 Container(),
                 Text(
                   "RAXBARIYATGA IMZOLATISH UCHUN YUBORILGAN SANKSIYALAR",
-                  style: GoogleFonts.slabo13px(
-                    textStyle: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: .8,
-                      wordSpacing: 2,
-                    ),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: .8,
+                    wordSpacing: 2,
                   ),
                 ),
                 Row(
@@ -62,27 +59,24 @@ class _SendedPageState extends State<SendedPage> {
                       closeIconColor: Colors.deepPurple.shade700,
                       centerTitle: ' ',
                       hintText: 'Izlash...',
-                      hintStyle: GoogleFonts.slabo13px(
-                        textStyle: TextStyle(
-                          color: Colors.grey.shade600,
-                          fontSize: 13,
-                          shadows: [
-                            BoxShadow(
-                              offset: Offset(.5, .5),
-                              blurRadius: 1,
-                              color: Colors.red.shade100,
-                            )
-                          ],
-                        ),
+                      hintStyle: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontSize: 13,
+                        shadows: [
+                          BoxShadow(
+                            offset: Offset(.5, .5),
+                            blurRadius: 1,
+                            color: Colors.red.shade100,
+                          )
+                        ],
                       ),
-                      textStyle: GoogleFonts.slabo13px(
-                          textStyle: TextStyle(fontSize: 13)),
+                      textStyle: TextStyle(fontSize: 13),
                       isBackButtonVisible: false,
                       cursorColor: Colors.deepPurple.shade700,
                       duration: Duration(milliseconds: 300),
                       searchFieldHeight: 36,
                       searchBarHeight: 42,
-                      searchBarWidth: 360,
+                      searchBarWidth: 320,
                       horizontalPadding: 5,
                       verticalPadding: 8,
                       searchIconColor: Colors.deepPurple.shade700,
@@ -95,9 +89,6 @@ class _SendedPageState extends State<SendedPage> {
                         borderRadius: BorderRadius.circular(6),
                       ),
                     ),
-                    SizedBox(width: 26),
-                    Icon(Icons.delete,
-                        color: Colors.redAccent.shade700, size: 24)
                   ],
                 ),
               ],
@@ -116,7 +107,7 @@ class _SendedPageState extends State<SendedPage> {
                 return Container(
                   margin: EdgeInsets.only(
                       left: 50, right: 50, bottom: 8, top: index == 0 ? 28 : 8),
-                  padding: EdgeInsets.only(left: 20, right: 10),
+                  padding: EdgeInsets.only(left: 14, right: 10),
                   width: Get.width,
                   height: 54,
                   decoration: BoxDecoration(
@@ -134,59 +125,65 @@ class _SendedPageState extends State<SendedPage> {
                     children: [
                       Row(
                         children: [
-                          Icon(
-                            Icons.star_border_outlined,
-                            size: 24,
-                            color: Colors.grey,
+                          Container(
+                            width: 28,
+                            height: 28,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade50,
+                              borderRadius: BorderRadius.circular(8),
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: Offset(2, 2),
+                                  blurRadius: 4,
+                                  color: Colors.grey.shade300,
+                                )
+                              ],
+                            ),
+                            child: Text(
+                              (index + 1).toString(),
+                              style: TextStyle(fontSize: 13),
+                            ),
                           ),
                           SizedBox(width: 20),
-                          Text(
-                            "Pul ko'paytirish:",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
+                          Container(
+                            width: 160,
+                            child: Text(
+                              "Pul ko'paytirish:",
+                              style: TextStyle(
                                 fontSize: 14,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
-                          SizedBox(width: 20),
                         ],
                       ),
                       Row(
                         children: [
                           Text(
                             "Навбаҳор тумани ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган  ",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                              ),
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
                             ),
                           ),
                           Text(
                             "19124",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
                           ),
                           Text(
                             " -сонли мурожаат",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                              ),
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
                             ),
                           ),
                         ],
                       ),
-                      Container(),
-                      Container(),
-                      Container(),
                       Container(),
                       Container(),
                       Container(
@@ -201,7 +198,7 @@ class _SendedPageState extends State<SendedPage> {
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 );
