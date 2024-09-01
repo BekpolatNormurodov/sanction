@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                           children: [
                             Icon(Icons.check, color: Colors.white, size: 20),
-                            SizedBox(width: 10),
+                            SizedBox(width: 12),
                             Text(
                               "Tayyorlangan",
                               style: TextStyle(
@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                           child: Row(
                             children: [
                               Icon(Icons.check, color: Colors.white, size: 20),
-                              SizedBox(width: 10),
+                              SizedBox(width: 12),
                               Text(
                                 "Tayyorlangan",
                                 style: TextStyle(
@@ -214,8 +214,71 @@ class _HomePageState extends State<HomePage> {
                         ),
                         child: Row(
                           children: [
-                            Icon(Icons.add, color: Colors.white, size: 22),
-                            SizedBox(width: 8),
+                            Icon(Icons.star, color: Colors.white, size: 20),
+                            SizedBox(width: 10),
+                            Text(
+                              "Ochiladigan",
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                letterSpacing: .7,
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : GestureDetector(
+                        onTap: () => homeProvider.onClickDefined(),
+                        child: Container(
+                          width: 242,
+                          height: 38,
+                          margin: EdgeInsets.only(top: 16, left: 18),
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          alignment: Alignment.centerLeft,
+                          decoration: BoxDecoration(
+                              color: Colors.grey.withOpacity(.2),
+                              borderRadius: BorderRadius.circular(4)),
+                          child: Row(
+                            children: [
+                              Icon(Icons.star, color: Colors.white, size: 20),
+                              SizedBox(width: 10),
+                              Text(
+                                "Ochiladigan",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.white,
+                                  letterSpacing: .7,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                homeProvider.activeIndex == 4
+                    ? Container(
+                        width: 240,
+                        height: 40,
+                        margin: EdgeInsets.only(top: 16, left: 18),
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        alignment: Alignment.centerLeft,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 101, 45, 255),
+                          borderRadius: BorderRadius.circular(4),
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(2, 2),
+                              color: Color.fromARGB(255, 101, 45, 255),
+                            ),
+                            BoxShadow(
+                              offset: Offset(1, 1),
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.add, color: Colors.white, size: 23),
+                            SizedBox(width: 10),
                             Text(
                               "Yaratish",
                               style: TextStyle(
@@ -240,8 +303,8 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(4)),
                           child: Row(
                             children: [
-                              Icon(Icons.add, color: Colors.white, size: 22),
-                              SizedBox(width: 8),
+                              Icon(Icons.add, color: Colors.white, size: 23),
+                              SizedBox(width: 10),
                               Text(
                                 "Yaratish",
                                 style: TextStyle(
@@ -283,7 +346,13 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-         homeProvider.activeIndex == 1 ? SendedPage() : homeProvider.activeIndex == 2 ? SignedPage() : CreatePage(),
+          homeProvider.activeIndex == 1
+              ? SendedPage()
+              : homeProvider.activeIndex == 2
+                  ? SignedPage()
+                  : homeProvider.activeIndex == 3
+                      ? DefinedPage()
+                      : CreatePage(),
         ],
       ),
     );

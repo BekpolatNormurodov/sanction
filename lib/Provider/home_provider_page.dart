@@ -1,7 +1,7 @@
 import 'package:sanctions/library.dart';
 
 class HomeProviderPage with ChangeNotifier{
- int? activeIndex = 1;
+ int activeIndex = 1;
  
   onClickSended(){
     activeIndex = 1;
@@ -11,8 +11,12 @@ class HomeProviderPage with ChangeNotifier{
     activeIndex = 2;
     notifyListeners();
   }
-   onClickCreate(){
+   onClickDefined(){
     activeIndex = 3;
+    notifyListeners();
+  }
+   onClickCreate(){
+    activeIndex = 4;
     notifyListeners();
   }
 }

@@ -9,6 +9,7 @@ class SignedPage extends StatefulWidget {
 
 class _SignedPageState extends State<SignedPage> {
   late TextEditingController controller = TextEditingController();
+  String? _value;
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +78,8 @@ class _SignedPageState extends State<SignedPage> {
                         ),
                       ),
                       textStyle: GoogleFonts.slabo13px(
-                          textStyle: TextStyle(fontSize: 13)),
+                        textStyle: TextStyle(fontSize: 13),
+                      ),
                       isBackButtonVisible: false,
                       cursorColor: Colors.deepPurple.shade700,
                       duration: Duration(milliseconds: 300),
@@ -111,101 +113,204 @@ class _SignedPageState extends State<SignedPage> {
               itemCount: 20,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.only(
-                      left: 50, right: 50, bottom: 8, top: index == 0 ? 28 : 8),
-                  padding: EdgeInsets.only(left: 20, right: 10),
-                  width: Get.width,
-                  height: 54,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade50,
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                          offset: Offset(1, 2),
-                          blurRadius: 4,
-                          color: Colors.black.withOpacity(.1)),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () => signedProvider.onClickStar(index),
-                            child: Icon(
-                              signedProvider.starList[index]
-                                  ? Icons.star
-                                  : Icons.star_border_outlined,
-                              size: 24,
-                              color: signedProvider.starList[index]
-                                  ? Colors.orange
-                                  : Colors.grey,
+                return Column(
+                  children: [
+                    index == 0
+                        ? Container(
+                            width: Get.width - 400,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  width: 146,
+                                  height: 50,
+                                  child: DropdownButton(
+                                    hint: Text(
+                                      "Usuli",
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                    value: _value,
+                                    items: [
+                                      DropdownMenuItem(
+                                        child: Text("Zararli ilova"),
+                                        value: "apk",
+                                        onTap: () {},
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text("Fishing"),
+                                        value: "fishing",
+                                        onTap: () {},
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text("Pul ko'paytirish"),
+                                        value: "trading",
+                                        onTap: () {},
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text("Onlayn savdo"),
+                                        value: "savdo",
+                                        onTap: () {},
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text("Boshqa"),
+                                        value: "other",
+                                        onTap: () {},
+                                      ),
+                                    ],
+                                    onChanged: (String? e) {
+                                      _value = e!;
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  width: 200,
+                                  height: 60,
+                                  padding: const EdgeInsets.all(3),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          labelText: "Murojat raqami",
+                                          labelStyle: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 12),
+                                          suffixIcon: Icon(Icons.search),
+                                        ),
+
+                                        keyboardType: TextInputType.number,
+                                        inputFormatters: <TextInputFormatter>[
+                                          FilteringTextInputFormatter.digitsOnly
+                                        ], // Only numbers can be entered
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: 160,
+                                  height: 60,
+                                  padding: const EdgeInsets.all(3),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      TextField(
+                                        decoration: InputDecoration(
+                                            suffixIcon:
+                                                Icon(Icons.date_range_outlined),
+                                            hintText: "Sana"),
+                                        keyboardType: TextInputType.number,
+                                        inputFormatters: [
+                                          DateInputFormatter(),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
+                          )
+                        : Container(),
+                    Container(
+                      margin: EdgeInsets.only(
+                          left: 50,
+                          right: 50,
+                          bottom: 8,
+                          top: index == 0 ? 28 : 8),
+                      padding: EdgeInsets.only(left: 20, right: 10),
+                      width: Get.width,
+                      height: 54,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade50,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(1, 2),
+                              blurRadius: 4,
+                              color: Colors.black.withOpacity(.1)),
+                        ],
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () => signedProvider.onClickStar(index),
+                                child: Icon(
+                                  signedProvider.starList[index]
+                                      ? Icons.star
+                                      : Icons.star_border_outlined,
+                                  size: 24,
+                                  color: signedProvider.starList[index]
+                                      ? Colors.orange
+                                      : Colors.grey,
+                                ),
+                              ),
+                              SizedBox(width: 20),
+                              Container(
+                                width: 160,
+                                child: Text(
+                                  "Pul ko'paytirish:",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          SizedBox(width: 20),
+                          Row(
+                            children: [
+                              Text(
+                                "Навбаҳор тумани ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган  ",
+                                style: GoogleFonts.slabo13px(
+                                  textStyle: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "19124",
+                                style: GoogleFonts.slabo13px(
+                                  textStyle: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Text(
+                                " -сонли мурожаат",
+                                style: GoogleFonts.slabo13px(
+                                  textStyle: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(),
+                          Container(),
                           Container(
-                            width: 160,
+                            alignment: Alignment.bottomRight,
+                            padding: EdgeInsets.only(bottom: 3),
+                            margin: EdgeInsets.only(left: 20),
                             child: Text(
-                              "Pul ko'paytirish:",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                              "22.08.2024",
+                              style: GoogleFonts.robotoSerif(
+                                textStyle: TextStyle(
+                                  fontSize: 13,
+                                ),
                               ),
                             ),
                           ),
                         ],
                       ),
-                      Row(
-                        children: [
-                          Text(
-                            "Навбаҳор тумани ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган  ",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                          Text(
-                            "19124",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Text(
-                            " -сонли мурожаат",
-                            style: GoogleFonts.slabo13px(
-                              textStyle: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(),
-                      Container(),
-                      Container(
-                        alignment: Alignment.bottomRight,
-                        padding: EdgeInsets.only(bottom: 3),
-                        margin: EdgeInsets.only(left: 20),
-                        child: Text(
-                          "22.08.2024",
-                          style: GoogleFonts.robotoSerif(
-                            textStyle: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 );
               },
             ),

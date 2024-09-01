@@ -40,6 +40,8 @@ dependencies:
   google_fonts: ^6.2.1
   animation_search_bar: ^0.0.10
   provider: ^6.1.2
+  date_format_field: ^0.1.0
+  pattern_formatter: ^4.0.0
 
 dev_dependencies:
   flutter_test:

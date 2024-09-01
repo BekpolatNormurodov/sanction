@@ -1,17 +1,19 @@
 import 'package:sanctions/library.dart';
 
-class SendedPage extends StatefulWidget {
-  const SendedPage({super.key});
+class DefinedPage extends StatefulWidget {
+  const DefinedPage({super.key});
 
   @override
-  State<SendedPage> createState() => _SendedPageState();
+  State<DefinedPage> createState() => _DefinedPageState();
 }
 
-class _SendedPageState extends State<SendedPage> {
+class _DefinedPageState extends State<DefinedPage> {
   late TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    SignedProviderPage signedProvider =
+        Provider.of<SignedProviderPage>(context);
     return Container(
       child: Column(
         children: [
@@ -37,7 +39,7 @@ class _SendedPageState extends State<SendedPage> {
                 Container(),
                 Container(),
                 Text(
-                  "RAXBARIYATGA IMZOLATISH UCHUN YUBORILGAN SANKSIYALAR",
+                  "TANLANIB OLINGAN SANKSIYALAR",
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -108,10 +110,11 @@ class _SendedPageState extends State<SendedPage> {
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                          left: 50,
-                          right: 50,
-                          bottom: 8,
-                          top: index == 0 ? 28 : 8),
+                        left: 50,
+                        right: 50,
+                        bottom: 8,
+                        top: index == 0 ? 28 : 8,
+                      ),
                       padding: EdgeInsets.only(left: 14, right: 10),
                       width: Get.width,
                       height: 54,
@@ -120,9 +123,10 @@ class _SendedPageState extends State<SendedPage> {
                         borderRadius: BorderRadius.circular(8),
                         boxShadow: [
                           BoxShadow(
-                              offset: Offset(1, 2),
-                              blurRadius: 4,
-                              color: Colors.black.withOpacity(.1)),
+                            offset: Offset(1, 2),
+                            blurRadius: 4,
+                            color: Colors.black.withOpacity(.1),
+                          ),
                         ],
                       ),
                       child: Row(
@@ -130,24 +134,16 @@ class _SendedPageState extends State<SendedPage> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                width: 28,
-                                height: 28,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade50,
-                                  borderRadius: BorderRadius.circular(8),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      offset: Offset(2, 2),
-                                      blurRadius: 4,
-                                      color: Colors.grey.shade300,
-                                    )
-                                  ],
-                                ),
-                                child: Text(
-                                  (index + 1).toString(),
-                                  style: TextStyle(fontSize: 13),
+                              GestureDetector(
+                                onTap: () => signedProvider.onClickStar(index),
+                                child: Icon(
+                                  signedProvider.starList[index]
+                                      ? Icons.star_border_outlined
+                                      : Icons.star,
+                                  size: 24,
+                                  color: signedProvider.starList[index]
+                                      ? Colors.grey
+                                      : Colors.orange,
                                 ),
                               ),
                               SizedBox(width: 20),
