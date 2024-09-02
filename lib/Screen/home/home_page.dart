@@ -1,3 +1,4 @@
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:sanctions/library.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,6 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isHover = false;
   @override
   Widget build(BuildContext context) {
     HomeProvider homeProvider = Provider.of<HomeProvider>(context);
@@ -68,44 +70,47 @@ class _HomePageState extends State<HomePage> {
 
                 // Buttons
                 homeProvider.activeIndex == 1
-                    ? HomeButtonClass().activeButton(
-                        title: "Yuborilgan",
-                        indexActive: 1,
-                      )
-                    : HomeButtonClass().noActiveButton(
-                        context,
-                        title: "Yuborilgan",
-                        indexActive: 1,
+                    ? HomeButtonClass()
+                        .activeButton(title: "Yuborilgan", indexActive: 1)
+                    : InkWell(
+                        onTap: () {},
+                        onHover: (e) {
+                          isHover = e;
+                          setState(() {});
+                        },
+                        child: HomeButtonClass().noActiveButton(
+                          context,
+                          title: "Yuborilgan",
+                          indexActive: 1,
+                          isHover: isHover,
+                        ),
                       ),
                 homeProvider.activeIndex == 2
-                    ? HomeButtonClass().activeButton(
-                        title: "Tayyorlangan",
-                        indexActive: 2,
-                      )
+                    ? HomeButtonClass()
+                        .activeButton(title: "Tayyorlangan", indexActive: 2)
                     : HomeButtonClass().noActiveButton(
                         context,
                         title: "Tayyorlangan",
                         indexActive: 2,
+                        isHover: isHover,
                       ),
                 homeProvider.activeIndex == 3
-                    ? HomeButtonClass().activeButton(
-                        title: "Ochiladigan",
-                        indexActive: 3,
-                      )
+                    ? HomeButtonClass()
+                        .activeButton(title: "Ochiladigan", indexActive: 3)
                     : HomeButtonClass().noActiveButton(
                         context,
                         title: "Ochiladigan",
                         indexActive: 3,
+                        isHover: isHover,
                       ),
                 homeProvider.activeIndex == 4
-                    ? HomeButtonClass().activeButton(
-                        title: "Yaratish",
-                        indexActive: 4,
-                      )
+                    ? HomeButtonClass()
+                        .activeButton(title: "Yaratish", indexActive: 4)
                     : HomeButtonClass().noActiveButton(
                         context,
                         title: "Yaratish",
                         indexActive: 4,
+                        isHover: isHover,
                       ),
 
                 // Settings
@@ -126,7 +131,6 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
 
   // Settings
   settings() {

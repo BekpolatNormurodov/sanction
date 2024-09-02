@@ -55,9 +55,14 @@ class HomeButtonClass {
   }
 
   // No Active Button
-  noActiveButton(context, {required String title, required int indexActive}) {
+  noActiveButton(
+    context, {
+    required String title,
+    required int indexActive,
+    required bool isHover,
+  }) {
     HomeProvider homeProvider = Provider.of<HomeProvider>(context);
-    return GestureDetector(
+    return InkWell(
       // OnTap Button
       onTap: () => indexActive == 1
           ? homeProvider.onClickSended()
@@ -73,7 +78,9 @@ class HomeButtonClass {
         padding: EdgeInsets.symmetric(horizontal: 16),
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(.2),
+          color: isHover
+              ? Colors.grey.withOpacity(.2)
+              : Color.fromARGB(255, 101, 45, 255),
           borderRadius: BorderRadius.circular(4),
         ),
         child: Row(
