@@ -65,258 +65,29 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 homeProvider.activeIndex == 1
-                    ? Container(
-                        width: 240,
-                        height: 40,
-                        margin: EdgeInsets.only(top: 24, left: 18),
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 101, 45, 255),
-                          borderRadius: BorderRadius.circular(4),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(2, 2),
-                              color: Color.fromARGB(255, 101, 45, 255),
-                            ),
-                            BoxShadow(
-                              offset: Offset(1, 1),
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.send, color: Colors.white, size: 18),
-                            SizedBox(width: 12),
-                            Text(
-                              "Yuborilgan",
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white,
-                                letterSpacing: .7,
-                              ),
-                            ),
-                          ],
-                        ),
+                    ? HomeButton().activeButton(
+                        title: "Yuborilgan",
+                        indexActive: 1,
                       )
-                    : GestureDetector(
-                        onTap: () => homeProvider.onClickSended(),
-                        child: Container(
-                          width: 242,
-                          height: 38,
-                          margin: EdgeInsets.only(top: 24, left: 18),
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          alignment: Alignment.centerLeft,
-                          decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(.2),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(Icons.send, color: Colors.white, size: 18),
-                              SizedBox(width: 12),
-                              Text(
-                                "Yuborilgan",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  letterSpacing: .7,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    : HomeButton().noActiveButton(context),
                 homeProvider.activeIndex == 2
-                    ? Container(
-                        width: 240,
-                        height: 40,
-                        margin: EdgeInsets.only(top: 16, left: 18),
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 101, 45, 255),
-                          borderRadius: BorderRadius.circular(4),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(2, 2),
-                              color: Color.fromARGB(255, 101, 45, 255),
-                            ),
-                            BoxShadow(
-                              offset: Offset(1, 1),
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.check, color: Colors.white, size: 20),
-                            SizedBox(width: 12),
-                            Text(
-                              "Tayyorlangan",
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white,
-                                letterSpacing: .7,
-                              ),
-                            ),
-                          ],
-                        ),
+                    ? HomeButton().activeButton(
+                        title: "Tayyorlangan",
+                        indexActive: 2,
                       )
-                    : GestureDetector(
-                        onTap: () => homeProvider.onClickSigned(),
-                        child: Container(
-                          width: 242,
-                          height: 38,
-                          margin: EdgeInsets.only(top: 16, left: 18),
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          alignment: Alignment.centerLeft,
-                          decoration: BoxDecoration(
-                              color: Colors.grey.withOpacity(.2),
-                              borderRadius: BorderRadius.circular(4)),
-                          child: Row(
-                            children: [
-                              Icon(Icons.check, color: Colors.white, size: 20),
-                              SizedBox(width: 12),
-                              Text(
-                                "Tayyorlangan",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  letterSpacing: .7,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    : HomeButton().noActiveButton(context),
                 homeProvider.activeIndex == 3
-                    ? Container(
-                        width: 240,
-                        height: 40,
-                        margin: EdgeInsets.only(top: 16, left: 18),
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 101, 45, 255),
-                          borderRadius: BorderRadius.circular(4),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(2, 2),
-                              color: Color.fromARGB(255, 101, 45, 255),
-                            ),
-                            BoxShadow(
-                              offset: Offset(1, 1),
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.star, color: Colors.white, size: 20),
-                            SizedBox(width: 10),
-                            Text(
-                              "Ochiladigan",
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white,
-                                letterSpacing: .7,
-                              ),
-                            ),
-                          ],
-                        ),
+                    ? HomeButton().activeButton(
+                        title: "Ochiladigan",
+                        indexActive: 3,
                       )
-                    : GestureDetector(
-                        onTap: () => homeProvider.onClickDefined(),
-                        child: Container(
-                          width: 242,
-                          height: 38,
-                          margin: EdgeInsets.only(top: 16, left: 18),
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          alignment: Alignment.centerLeft,
-                          decoration: BoxDecoration(
-                              color: Colors.grey.withOpacity(.2),
-                              borderRadius: BorderRadius.circular(4)),
-                          child: Row(
-                            children: [
-                              Icon(Icons.star, color: Colors.white, size: 20),
-                              SizedBox(width: 10),
-                              Text(
-                                "Ochiladigan",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  letterSpacing: .7,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    : HomeButton().noActiveButton(context),
                 homeProvider.activeIndex == 4
-                    ? Container(
-                        width: 240,
-                        height: 40,
-                        margin: EdgeInsets.only(top: 16, left: 18),
-                        padding: EdgeInsets.symmetric(horizontal: 16),
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 101, 45, 255),
-                          borderRadius: BorderRadius.circular(4),
-                          boxShadow: [
-                            BoxShadow(
-                              offset: Offset(2, 2),
-                              color: Color.fromARGB(255, 101, 45, 255),
-                            ),
-                            BoxShadow(
-                              offset: Offset(1, 1),
-                              color: Colors.white,
-                            )
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.add, color: Colors.white, size: 23),
-                            SizedBox(width: 10),
-                            Text(
-                              "Yaratish",
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.white,
-                                letterSpacing: .7,
-                              ),
-                            ),
-                          ],
-                        ),
+                    ? HomeButton().activeButton(
+                        title: "Yaratish",
+                        indexActive: 4,
                       )
-                    : GestureDetector(
-                        onTap: () => homeProvider.onClickCreate(),
-                        child: Container(
-                          width: 242,
-                          height: 38,
-                          margin: EdgeInsets.only(top: 16, left: 18),
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          alignment: Alignment.centerLeft,
-                          decoration: BoxDecoration(
-                              color: Colors.grey.withOpacity(.2),
-                              borderRadius: BorderRadius.circular(4)),
-                          child: Row(
-                            children: [
-                              Icon(Icons.add, color: Colors.white, size: 23),
-                              SizedBox(width: 10),
-                              Text(
-                                "Yaratish",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.white,
-                                  letterSpacing: .7,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    : HomeButton().noActiveButton(context),
                 Expanded(
                   child: Container(
                     alignment: Alignment.bottomCenter,
