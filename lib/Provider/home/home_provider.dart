@@ -1,6 +1,6 @@
 import 'package:sanctions/library.dart';
 
-class HomeProviderPage with ChangeNotifier{
+class HomeProvider with ChangeNotifier{
  int activeIndex = 1;
  
   onClickSended(){

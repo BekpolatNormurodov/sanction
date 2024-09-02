@@ -3,11 +3,14 @@ import 'package:sanctions/library.dart';
 main(List<String> args) {
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider<HomeProviderPage>(
-        create: (context) => HomeProviderPage(),
+      ChangeNotifierProvider<HomeProvider>(
+        create: (context) => HomeProvider(),
       ),
-      ChangeNotifierProvider<SignedProviderPage>(
-        create: (context) => SignedProviderPage(),
+      ChangeNotifierProvider<SignedProvider>(
+        create: (context) => SignedProvider(),
+      ),
+      ChangeNotifierProvider<DefinedProvider>(
+        create: (context) => DefinedProvider(),
       ),
     ],
     child: MyApp(),

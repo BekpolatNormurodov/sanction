@@ -1,6 +1,6 @@
 import 'package:sanctions/library.dart';
 
-class SignedProviderPage with ChangeNotifier {
+class DefinedProvider with ChangeNotifier {
   List<bool> starList = List.generate(1000, (i) => false);
 
   onClickStar(index) {

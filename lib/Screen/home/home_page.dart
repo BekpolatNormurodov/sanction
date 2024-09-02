@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    HomeProviderPage homeProvider = Provider.of<HomeProviderPage>(context);
+    HomeProvider homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
       backgroundColor: Color.fromRGBO(248, 248, 248, 1),
       body: Row(
