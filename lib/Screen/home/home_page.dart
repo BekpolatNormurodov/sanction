@@ -30,6 +30,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // LOGO Box
                 Material(
                   elevation: 1,
                   color: Color.fromRGBO(23, 0, 53, .8),
@@ -64,59 +65,56 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+
+                // Buttons
                 homeProvider.activeIndex == 1
-                    ? HomeButton().activeButton(
+                    ? HomeButtonClass().activeButton(
                         title: "Yuborilgan",
                         indexActive: 1,
                       )
-                    : HomeButton().noActiveButton(context),
+                    : HomeButtonClass().noActiveButton(
+                        context,
+                        title: "Yuborilgan",
+                        indexActive: 1,
+                      ),
                 homeProvider.activeIndex == 2
-                    ? HomeButton().activeButton(
+                    ? HomeButtonClass().activeButton(
                         title: "Tayyorlangan",
                         indexActive: 2,
                       )
-                    : HomeButton().noActiveButton(context),
+                    : HomeButtonClass().noActiveButton(
+                        context,
+                        title: "Tayyorlangan",
+                        indexActive: 2,
+                      ),
                 homeProvider.activeIndex == 3
-                    ? HomeButton().activeButton(
+                    ? HomeButtonClass().activeButton(
                         title: "Ochiladigan",
                         indexActive: 3,
                       )
-                    : HomeButton().noActiveButton(context),
+                    : HomeButtonClass().noActiveButton(
+                        context,
+                        title: "Ochiladigan",
+                        indexActive: 3,
+                      ),
                 homeProvider.activeIndex == 4
-                    ? HomeButton().activeButton(
+                    ? HomeButtonClass().activeButton(
                         title: "Yaratish",
                         indexActive: 4,
                       )
-                    : HomeButton().noActiveButton(context),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      width: 230,
-                      height: 38,
-                      margin: EdgeInsets.only(bottom: 20),
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      alignment: Alignment.centerLeft,
-                      child: Row(
-                        children: [
-                          Icon(Icons.settings, color: Colors.white, size: 22),
-                          SizedBox(width: 8),
-                          Text(
-                            "Sozlamalar",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.white,
-                              letterSpacing: 1,
-                            ),
-                          ),
-                        ],
+                    : HomeButtonClass().noActiveButton(
+                        context,
+                        title: "Yaratish",
+                        indexActive: 4,
                       ),
-                    ),
-                  ),
-                ),
+
+                // Settings
+                settings(),
               ],
             ),
           ),
+
+          // Sanksions ListView
           homeProvider.activeIndex == 1
               ? SendedPage()
               : homeProvider.activeIndex == 2
@@ -125,6 +123,37 @@ class _HomePageState extends State<HomePage> {
                       ? DefinedPage()
                       : CreatePage(),
         ],
+      ),
+    );
+  }
+
+
+  // Settings
+  settings() {
+    return Expanded(
+      child: Container(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          width: 230,
+          height: 38,
+          margin: EdgeInsets.only(bottom: 24),
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          alignment: Alignment.centerLeft,
+          child: Row(
+            children: [
+              Icon(Icons.settings, color: Colors.white, size: 22),
+              SizedBox(width: 8),
+              Text(
+                "Sozlamalar",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                  letterSpacing: 1,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

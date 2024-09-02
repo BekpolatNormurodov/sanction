@@ -1,6 +1,6 @@
 import 'package:sanctions/library.dart';
 
-class SearchAppBar {
+class SearchAppBarClass {
   searchAppBar(title, controller) {
     return Container(
       width: Get.width - 280,

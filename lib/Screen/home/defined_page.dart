@@ -16,7 +16,7 @@ class _DefinedPageState extends State<DefinedPage> {
       child: Column(
         children: [
           // Search
-          SearchAppBar().searchAppBar("OCHILADIGAN SANKSIYALAR", controller),
+          SearchAppBarClass().searchAppBar("OCHILADIGAN SANKSIYALAR", controller),
           // Sanktions List
           Container(
             width: Get.width - 280,
@@ -28,7 +28,7 @@ class _DefinedPageState extends State<DefinedPage> {
               itemCount: 20,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
-                return SanksionsListView().sanksionsListView(
+                return SanksionsListViewClass().sanksionsListView(
                   context,
                   index: index,
                   indexActive: 3,

@@ -1,11 +1,12 @@
 import 'package:sanctions/library.dart';
 
-class HomeButton {
+class HomeButtonClass {
+  // Active Button
   activeButton({required String title, required int indexActive}) {
     return Container(
       width: 240,
       height: 40,
-      margin: EdgeInsets.only(top: 24, left: 18),
+      margin: EdgeInsets.only(top: indexActive == 1 ? 24 : 16, left: 18),
       padding: EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.centerLeft,
       decoration: BoxDecoration(
@@ -24,13 +25,21 @@ class HomeButton {
       ),
       child: Row(
         children: [
-          indexActive == 1
-              ? Icon(Icons.send, color: Colors.white, size: 18)
-              : indexActive == 2
-                  ? Icon(Icons.check, color: Colors.white, size: 18)
-                  : indexActive == 3
-                      ? Icon(Icons.star, color: Colors.white, size: 18)
-                      : Icon(Icons.add, color: Colors.white, size: 18),
+          Icon(
+            indexActive == 1
+                ? Icons.send
+                : indexActive == 2
+                    ? Icons.check
+                    : indexActive == 3
+                        ? Icons.star
+                        : Icons.add,
+            color: Colors.white,
+            size: indexActive == 1
+                ? 20
+                : indexActive == 4
+                    ? 24
+                    : 22,
+          ),
           SizedBox(width: 12),
           Text(
             title,
@@ -45,14 +54,22 @@ class HomeButton {
     );
   }
 
-  noActiveButton(context) {
+  // No Active Button
+  noActiveButton(context, {required String title, required int indexActive}) {
     HomeProvider homeProvider = Provider.of<HomeProvider>(context);
     return GestureDetector(
-      onTap: () => homeProvider.onClickSended(),
+      // OnTap Button
+      onTap: () => indexActive == 1
+          ? homeProvider.onClickSended()
+          : indexActive == 2
+              ? homeProvider.onClickSigned()
+              : indexActive == 3
+                  ? homeProvider.onClickDefined()
+                  : homeProvider.onClickCreate(),
       child: Container(
         width: 242,
         height: 38,
-        margin: EdgeInsets.only(top: 24, left: 18),
+        margin: EdgeInsets.only(top: indexActive == 1 ? 24 : 16, left: 18),
         padding: EdgeInsets.symmetric(horizontal: 16),
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
@@ -61,10 +78,25 @@ class HomeButton {
         ),
         child: Row(
           children: [
-            Icon(Icons.send, color: Colors.white, size: 18),
+            // Icons
+            Icon(
+              indexActive == 1
+                  ? Icons.send
+                  : indexActive == 2
+                      ? Icons.check
+                      : indexActive == 3
+                          ? Icons.star
+                          : Icons.add,
+              color: Colors.white,
+              size: indexActive == 1
+                  ? 18
+                  : indexActive == 4
+                      ? 22
+                      : 20,
+            ),
             SizedBox(width: 12),
             Text(
-              "Yuborilgan",
+              title,
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.white,

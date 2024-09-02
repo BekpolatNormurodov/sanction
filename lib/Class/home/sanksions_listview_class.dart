@@ -1,6 +1,6 @@
 import 'package:sanctions/library.dart';
 
-class SanksionsListView {
+class SanksionsListViewClass {
   sanksionsListView(
     context, {
     required int index,

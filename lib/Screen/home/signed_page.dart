@@ -17,7 +17,7 @@ class _SignedPageState extends State<SignedPage> {
       child: Column(
         children: [
           // Search
-          SearchAppBar().searchAppBar("IMZOLANGAN SANKSIYALAR", controller),
+          SearchAppBarClass().searchAppBar("IMZOLANGAN SANKSIYALAR", controller),
           // Sanktions List
           Container(
             width: Get.width - 280,
@@ -46,7 +46,7 @@ class _SignedPageState extends State<SignedPage> {
                           )
                         : Container(),
                         // Sanktions
-                    SanksionsListView().sanksionsListView(
+                    SanksionsListViewClass().sanksionsListView(
                       context,
                       index: index,
                       indexActive: 2,
