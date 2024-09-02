@@ -22,10 +22,4 @@ class HomeProvider with ChangeNotifier {
     activeIndex = 4;
     notifyListeners();
   }
-
-  // HOVER
-  onClickHover(isHover, e) {
-    isHover = e;
-    notifyListeners();
-  }
 }
