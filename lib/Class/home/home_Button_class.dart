@@ -15,12 +15,8 @@ class HomeButtonClass {
         boxShadow: [
           BoxShadow(
             offset: Offset(2, 2),
-            color: Color.fromARGB(255, 101, 45, 255),
+            color: Colors.red,
           ),
-          BoxShadow(
-            offset: Offset(1, 1),
-            color: Colors.white,
-          )
         ],
       ),
       child: Row(
@@ -46,7 +42,7 @@ class HomeButtonClass {
             style: TextStyle(
               fontSize: 15,
               color: Colors.white,
-              letterSpacing: .7,
+              letterSpacing: .8,
             ),
           ),
         ],
@@ -78,9 +74,11 @@ class HomeButtonClass {
         padding: EdgeInsets.symmetric(horizontal: 16),
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
-          color: isHover
-              ? Colors.grey.withOpacity(.2)
-              : Color.fromARGB(255, 101, 45, 255),
+          border: Border.all(
+              color: isHover
+                  ? Colors.redAccent.shade700
+                  : Colors.red.withOpacity(.3)),
+          color: isHover ? Colors.transparent : Colors.blueGrey.withOpacity(.1),
           borderRadius: BorderRadius.circular(4),
         ),
         child: Row(
@@ -106,8 +104,8 @@ class HomeButtonClass {
               title,
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.white,
-                letterSpacing: .7,
+                color: isHover ? Colors.white : Colors.grey.shade200,
+                letterSpacing: .8,
               ),
             ),
           ],

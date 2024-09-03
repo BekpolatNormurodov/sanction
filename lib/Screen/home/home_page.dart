@@ -9,7 +9,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isHover = false;
+  bool isHover1 = false;
+  bool isHover2 = false;
+  bool isHover3 = false;
+  bool isHover4 = false;
+  bool isHoverSettings = false;
   @override
   Widget build(BuildContext context) {
     HomeProvider homeProvider = Provider.of<HomeProvider>(context);
@@ -39,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                   shadowColor: Colors.red,
                   child: Container(
                     width: 280,
-                    height: 68,
+                    height: 70,
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(23, 0, 53, .8),
@@ -69,49 +73,72 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 // Buttons
-                homeProvider.activeIndex == 1
-                    ? HomeButtonClass()
-                        .activeButton(title: "Yuborilgan", indexActive: 1)
-                    : InkWell(
-                        onTap: () {},
-                        onHover: (e) {
-                          isHover = e;
-                          setState(() {});
-                        },
-                        child: HomeButtonClass().noActiveButton(
+                InkWell(
+                  onTap: () {},
+                  onHover: (e) {
+                    isHover1 = e;
+                    setState(() {});
+                  },
+                  child: homeProvider.activeIndex == 1
+                      ? HomeButtonClass().activeButton(
+                          title: "Yuborilgan",
+                          indexActive: 1,
+                        )
+                      : HomeButtonClass().noActiveButton(
                           context,
                           title: "Yuborilgan",
                           indexActive: 1,
-                          isHover: isHover,
+                          isHover: isHover1,
                         ),
-                      ),
-                homeProvider.activeIndex == 2
-                    ? HomeButtonClass()
-                        .activeButton(title: "Tayyorlangan", indexActive: 2)
-                    : HomeButtonClass().noActiveButton(
-                        context,
-                        title: "Tayyorlangan",
-                        indexActive: 2,
-                        isHover: isHover,
-                      ),
-                homeProvider.activeIndex == 3
-                    ? HomeButtonClass()
-                        .activeButton(title: "Ochiladigan", indexActive: 3)
-                    : HomeButtonClass().noActiveButton(
-                        context,
-                        title: "Ochiladigan",
-                        indexActive: 3,
-                        isHover: isHover,
-                      ),
-                homeProvider.activeIndex == 4
-                    ? HomeButtonClass()
-                        .activeButton(title: "Yaratish", indexActive: 4)
-                    : HomeButtonClass().noActiveButton(
-                        context,
-                        title: "Yaratish",
-                        indexActive: 4,
-                        isHover: isHover,
-                      ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  onHover: (e) {
+                    isHover2 = e;
+                    setState(() {});
+                  },
+                  child: homeProvider.activeIndex == 2
+                      ? HomeButtonClass()
+                          .activeButton(title: "Tayyorlangan", indexActive: 2)
+                      : HomeButtonClass().noActiveButton(
+                          context,
+                          title: "Tayyorlangan",
+                          indexActive: 2,
+                          isHover: isHover2,
+                        ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  onHover: (e) {
+                    isHover3 = e;
+                    setState(() {});
+                  },
+                  child: homeProvider.activeIndex == 3
+                      ? HomeButtonClass()
+                          .activeButton(title: "Ochiladigan", indexActive: 3)
+                      : HomeButtonClass().noActiveButton(
+                          context,
+                          title: "Ochiladigan",
+                          indexActive: 3,
+                          isHover: isHover3,
+                        ),
+                ),
+                InkWell(
+                  onTap: () {},
+                  onHover: (e) {
+                    isHover4 = e;
+                    setState(() {});
+                  },
+                  child: homeProvider.activeIndex == 4
+                      ? HomeButtonClass()
+                          .activeButton(title: "Yaratish", indexActive: 4)
+                      : HomeButtonClass().noActiveButton(
+                          context,
+                          title: "Yaratish",
+                          indexActive: 4,
+                          isHover: isHover4,
+                        ),
+                ),
 
                 // Settings
                 settings(),
@@ -137,25 +164,36 @@ class _HomePageState extends State<HomePage> {
     return Expanded(
       child: Container(
         alignment: Alignment.bottomCenter,
-        child: Container(
-          width: 230,
-          height: 38,
-          margin: EdgeInsets.only(bottom: 24),
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          alignment: Alignment.centerLeft,
-          child: Row(
-            children: [
-              Icon(Icons.settings, color: Colors.white, size: 22),
-              SizedBox(width: 8),
-              Text(
-                "Sozlamalar",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  letterSpacing: 1,
+        child: InkWell(
+          onTap: () {},
+          onHover: (e) {
+            isHoverSettings = e;
+            setState(() {});
+          },
+          child: Container(
+            width: 230,
+            height: 38,
+            margin: EdgeInsets.only(bottom: isHoverSettings ? 26 : 24),
+            padding:
+                EdgeInsets.symmetric(horizontal: isHoverSettings ? 18 : 16),
+            alignment: Alignment.centerLeft,
+            child: Row(
+              children: [
+                Icon(Icons.settings,
+                    color: Colors.white, size: isHoverSettings ? 23 : 22),
+                SizedBox(width: 8),
+                Text(
+                  "Sozlamalar",
+                  style: GoogleFonts.aBeeZee(
+                    textStyle: TextStyle(
+                      fontSize: isHoverSettings ? 17 : 16,
+                      color: Colors.white,
+                      letterSpacing: 1,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
