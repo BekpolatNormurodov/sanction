@@ -9,6 +9,7 @@ class SendedPage extends StatefulWidget {
 
 class _SendedPageState extends State<SendedPage> {
   late TextEditingController controller = TextEditingController();
+  List<bool> isHoverList = List.generate(100, (i) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +31,24 @@ class _SendedPageState extends State<SendedPage> {
               itemCount: 20,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
-                return SanksionsListViewClass().sanksionsListView(
-                  context,
-                  index: index,
-                  indexActive: 1,
-                  number: "19148",
-                  date: "22.08.2024",
+                return InkWell(
+                  onTap: () {},
+                  onHover: (e) {
+                    if (!isHoverList[index]) {
+                      isHoverList[index] = true;
+                    } else {
+                      isHoverList[index] = false;
+                    }
+                    setState(() {});
+                  },
+                  child: SanksionsListViewClass().sanksionsListView(
+                    context,
+                    index: index,
+                    indexActive: 1,
+                    number: "19148",
+                    date: "22.08.2024",
+                    isHover: isHoverList[index],
+                  ),
                 );
               },
             ),

@@ -9,6 +9,7 @@ class SignedPage extends StatefulWidget {
 
 class _SignedPageState extends State<SignedPage> {
   late TextEditingController controller = TextEditingController();
+  List<bool> isHoverList = List.generate(100, (i) => false);
   String? _value;
 
   @override
@@ -17,7 +18,8 @@ class _SignedPageState extends State<SignedPage> {
       child: Column(
         children: [
           // Search
-          SearchAppBarClass().searchAppBar("IMZOLANGAN SANKSIYALAR", controller),
+          SearchAppBarClass()
+              .searchAppBar("IMZOLANGAN SANKSIYALAR", controller),
           // Sanktions List
           Container(
             width: Get.width - 280,
@@ -45,14 +47,26 @@ class _SignedPageState extends State<SignedPage> {
                             ),
                           )
                         : Container(),
-                        // Sanktions
-                    SanksionsListViewClass().sanksionsListView(
-                      context,
-                      index: index,
-                      indexActive: 2,
-                      number: "948",
-                      date: "02.09.2024",
-                    )
+                    // Sanktions
+                    InkWell(
+                      onTap: () {},
+                      onHover: (e) {
+                        if (!isHoverList[index]) {
+                          isHoverList[index] = true;
+                        } else {
+                          isHoverList[index] = false;
+                        }
+                        setState(() {});
+                      },
+                      child: SanksionsListViewClass().sanksionsListView(
+                        context,
+                        index: index,
+                        indexActive: 2,
+                        number: "948",
+                        date: "02.09.2024",
+                         isHover: isHoverList[index],
+                      ),
+                    ),
                   ],
                 );
               },

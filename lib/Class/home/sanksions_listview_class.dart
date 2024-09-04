@@ -7,23 +7,33 @@ class SanksionsListViewClass {
     required int indexActive,
     required String number,
     required String date,
+    required bool isHover,
   }) {
     SignedProvider signedProvider = Provider.of<SignedProvider>(context);
     DefinedProvider definedProvider = Provider.of<DefinedProvider>(context);
     return Container(
       margin: EdgeInsets.only(
-          left: 50, right: 50, bottom: 8, top: index == 0 ? 28 : 8),
+        left: 50,
+        right: 50,
+        bottom: 8,
+        top: index == 0 ? 28 : 8,
+      ),
       padding: EdgeInsets.only(left: 14, right: 10),
       width: Get.width,
       height: 54,
       decoration: BoxDecoration(
         color: Colors.grey.shade50,
         borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color:
+              isHover ? Colors.deepPurpleAccent.shade700 : Colors.transparent,
+          width: .5,
+        ),
         boxShadow: [
           BoxShadow(
             offset: Offset(1, 2),
             blurRadius: 4,
-            color: Colors.black.withOpacity(.1),
+            color: isHover ? Colors.transparent : Colors.black.withOpacity(.1),
           ),
         ],
       ),
@@ -50,7 +60,12 @@ class SanksionsListViewClass {
                       ),
                       child: Text(
                         (index + 1).toString(),
-                        style: TextStyle(fontSize: 13),
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: isHover
+                              ? Colors.deepPurpleAccent.shade700
+                              : Colors.black,
+                        ),
                       ),
                     )
                   : indexActive == 2
@@ -63,7 +78,9 @@ class SanksionsListViewClass {
                             size: 26,
                             color: signedProvider.starList[index]
                                 ? Colors.orange
-                                : Colors.grey,
+                                : isHover
+                                    ? Colors.deepPurple.shade800.withOpacity(.6)
+                                    : Colors.grey,
                           ),
                         )
                       : GestureDetector(
@@ -85,7 +102,9 @@ class SanksionsListViewClass {
                   "Pul ko'paytirish:",
                   style: TextStyle(
                     fontSize: 14,
-                    color: Colors.black,
+                    color: isHover
+                        ? Colors.deepPurple.shade700
+                        : Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -98,21 +117,25 @@ class SanksionsListViewClass {
                 "Навбаҳор тумани ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган  ",
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.black,
+                  color:
+                        isHover ? Colors.deepPurple.shade700 : Colors.black,
                 ),
               ),
               Text(
                 number,
                 style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold),
+                  fontSize: 16,
+                  color:
+                        isHover ? Colors.deepPurple.shade700 : Colors.black,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
               Text(
                 " -сонли мурожаат",
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.black,
+                  color:
+                      isHover ? Colors.deepPurple.shade700 : Colors.black,
                 ),
               ),
             ],
@@ -128,6 +151,7 @@ class SanksionsListViewClass {
               style: GoogleFonts.robotoSerif(
                 textStyle: TextStyle(
                   fontSize: 13,
+                  color: isHover ? Colors.deepPurple.shade700 : Colors.black,
                 ),
               ),
             ),

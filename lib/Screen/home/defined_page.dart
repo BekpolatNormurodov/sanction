@@ -9,6 +9,7 @@ class DefinedPage extends StatefulWidget {
 
 class _DefinedPageState extends State<DefinedPage> {
   late TextEditingController controller = TextEditingController();
+  List<bool> isHoverList = List.generate(100, (i) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,10 @@ class _DefinedPageState extends State<DefinedPage> {
       child: Column(
         children: [
           // Search
-          SearchAppBarClass().searchAppBar("OCHILADIGAN SANKSIYALAR", controller),
+          SearchAppBarClass().searchAppBar(
+            "OCHILADIGAN SANKSIYALAR",
+            controller,
+          ),
           // Sanktions List
           Container(
             width: Get.width - 280,
@@ -28,12 +32,24 @@ class _DefinedPageState extends State<DefinedPage> {
               itemCount: 20,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
-                return SanksionsListViewClass().sanksionsListView(
-                  context,
-                  index: index,
-                  indexActive: 3,
-                  number: "12872",
-                  date: "12.08.2024",
+                return InkWell(
+                  onTap: () {},
+                  onHover: (e) {
+                    if (!isHoverList[index]) {
+                      isHoverList[index] = true;
+                    } else {
+                      isHoverList[index] = false;
+                    }
+                    setState(() {});
+                  },
+                  child: SanksionsListViewClass().sanksionsListView(
+                    context,
+                    index: index,
+                    indexActive: 3,
+                    number: "12872",
+                    date: "12.08.2024",
+                    isHover: isHoverList[index],
+                  ),
                 );
               },
             ),

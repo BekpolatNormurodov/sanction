@@ -27,7 +27,7 @@ class SearchAppBarClass {
             title,
             style: GoogleFonts.slabo13px(
               textStyle: TextStyle(
-                fontSize: 16,
+                fontSize: 17,
                 color: Colors.black,
                 fontWeight: FontWeight.w800,
                 letterSpacing: .8,

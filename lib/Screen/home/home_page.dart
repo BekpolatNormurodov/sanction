@@ -1,4 +1,3 @@
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:sanctions/library.dart';
 
 class HomePage extends StatefulWidget {
@@ -36,6 +35,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                
                 // LOGO Box
                 Material(
                   elevation: 1,
@@ -50,7 +50,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                     child: Row(
                       children: [
-                        Image.asset("assets/images/IIV-logo.png"),
+                        InkWell(
+                          onTap: () {},
+                          onHover: (e) {},
+                          child: FlipCard(
+                            front: Container(
+                                child:
+                                    Image.asset("assets/images/IIV-logo.png")),
+                            back: Container(
+                              child: Image.asset("assets/images/IIV-logo.png"),
+                            ),
+                          ),
+                        ),
                         SizedBox(width: 14),
                         Text(
                           "SANKSIYA",
