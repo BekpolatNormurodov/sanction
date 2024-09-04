@@ -76,7 +76,7 @@ class HomeButtonClass {
         decoration: BoxDecoration(
           border: Border.all(
               color: isHover
-                  ? Colors.redAccent.shade700
+                  ? Colors.redAccent.shade400
                   : Colors.red.withOpacity(.3)),
           color: isHover ? Colors.transparent : Colors.blueGrey.withOpacity(.1),
           borderRadius: BorderRadius.circular(4),
