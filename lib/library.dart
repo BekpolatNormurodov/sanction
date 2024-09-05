@@ -6,8 +6,8 @@ export 'dart:math';
 // pubspec.yaml
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:pattern_formatter/pattern_formatter.dart';
+export 'package:date_format_field/date_format_field.dart';
 export 'package:google_fonts/google_fonts.dart';
-export 'package:date_field/date_field.dart';
 export 'package:easy_mask/easy_mask.dart';
 export 'package:flip_card/flip_card.dart';
 export 'package:provider/provider.dart';
