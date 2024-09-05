@@ -19,6 +19,8 @@ class _CreatePageState extends State<CreatePage> {
   String? sud;
   String? car;
 
+  String? value;
+
   @override
   void initState() {
     nameController = TextEditingController();
@@ -39,6 +41,97 @@ class _CreatePageState extends State<CreatePage> {
     return Expanded(
       child: Column(
         children: [
+          Row(
+            children: [
+              Container(
+                width: 210,
+                height: 44,
+                child: DropdownButtonFormField(
+                  focusColor: Colors.transparent,
+                  hint: Text(
+                    "Navbatchilik qismi",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black.withOpacity(.8),
+                    ),
+                  ),
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.all(12),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6),
+                        borderSide:
+                            BorderSide(color: Colors.black.withOpacity(.5))),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                  ),
+                  items: [
+                    regionIIB("Navoiy shahar"),
+                    regionIIB("Karmana tumani"),
+                    regionIIB("Navbahor tumani"),
+                    regionIIB("Konimex tumani"),
+                    regionIIB("Qiziltepa tumani"),
+                    regionIIB("Xatirchi tumani"),
+                    regionIIB("Zarafshon shahar"),
+                    regionIIB("Uchquduq tumani"),
+                    regionIIB("Nurota tumani"),
+                    regionIIB("Tomdi"),
+                    regionIIB("G'azg'on tumani"),
+                  ],
+                  onChanged: (e) {
+                    value = e!;
+                    setState(() {});
+                  },
+                ),
+              ),
+              Container(
+                width: 130,
+                height: 44,
+                child: TextFormField(
+                  style: TextStyle(fontSize: 14),
+                  cursorColor: Colors.black,
+                  cursorWidth: .8,
+                  decoration: InputDecoration(
+                    labelText: "Murojat raqami",
+                    labelStyle: TextStyle(
+                        color: Colors.black.withOpacity(.8), fontSize: 13),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6),
+                      borderSide: BorderSide(
+                        color: Colors.black.withOpacity(.8),
+                      ),
+                    ),
+                  ),
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly
+                  ],
+                ),
+              ),
+              Container(
+                width: 160,
+                height: 60,
+                padding: const EdgeInsets.all(3),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextField(
+                      decoration: InputDecoration(
+                        suffixIcon: Icon(Icons.date_range_outlined),
+                        hintText: "Sana",
+                      ),
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        DateInputFormatter(),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
           Container(
             width: (Get.width - 280) / 2,
             height: 44,
@@ -298,4 +391,13 @@ class _CreatePageState extends State<CreatePage> {
       ),
     );
   }
+
+  DropdownMenuItem regionIIB(region) => DropdownMenuItem(
+        child: Text(
+          region,
+          style: TextStyle(fontSize: 14),
+        ),
+        value: region,
+        onTap: () {},
+      );
 }

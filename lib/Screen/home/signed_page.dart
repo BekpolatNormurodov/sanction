@@ -64,7 +64,7 @@ class _SignedPageState extends State<SignedPage> {
                         indexActive: 2,
                         number: "948",
                         date: "02.09.2024",
-                         isHover: isHoverList[index],
+                        isHover: isHoverList[index],
                       ),
                     ),
                   ],
@@ -129,22 +129,16 @@ class _SignedPageState extends State<SignedPage> {
       width: 200,
       height: 60,
       padding: const EdgeInsets.all(3),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: "Murojat raqami",
-              labelStyle: TextStyle(color: Colors.black, fontSize: 12),
-              suffixIcon: Icon(Icons.search),
-            ),
-
-            keyboardType: TextInputType.number,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
-            ], // Only numbers can be entered
-          ),
-        ],
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: "Murojat raqami",
+          labelStyle: TextStyle(color: Colors.black, fontSize: 12),
+          suffixIcon: Icon(Icons.search),
+        ),
+        keyboardType: TextInputType.number,
+        inputFormatters: <TextInputFormatter>[
+          FilteringTextInputFormatter.digitsOnly
+        ], // Only numbers can be entered
       ),
     );
   }

@@ -44,6 +44,7 @@ dependencies:
   pattern_formatter: ^4.0.0
   flip_card: ^0.7.0
   easy_mask: ^2.0.1
+  date_field: ^5.2.1
 
 dev_dependencies:
   flutter_test:
