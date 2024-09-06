@@ -132,7 +132,7 @@ class _CreatePageState extends State<CreatePage> {
                     ],
                   ),
                 ),
-                SizedBox(width: 230),
+                SizedBox(width: 200),
                 Container(
                   width: 180,
                   height: 42,
@@ -166,7 +166,7 @@ class _CreatePageState extends State<CreatePage> {
                 ),
                 SizedBox(width: 40),
                 Container(
-                  width: 140,
+                  width: 142,
                   height: 42,
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black.withOpacity(.5)),
@@ -222,7 +222,7 @@ class _CreatePageState extends State<CreatePage> {
             Row(
               children: [
                 Container(
-                  width: 460,
+                  width: 380,
                   height: 44,
                   child: TextFormField(
                     // controller: nameController,
@@ -261,9 +261,9 @@ class _CreatePageState extends State<CreatePage> {
                     ),
                   ),
                 ),
-                SizedBox(width: 140),
+                SizedBox(width: 200),
                 Container(
-                  width: 440,
+                  width: 366,
                   height: 44,
                   child: TextFormField(
                     // controller: nameController,
@@ -302,7 +302,7 @@ class _CreatePageState extends State<CreatePage> {
                     ),
                   ),
                 ),
-                SizedBox(width: 80),
+                SizedBox(width: 40),
                 Container(
                   width: 180,
                   height: 42,
@@ -418,9 +418,9 @@ class _CreatePageState extends State<CreatePage> {
                     },
                   ),
                 ),
-                SizedBox(width: 220),
+                SizedBox(width: 200),
                 Container(
-                  width: 700,
+                  width: 590,
                   height: 44,
                   child: TextFormField(
                     // controller: nameController,
@@ -466,48 +466,219 @@ class _CreatePageState extends State<CreatePage> {
             ),
             Container(
               width: 460,
-              margin: EdgeInsets.only(top: 50, bottom: 4),
+              margin: EdgeInsets.only(top: 50, bottom: 10),
               child: Text(
                 "4 PUL KO'CHIRISHIDA ISHLATILGAN PLASTIK KARTALAR",
                 style: TextStyle(
                     fontWeight: FontWeight.bold, fontSize: 15, wordSpacing: 3),
               ),
             ),
-           Container(
-              width: (Get.width - 280) / 2,
-              height: 44,
-              margin: EdgeInsets.symmetric(vertical: 5),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black.withOpacity(.5)),
-                  borderRadius: BorderRadius.circular(6)),
-              child: TextFormField(
-                inputFormatters: [
-                  TextInputMask(
-                    mask: '\\ 99999999999999',
-                    placeholder: '_ ',
-                    maxPlaceHolders: 14,
-                  )
-                ],
-                // controller: idNumberController,
-                cursorColor: Colors.black.withOpacity(.5),
-                cursorWidth: 1,
-                keyboardType: TextInputType.phone,
-                textInputAction: TextInputAction.next,
-                style: TextStyle(
-                  fontSize: 15,
-                  wordSpacing: 1,
-                  letterSpacing: 1,
+            Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "- yechilgan:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: .6,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          width: 290,
+                          height: 44,
+                          child: TextFormField(
+                            inputFormatters: [
+                              TextInputMask(
+                                mask: '\\ 9999  9999  9999  9999',
+                                placeholder: '_ ',
+                                maxPlaceHolders: 18,
+                              )
+                            ],
+                            // controller: idNumberController,
+                            cursorColor: Colors.black.withOpacity(.8),
+                            cursorWidth: .8,
+                            keyboardType: TextInputType.phone,
+                            textInputAction: TextInputAction.next,
+                            style: TextStyle(
+                              fontSize: 15,
+                              wordSpacing: 1,
+                              letterSpacing: 1,
+                            ),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 12),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              labelText: 'Karta raqam',
+                              labelStyle: TextStyle(
+                                fontSize: 13,
+                                color: Colors.black.withOpacity(.7),
+                                letterSpacing: .2,
+                              ),
+                              suffixIcon: Icon(Icons.credit_card),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "- Kelib tushgan:",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: .6,
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          width: 300,
+                          height: 44,
+                          child: TextFormField(
+                            inputFormatters: [
+                              TextInputMask(
+                                mask: '\\ 9999  9999  9999  9999',
+                                placeholder: '_ ',
+                                maxPlaceHolders: 18,
+                              )
+                            ],
+                            // controller: idNumberController,
+                            cursorColor: Colors.black.withOpacity(.8),
+                            cursorWidth: .8,
+                            keyboardType: TextInputType.phone,
+                            textInputAction: TextInputAction.next,
+                            style: TextStyle(
+                              fontSize: 15,
+                              wordSpacing: 1,
+                              letterSpacing: 1,
+                            ),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 12),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              labelText: 'Karta raqam',
+                              labelStyle: TextStyle(
+                                fontSize: 13,
+                                color: Colors.black.withOpacity(.7),
+                                letterSpacing: .2,
+                              ),
+                              suffixIcon: Icon(Icons.credit_card),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                  border: InputBorder.none,
-                  hintText: '',
-                  hintStyle: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black.withOpacity(.4),
-                  ),
+                SizedBox(width: 200),
+                Row(
+                  children: [
+                    Container(
+                      width: 180,
+                      height: 42,
+                      child: DateFormatField(
+                        type: DateFormatType.type2,
+                        decoration: const InputDecoration(
+                          suffixIconColor: Colors.black54,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(6.0)),
+                              borderSide: BorderSide(color: Colors.black54)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(6.0)),
+                              borderSide: BorderSide(color: Colors.black54)),
+                          border: InputBorder.none,
+                          label: Text(
+                            "kun/oy/yil",
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
+                            ),
+                          ),
+                        ),
+                        onComplete: (date) {
+                          setState(() {
+                            // _date = date;
+                          });
+                        },
+                      ),
+                    ),
+                    SizedBox(width: 40),
+                    Container(
+                      width: 142,
+                      height: 42,
+                      decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Colors.black.withOpacity(.5)),
+                          borderRadius: BorderRadius.circular(6)),
+                      child: TextFormField(
+                        inputFormatters: [
+                          TextInputMask(
+                            mask: '\\ 99:99',
+                            placeholder: '_ ',
+                            maxPlaceHolders: 8,
+                          )
+                        ],
+                        // controller: birthdayController,
+                        cursorColor: Colors.black.withOpacity(.5),
+                        cursorWidth: 1,
+                        keyboardType: TextInputType.phone,
+                        textInputAction: TextInputAction.next,
+                        style: TextStyle(
+                          fontSize: 15,
+                          wordSpacing: 1,
+                          letterSpacing: 1,
+                        ),
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.only(left: 14, right: 16, top: 10),
+                          border: InputBorder.none,
+                          suffixIcon: Icon(
+                            Icons.access_time,
+                            color: Colors.black.withOpacity(.6),
+                          ),
+                          hintText: "_ _ : _ _",
+                          hintStyle: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black.withOpacity(.9),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
+              ],
             ),
             Container(
               width: (Get.width - 280) / 2,

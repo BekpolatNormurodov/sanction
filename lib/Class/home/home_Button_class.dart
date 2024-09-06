@@ -75,10 +75,12 @@ class HomeButtonClass {
         alignment: Alignment.centerLeft,
         decoration: BoxDecoration(
           border: Border.all(
-              color: isHover
-                  ? Colors.redAccent.shade400
-                  : Colors.red.withOpacity(.3)),
-          color: isHover ? Colors.transparent : Colors.blueGrey.withOpacity(.1),
+            color: isHover
+                ? Colors.redAccent
+                : Colors.red.withOpacity(.2),
+                width: .8,
+          ),
+          color: isHover ? Colors.transparent : Colors.blueGrey.withOpacity(.2),
           borderRadius: BorderRadius.circular(4),
         ),
         child: Row(
