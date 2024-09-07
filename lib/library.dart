@@ -22,6 +22,7 @@ export 'package:sanctions/Screen/home/sended_page.dart';
 export 'package:sanctions/Screen/home/signed_page.dart';
 export 'package:sanctions/Screen/home/defined_page.dart';
 export 'package:sanctions/Screen/home/create_page.dart';
+export 'package:sanctions/Screen/sanktion/unCheck_sanktion_page.dart';
 
 
 // Class

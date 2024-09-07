@@ -10,7 +10,7 @@ class SignedPage extends StatefulWidget {
 class _SignedPageState extends State<SignedPage> {
   late TextEditingController controller = TextEditingController();
   List<bool> isHoverList = List.generate(100, (i) => false);
-  String? _value;
+  String? valueType;
 
   @override
   Widget build(BuildContext context) {
@@ -80,43 +80,31 @@ class _SignedPageState extends State<SignedPage> {
   // TYPE
   typeFilter() {
     return Container(
-      width: 146,
-      height: 50,
-      child: DropdownButton(
+      width: 160,
+      child: DropdownButtonFormField(
+        focusColor: Colors.transparent,
         hint: Text(
           "Usuli",
-          style: TextStyle(fontSize: 12),
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.black,
+          ),
         ),
-        value: _value,
+        decoration: InputDecoration(
+             contentPadding: EdgeInsets.only(left: 2, top: 10),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
+          ),
+        ),
         items: [
-          DropdownMenuItem(
-            child: Text("Zararli ilova"),
-            value: "apk",
-            onTap: () {},
-          ),
-          DropdownMenuItem(
-            child: Text("Fishing"),
-            value: "fishing",
-            onTap: () {},
-          ),
-          DropdownMenuItem(
-            child: Text("Pul ko'paytirish"),
-            value: "trading",
-            onTap: () {},
-          ),
-          DropdownMenuItem(
-            child: Text("Onlayn savdo"),
-            value: "savdo",
-            onTap: () {},
-          ),
-          DropdownMenuItem(
-            child: Text("Boshqa"),
-            value: "other",
-            onTap: () {},
-          ),
+          typeHack("Zararli dastur"),
+          typeHack("Fishing"),
+          typeHack("Pul ko'paytirish"),
+          typeHack("Onlayn savdo"),
+          typeHack("Boshqa"),
         ],
-        onChanged: (String? e) {
-          _value = e!;
+        onChanged: (e) {
+          valueType = e!;
           setState(() {});
         },
       ),
@@ -127,18 +115,23 @@ class _SignedPageState extends State<SignedPage> {
   numberFilter() {
     return Container(
       width: 200,
-      height: 60,
       padding: const EdgeInsets.all(3),
       child: TextFormField(
+        cursorColor: Colors.black.withOpacity(.8),
+        cursorWidth: 1.2,
+        cursorHeight: 20,
         decoration: InputDecoration(
           labelText: "Murojat raqami",
-          labelStyle: TextStyle(color: Colors.black, fontSize: 12),
+          labelStyle: TextStyle(color: Colors.black, fontSize: 13),
           suffixIcon: Icon(Icons.search),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
+          ),
         ),
         keyboardType: TextInputType.number,
         inputFormatters: <TextInputFormatter>[
           FilteringTextInputFormatter.digitsOnly
-        ], // Only numbers can be entered
+        ],
       ),
     );
   }
@@ -146,14 +139,21 @@ class _SignedPageState extends State<SignedPage> {
   dateFilter() {
     return Container(
       width: 160,
-      height: 60,
-      padding: const EdgeInsets.all(3),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextField(
+            cursorColor: Colors.black.withOpacity(.8),
+            cursorWidth: 1.2,
+            cursorHeight: 20,
             decoration: InputDecoration(
-                suffixIcon: Icon(Icons.date_range_outlined), hintText: "Sana"),
+              contentPadding: EdgeInsets.only(left: 2, top: 16),
+              suffixIcon: Icon(Icons.date_range),
+              hintText: "Sana",
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
+              ),
+            ),
             keyboardType: TextInputType.number,
             inputFormatters: [
               DateInputFormatter(),
@@ -163,4 +163,13 @@ class _SignedPageState extends State<SignedPage> {
       ),
     );
   }
+
+  DropdownMenuItem typeHack(type) => DropdownMenuItem(
+        child: Text(
+          type,
+          style: TextStyle(fontSize: 14),
+        ),
+        value: type,
+        onTap: () {},
+      );
 }

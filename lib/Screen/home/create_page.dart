@@ -8,53 +8,20 @@ class CreatePage extends StatefulWidget {
 }
 
 class _CreatePageState extends State<CreatePage> {
-  // TextEditingController? nameController;
-  // TextEditingController? surnameController;
-  // TextEditingController? fathernameController;
-  // TextEditingController? birthdayController;
-  // TextEditingController? passportNumberController;
-  // TextEditingController? idNumberController;
-  // TextEditingController? aboutController;
-
-  String? sud;
-  String? car;
-
   String? valueRegion;
   String? valueType;
   String? valueApk;
-
-  @override
-  void initState() {
-    // nameController = TextEditingController();
-    // surnameController = TextEditingController();
-    // fathernameController = TextEditingController();
-    // birthdayController = TextEditingController();
-    // passportNumberController = TextEditingController();
-    // idNumberController = TextEditingController();
-    // aboutController = TextEditingController();
-    super.initState();
-  }
+  bool valueCard = false;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 40),
+        padding: const EdgeInsets.symmetric(horizontal: 100),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 600,
-              margin: EdgeInsets.only(bottom: 8),
-              child: Text(
-                "1. SHAHAR-TUMAN IIB NAVBATCHILIK QISMI",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                  wordSpacing: 3,
-                ),
-              ),
-            ),
+            titleSection("1. SHAHAR-TUMAN IIB NAVBATCHILIK QISMI"),
             Row(
               children: [
                 Container(
@@ -207,18 +174,7 @@ class _CreatePageState extends State<CreatePage> {
                 ),
               ],
             ),
-            Container(
-              width: 460,
-              margin: EdgeInsets.only(top: 50, bottom: 8),
-              child: Text(
-                "2. ARIZA QOLDIRGAN FUQARONING MA'LUMOTLARI",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                  wordSpacing: 3,
-                ),
-              ),
-            ),
+            titleSection("2. ARIZA QOLDIRGAN FUQARONING MA'LUMOTLARI"),
             Row(
               children: [
                 Container(
@@ -336,15 +292,7 @@ class _CreatePageState extends State<CreatePage> {
                 ),
               ],
             ),
-            Container(
-              width: 460,
-              margin: EdgeInsets.only(top: 50, bottom: 8),
-              child: Text(
-                "3. PUL YECHILISH USULI",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 15, wordSpacing: 3),
-              ),
-            ),
+            titleSection("3. PUL YECHILISH USULI"),
             Row(
               children: [
                 Container(
@@ -464,15 +412,7 @@ class _CreatePageState extends State<CreatePage> {
                 ),
               ],
             ),
-            Container(
-              width: 460,
-              margin: EdgeInsets.only(top: 50, bottom: 10),
-              child: Text(
-                "4 PUL KO'CHIRISHIDA ISHLATILGAN PLASTIK KARTALAR",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 15, wordSpacing: 3),
-              ),
-            ),
+            titleSection("4 PUL KO'CHIRISHIDA ISHLATILGAN PLASTIK KARTALAR"),
             Row(
               children: [
                 Column(
@@ -519,7 +459,7 @@ class _CreatePageState extends State<CreatePage> {
                                 ),
                                 borderRadius: BorderRadius.circular(6),
                               ),
-                               enabledBorder: OutlineInputBorder(
+                              enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black.withOpacity(.6),
                                 ),
@@ -543,7 +483,7 @@ class _CreatePageState extends State<CreatePage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 24),
                     Row(
                       children: [
                         Text(
@@ -585,7 +525,7 @@ class _CreatePageState extends State<CreatePage> {
                                 ),
                                 borderRadius: BorderRadius.circular(6),
                               ),
-                               enabledBorder: OutlineInputBorder(
+                              enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black.withOpacity(.6),
                                 ),
@@ -615,47 +555,75 @@ class _CreatePageState extends State<CreatePage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      width: 366,
-                      height: 44,
-                      child: TextFormField(
-                        // controller: nameController,
-                        cursorColor: Colors.black.withOpacity(.6),
-                        cursorWidth: 1.2,
-                        keyboardType: TextInputType.name,
-                        textInputAction: TextInputAction.next,
-                        style: TextStyle(
-                          fontSize: 15,
-                          wordSpacing: 1,
-                        ),
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black.withOpacity(.5),
+                    Row(
+                      children: [
+                        Container(
+                          width: 366,
+                          height: 44,
+                          child: TextFormField(
+                            // controller: nameController,
+                            cursorColor: Colors.black.withOpacity(.6),
+                            cursorWidth: 1.2,
+                            keyboardType: TextInputType.name,
+                            textInputAction: TextInputAction.next,
+                            style: TextStyle(
+                              fontSize: 15,
+                              wordSpacing: 1,
                             ),
+                            decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(.5),
+                                ),
+                                borderRadius: BorderRadius.circular(6),
+                              ),
+                              contentPadding:
+                                  EdgeInsets.symmetric(horizontal: 12),
+                              border: InputBorder.none,
+                              labelText: 'F.I.SH',
+                              labelStyle: TextStyle(
+                                fontSize: 14,
+                                color: Colors.black.withOpacity(.8),
+                              ),
+                              suffixIcon: Icon(
+                                Icons.person,
+                                color: Colors.black.withOpacity(.6),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 40),
+                        Container(
+                          width: 180,
+                          height: 42,
+                          decoration: BoxDecoration(
+                            border:
+                                Border.all(color: Colors.black.withOpacity(.6)),
                             borderRadius: BorderRadius.circular(6),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black.withOpacity(.5),
+                          child: CheckboxListTile(
+                            contentPadding: EdgeInsets.only(left: 10),
+                            activeColor:  Colors.black.withOpacity(.6),
+                            title: Text(
+                              "O'ziga tegishli",
+                              style: TextStyle(fontSize: 14),
                             ),
-                            borderRadius: BorderRadius.circular(6),
+                            value: valueCard,
+                            onChanged: (bool? e) {
+                              valueCard = e!;
+                              setState(() {});
+                            },
                           ),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 12),
-                          border: InputBorder.none,
-                          labelText: 'F.I.SH',
-                          labelStyle: TextStyle(
-                            fontSize: 14,
-                            color: Colors.black.withOpacity(.8),
-                          ),
-                          suffixIcon: Icon(
-                            Icons.person,
-                            color: Colors.black.withOpacity(.6),
-                          ),
-                        ),
-                      ),
+                        )
+                      ],
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 24),
                     Row(
                       children: [
                         Container(
@@ -737,7 +705,7 @@ class _CreatePageState extends State<CreatePage> {
                         ),
                         SizedBox(width: 40),
                         Container(
-                          width: 140,
+                          width: 180,
                           height: 42,
                           child: TextFormField(
                             style: TextStyle(fontSize: 14, color: Colors.black),
@@ -758,22 +726,20 @@ class _CreatePageState extends State<CreatePage> {
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(6),
-                                 borderSide: BorderSide(
-                                  color: Colors.black.withOpacity(.6),
+                                borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(.7),
                                 ),
-                                
                               ),
-                               enabledBorder: OutlineInputBorder(
+                              enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(6),
-                                 borderSide: BorderSide(
-                                  color: Colors.black.withOpacity(.6),
+                                borderSide: BorderSide(
+                                  color: Colors.black.withOpacity(.7),
                                 ),
-                                
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(6),
                                 borderSide: BorderSide(
-                                  color: Colors.black.withOpacity(.6),
+                                  color: Colors.black.withOpacity(.7),
                                 ),
                               ),
                             ),
@@ -791,7 +757,7 @@ class _CreatePageState extends State<CreatePage> {
             Container(
               width: (Get.width - 280) / 2,
               height: 40,
-              margin: EdgeInsets.only(top: 60),
+              margin: EdgeInsets.only(top: 200),
               child: ElevatedButton.icon(
                 onPressed: () async {
                   // await UserPost().userPost(
@@ -857,5 +823,18 @@ class _CreatePageState extends State<CreatePage> {
         ),
         value: type,
         onTap: () {},
+      );
+
+  titleSection(title) => Container(
+        width: 600,
+        margin: EdgeInsets.only(top: 60, bottom: 8),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+            wordSpacing: 3,
+          ),
+        ),
       );
 }
