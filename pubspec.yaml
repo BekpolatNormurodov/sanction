@@ -45,6 +45,10 @@ dependencies:
   flip_card: ^0.7.0
   easy_mask: ^2.0.1
   date_field: ^5.2.1
+  syncfusion_flutter_pdfviewer: ^26.2.13
+  pdf: ^3.11.1
+  open_file: ^3.5.3
+  printing: ^5.13.2
 
 dev_dependencies:
   flutter_test:
@@ -70,7 +74,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/IIV-logo.png
+    - assets/images/
+    - assets/pdf/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

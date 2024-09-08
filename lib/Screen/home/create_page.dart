@@ -1,3 +1,5 @@
+import 'package:sanctions/helpers/invoice.dart';
+import 'package:sanctions/helpers/invoice_helper.dart';
 import 'package:sanctions/library.dart';
 
 class CreatePage extends StatefulWidget {
@@ -773,8 +775,10 @@ class _CreatePageState extends State<CreatePage> {
                   //   username: Constant.username,
                   // );
                   // Get.to(SearchPage());
+                  InvoiceHelper.generate(Invoice(fullname: "Bekpolat Normurodov", phoneNumber: "+998 94 679 22 20"));
                   Get.snackbar('Successful !!!', 'The Suspect added',
                       backgroundColor: Colors.green);
+
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.greenAccent.shade700),
