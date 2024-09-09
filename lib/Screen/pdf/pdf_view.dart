@@ -1,15 +1,15 @@
-import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:intl/intl.dart';
-import 'package:sanctions/helpers/invoice.dart';
-import 'package:sanctions/helpers/pdf_helper.dart';
+import 'dart:io';
+import 'package:sanctions/Screen/pdf/pdf_model.dart';
+import 'package:sanctions/Screen/pdf/pdf_save.dart';
 
-class InvoiceHelper {
-  static Future<File> generate(Invoice invoice) async {
+class PdfView {
+  static Future<File> generate(PdfModel model) async {
     final pdf = Document();
     final logoPng = (await rootBundle.load('assets/images/IIV-logo.png'))
         .buffer
@@ -53,7 +53,7 @@ class InvoiceHelper {
       ),
     );
 
-    return await PdfHelper.saveDocument(
-        name: '${invoice.fullname}.pdf', pdf: pdf);
+    return await PdfSave.saveDocument(
+        name: '${model.fullname}.pdf', pdf: pdf);
   }
 }

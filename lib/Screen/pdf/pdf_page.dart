@@ -1,16 +1,13 @@
-import 'package:pdf/pdf.dart';
-import 'package:printing/printing.dart';
 import 'package:sanctions/library.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
-class UnCheckSanktionPage extends StatefulWidget {
-  const UnCheckSanktionPage({super.key});
+class PdfPage extends StatefulWidget {
+  const PdfPage({super.key});
 
   @override
-  State<UnCheckSanktionPage> createState() => _UnCheckSanktionPageState();
+  State<PdfPage> createState() => _PdfPageState();
 }
 
-class _UnCheckSanktionPageState extends State<UnCheckSanktionPage> {
+class _PdfPageState extends State<PdfPage> {
   String pdfLink = "assets/pdf/Bekpolat Normurodov.pdf";
   @override
   Widget build(BuildContext context) {
@@ -19,7 +16,7 @@ class _UnCheckSanktionPageState extends State<UnCheckSanktionPage> {
       body: Shortcuts(
         child: Center(
           child: SizedBox(
-            width: 900,
+            width: 1000,
             height: MediaQuery.of(context).size.height,
             child: SfPdfViewer.asset(
               pdfLink,

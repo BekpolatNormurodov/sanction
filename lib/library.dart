@@ -13,6 +13,10 @@ export 'package:flip_card/flip_card.dart';
 export 'package:provider/provider.dart';
 export 'package:flutter/services.dart';
 export 'package:get/get.dart';
+export 'package:path_provider/path_provider.dart';
+export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+export 'package:open_file/open_file.dart';
+export 'package:printing/printing.dart';
 
 
 
@@ -22,7 +26,9 @@ export 'package:sanctions/Screen/home/sended_page.dart';
 export 'package:sanctions/Screen/home/signed_page.dart';
 export 'package:sanctions/Screen/home/defined_page.dart';
 export 'package:sanctions/Screen/home/create_page.dart';
-export 'package:sanctions/Screen/sanktion/unCheck_sanktion_page.dart';
+export 'package:sanctions/Screen/pdf/pdf_page.dart';
+export 'package:sanctions/Screen/pdf/pdf_model.dart';
+export 'package:sanctions/Screen/pdf/pdf_view.dart';
 
 
 // Class

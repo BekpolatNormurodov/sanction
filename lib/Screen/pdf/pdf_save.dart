@@ -1,17 +1,16 @@
-import 'dart:io';
-import 'package:open_file/open_file.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:sanctions/library.dart';
 import 'package:pdf/widgets.dart';
+import 'dart:io';
 
 // File ni kompyuterga sax qiladi
-class PdfHelper {
+class PdfSave {
   static Future<File> saveDocument({
     required String name,
     required Document pdf,
   }) async {
     var directory;
 
-    // bool dirDownloadExists = true
+// bool dirDownloadExists = true
 // if (Platform.isIOS) {
 //   directory = await getExternalStorageDirectory();
 // } else {
