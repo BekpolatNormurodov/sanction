@@ -9,38 +9,61 @@ class PdfPage extends StatefulWidget {
 
 class _PdfPageState extends State<PdfPage> {
   String pdfLink = "assets/pdf/Bekpolat Normurodov.pdf";
+  double zoom = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Shortcuts(
         child: Center(
           child: SizedBox(
-            width: 1000,
-            height: MediaQuery.of(context).size.height,
-            child: SfPdfViewer.asset(
-              pdfLink,
-              interactionMode: PdfInteractionMode.pan,
-              initialZoomLevel: 1,
-              onZoomLevelChanged: (detail) {
-                print(detail.newZoomLevel);
-              },
-            ),
+            width: 750 + zoom,
+            height: Get.height,
+            child: SfPdfViewer.asset(pdfLink),
           ),
         ),
         // The widget receiving focus
-        shortcuts: {
-          // LogicalKeySet(LogicalKeyboardKey.control, LogicalKeyboardKey.add): () {
-          // },
-        },
+        shortcuts: <ShortcutActivator, Intent>{},
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          // Navigator.to(editPage)
-          final pdf = await rootBundle.load(pdfLink);
-          await Printing.layoutPdf(onLayout: (_) => pdf.buffer.asUint8List());
-        },
-        child: Icon(Icons.print),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 40, right: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FloatingActionButton(
+                  onPressed: () async {
+                     setState(() {
+                      zoom = zoom + 100;
+                    });
+                  },
+                  child: Icon(Icons.zoom_in, size: 30),
+                ),
+                SizedBox(width: 20),
+                FloatingActionButton(
+                  onPressed: () async {
+                    setState(() {
+                      if(zoom >= -500)
+                      zoom = zoom - 100;
+                    });
+                  },
+                  child: Icon(Icons.zoom_out, size: 30),
+                ),
+              ],
+            ),
+          ),
+          FloatingActionButton(
+            onPressed: () async {
+              final pdf = await rootBundle.load(pdfLink);
+              await Printing.layoutPdf(
+                  onLayout: (_) => pdf.buffer.asUint8List());
+            },
+            child: Icon(Icons.print),
+          ),
+        ],
       ),
     );
   }
