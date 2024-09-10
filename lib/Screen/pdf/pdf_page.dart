@@ -9,16 +9,37 @@ class PdfPage extends StatefulWidget {
 
 class _PdfPageState extends State<PdfPage> {
   String pdfLink = "assets/pdf/Bekpolat Normurodov.pdf";
-  double zoom = 0;
+  double zoom = 0.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade400,
       body: Shortcuts(
         child: Center(
-          child: SizedBox(
-            width: 750 + zoom,
-            height: Get.height,
-            child: SfPdfViewer.asset(pdfLink),
+          child: Material(
+            elevation: 20,
+            child: Container(
+              width: 750.0 + zoom,
+              height: Get.height - 20,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    offset: Offset(1, 1),
+                    color: Colors.black.withOpacity(.3),
+                    blurRadius: 8,
+                  ),
+                  BoxShadow(
+                    offset: Offset(-1, -1),
+                    color: Colors.black.withOpacity(.3),
+                    blurRadius: 8,
+                  )
+                ],
+              ),
+              child: SfPdfViewer.asset(
+                pageSpacing: 10,
+                pdfLink,
+              ),
+            ),
           ),
         ),
         // The widget receiving focus
@@ -35,9 +56,10 @@ class _PdfPageState extends State<PdfPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 FloatingActionButton(
+                  backgroundColor: Colors.red,
                   onPressed: () async {
-                     setState(() {
-                      zoom = zoom + 100;
+                    setState(() {
+                      zoom = zoom + 200.0;
                     });
                   },
                   child: Icon(Icons.zoom_in, size: 30),
@@ -46,8 +68,7 @@ class _PdfPageState extends State<PdfPage> {
                 FloatingActionButton(
                   onPressed: () async {
                     setState(() {
-                      if(zoom >= -500)
-                      zoom = zoom - 100;
+                      if (zoom >= -500.0) zoom = zoom - 200.0;
                     });
                   },
                   child: Icon(Icons.zoom_out, size: 30),
@@ -59,7 +80,8 @@ class _PdfPageState extends State<PdfPage> {
             onPressed: () async {
               final pdf = await rootBundle.load(pdfLink);
               await Printing.layoutPdf(
-                  onLayout: (_) => pdf.buffer.asUint8List());
+                onLayout: (_) => pdf.buffer.asUint8List(),
+              );
             },
             child: Icon(Icons.print),
           ),

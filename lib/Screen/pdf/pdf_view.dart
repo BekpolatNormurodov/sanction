@@ -10,7 +10,8 @@ import 'package:sanctions/Screen/pdf/pdf_save.dart';
 
 class PdfView {
   static Future<File> generate(PdfModel model) async {
-    final pdf = Document();
+    final pdf = Document(title: 'Bek');
+    final text = "aaaaaaaaaaaaaaaaa bbbbbbbbbbbbbbbb";
     final logoPng = (await rootBundle.load('assets/images/IIV-logo.png'))
         .buffer
         .asUint8List();
@@ -25,9 +26,7 @@ class PdfView {
           Image(
             MemoryImage(logoPng),
           ),
-          Image(
-            MemoryImage(logoPng),
-          ),
+         Text(text),
         ],
       ),
     );

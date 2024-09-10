@@ -773,7 +773,7 @@ class _CreatePageState extends State<CreatePage> {
                   //   username: Constant.username,
                   // );
                   // Get.to(SearchPage());
-                  PdfView.generate(PdfModel(fullname: "Bekpolat Normurodov", phoneNumber: "+998 94 679 22 20"));
+                  PdfView.generate(PdfModel(fullname: "bekpolat", phoneNumber: "+998 94 679 22 20"));
                   Get.snackbar('Successful !!!', 'The Suspect added',
                       backgroundColor: Colors.green);
 
