@@ -295,30 +295,147 @@ class PdfView {
             ),
             textAlign: TextAlign.justify,
           ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 16, bottom: 6),
+            child: Text(
+              "Қ A P O P   Қ И Л Д И M:",
+              style: TextStyle(
+                font: uzFontBold,
+                fontSize: 13,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          RichText(
+            textAlign: TextAlign.justify,
+            text: TextSpan(
+              style: TextStyle(
+                font: uzFont,
+                fontSize: 12,
+              ),
+              children: [
+                TextSpan(
+                    text:
+                        "          1.	Фуқаро Рўзиев Азизбек Ҳайрулло ўғлига тегишли "),
+                TextSpan(
+                  text: " 9860 6004 1082 0721",
+                  style: TextStyle(
+                    font: uzFontBold,
+                    fontSize: 13,
+                  ),
+                ),
+                TextSpan(text: " рақамли пластик картадан жами"),
+                TextSpan(
+                  text: " 10 000 000",
+                  style: TextStyle(
+                    font: uzFontBold,
+                    fontSize: 13,
+                  ),
+                ),
+                TextSpan(
+                    text:
+                        " сўм миқдорида пуллар кўчирилган ҳисобрақамнинг кимга тегишли эканлиги, ундан кимларнинг пластик карталарига транзакциялар амалга оширилганлиги, амалиётларни амалга оширган шахсларнингсервер «лог» файлларини, фойдаланилган иловалар ва уланган барча пластик карталар, уларнинг ўтказма тарихлари, пластик картадан фойдаланган шахсларнинг абонент рақамлари ва ИП манзилларинианиқлансин ва олинган маълумотлар Навоий вилояти ИИБ ТҚХ Киберхавфсизлик бўлинмаси "),
+                TextSpan(
+                  text: " info@naviib.uz",
+                  style: TextStyle(
+                    font: uzFontBold,
+                    fontSize: 12,
+                    color: PdfColors.blueAccent700,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                TextSpan(text: ", "),
+                TextSpan(
+                  text: "navoiy-v.iib-tqhb@exat.uz",
+                  style: TextStyle(
+                    font: uzFontBold,
+                    fontSize: 12,
+                    color: PdfColors.blueAccent700,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+                TextSpan(text: " электрон манзилига юборилсин."),
+              ],
+            ),
+          ),
+          RichText(
+            textAlign: TextAlign.justify,
+            text: TextSpan(
+              style: TextStyle(
+                font: uzFont,
+                fontSize: 12,
+              ),
+              children: [
+                TextSpan(
+                    text:
+                        "          2. Пластик карталардаги пул маблағлари нақдлаштирилган бўлса, қайси банкомат ва унинг нақдлаштириш жараёнидаги видео тасвир лавҳаларини олиш ва "),
+                TextSpan(
+                  text:
+                      " пластик картада ёки ҳисобрақамдаги мавжуд бўлган пул маблағларини музлатиш, ",
+                  style: TextStyle(
+                    font: uzFontBold,
+                    fontSize: 13,
+                  ),
+                ),
+                TextSpan(
+                    text:
+                        "ечиб олинган пулларни ваколат доирасида мурожаатчининг пластик картасига қайтариш чоралари кўрилсин."),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            child: Text(
+              "          3. Мазкур қарорнинг ижросини Ягона умумреспублика протсессинг маркази, Миллий банклараро протсессинг маркази ва улардан олинган маълумотлар бўйича тегишли тўлов тизимлари ва барча банклар бошлиқларига юклатилсин.",
+              style: TextStyle(fontSize: 12, font: uzFont),
+              textAlign: TextAlign.justify,
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            child: Text(
+              "          4. Қабул қилинган қарорнинг бир нусхаси маълумот учун Навоий вилоят прокуратурасига юборилсин.",
+              style: TextStyle(fontSize: 12, font: uzFont),
+              textAlign: TextAlign.justify,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 60, left: 4, right: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  width: 204,
+                  child: Text(
+                    "Навоий вилояти ИИБ ТҚХ Киберхавфсизлик бўлинмаси катта мутахасисси катта сержант",
+                    style: TextStyle(fontSize: 13, font: uzFontBold),
+                    textAlign: TextAlign.start,
+                    
+                  ),
+                ),
+                Text(
+                  "Б.Э.Нормуродов",
+                  style: TextStyle(fontSize: 13, font: uzFontBold),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
 
-    pdf.addPage(
-      Page(
-        build: (Context context) => Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 5.0),
-              Text(
-                "Sertifikatda ko'rsatilgan tovar siz sotib olayotgan tovarga mosligini aniq tekshirib oling.",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 8.0,
-                ),
-              ),
-              SizedBox(height: 5.0),
-            ],
-          ),
-        ),
-      ),
-    );
+    // pdf.addPage(
+    //   Page(
+    //     build: (Context context) => Center(
+    //       child: Column(
+    //         crossAxisAlignment: CrossAxisAlignment.start,
+    //         children: [],
+    //       ),
+    //     ),
+    //   ),
+    // );
 
     return await PdfSave.saveDocument(
         name: '${model.phoneNumber}.pdf', pdf: pdf);
