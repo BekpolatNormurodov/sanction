@@ -25,144 +25,276 @@ class PdfView {
     pdf.addPage(
       MultiPage(
         pageFormat: PdfPageFormat.a4,
-        margin: EdgeInsets.only(left: 56, right: 32, top: 36, bottom: 30),
-        header: (context) => Container(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(right: 36),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "#\n\n#",
-                            style: TextStyle(
-                              font: uzFontBold,
-                              fontSize: 13,
-                              color: PdfColors.white,
+        margin: EdgeInsets.only(left: 56, right: 32, top: 36, bottom: 40),
+        build: (context) => [
+          Container(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(right: 36),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "#\n\n#",
+                              style: TextStyle(
+                                font: uzFontBold,
+                                fontSize: 13,
+                                color: PdfColors.white,
+                              ),
+                              textAlign: TextAlign.justify,
                             ),
-                            textAlign: TextAlign.justify,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.only(top: 4, bottom: 12),
-                            child: Text(
-                              "«ТАСДИҚЛАЙМАН»",
+                            Container(
+                              width: double.infinity,
+                              margin: EdgeInsets.only(top: 4, bottom: 12),
+                              child: Text(
+                                "«ТАСДИҚЛАЙМАН»",
+                                style: TextStyle(
+                                  font: uzFontBold,
+                                  fontSize: 13,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Text(
+                              "Навоий вилояти ИИБ бошлиғининг биринчи ўринбосари подполковник",
                               style: TextStyle(
                                 font: uzFontBold,
                                 fontSize: 13,
                               ),
-                              textAlign: TextAlign.center,
+                              textAlign: TextAlign.justify,
                             ),
-                          ),
-                          Text(
-                            "Навоий вилояти ИИБ бошлиғининг биринчи ўринбосари подполковник",
-                            style: TextStyle(
-                              font: uzFontBold,
-                              fontSize: 13,
-                            ),
-                            textAlign: TextAlign.justify,
-                          ),
-                          SizedBox(height: 24),
-                          Text(
-                            " ________________Б.Ж.Ахмедов",
-                            style: TextStyle(
-                              font: uzFontBold,
-                              fontSize: 13,
-                            ),
-                          ),
-                          Text(
-                            " 2024 йил «______» ceнтябpь",
-                            style: TextStyle(
-                              font: uzFontBold,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(left: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Банк сирини ташкил этувчи маълумотлар олишга қаратилган тезкор-қидирув  тадбирини  ўтказишга",
-                            style: TextStyle(
-                              font: uzFontBold,
-                              fontSize: 13,
-                            ),
-                            textAlign: TextAlign.justify,
-                          ),
-                          Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.only(top: 4, bottom: 14),
-                            child: Text(
-                              "«САНКЦИЯ БЕРАМАН»",
+                            SizedBox(height: 24),
+                            Text(
+                              " ________________Б.Ж.Ахмедов",
                               style: TextStyle(
                                 font: uzFontBold,
                                 fontSize: 13,
                               ),
-                              textAlign: TextAlign.center,
                             ),
-                          ),
-                          Text(
-                            "Навоий вилояти прокурорининг ўринбосари адлия катта маслаҳатчиси",
-                            style: TextStyle(
-                              font: uzFontBold,
-                              fontSize: 13,
+                            Text(
+                              " 2024 йил «______» ceнтябpь",
+                              style: TextStyle(
+                                font: uzFontBold,
+                                fontSize: 13,
+                              ),
                             ),
-                            textAlign: TextAlign.justify,
-                          ),
-                          SizedBox(height: 24),
-                          Text(
-                            " ________________P.H.Рахматов",
-                            style: TextStyle(
-                              font: uzFontBold,
-                              fontSize: 13,
-                            ),
-                          ),
-                          Text(
-                            " 2024 йил «______» ceнтябpь",
-                            style: TextStyle(
-                              font: uzFontBold,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(left: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Банк сирини ташкил этувчи маълумотлар олишга қаратилган тезкор-қидирув  тадбирини  ўтказишга",
+                              style: TextStyle(
+                                font: uzFontBold,
+                                fontSize: 13,
+                              ),
+                              textAlign: TextAlign.justify,
+                            ),
+                            Container(
+                              width: double.infinity,
+                              margin: EdgeInsets.only(top: 4, bottom: 14),
+                              child: Text(
+                                "«САНКЦИЯ БЕРАМАН»",
+                                style: TextStyle(
+                                  font: uzFontBold,
+                                  fontSize: 13,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            Text(
+                              "Навоий вилояти прокурорининг ўринбосари адлия катта маслаҳатчиси",
+                              style: TextStyle(
+                                font: uzFontBold,
+                                fontSize: 13,
+                              ),
+                              textAlign: TextAlign.justify,
+                            ),
+                            SizedBox(height: 24),
+                            Text(
+                              " ________________P.H.Рахматов",
+                              style: TextStyle(
+                                font: uzFontBold,
+                                fontSize: 13,
+                              ),
+                            ),
+                            Text(
+                              " 2024 йил «______» ceнтябpь",
+                              style: TextStyle(
+                                font: uzFontBold,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.only(top: 24),
+                  child: Text(
+                    "Қ A P O P\n Банк сирини ташкил этувчи маълумотлар олишга қаратилган тезкор-қидиpyв тадбирини ўтказиш ҳақида",
+                    style: TextStyle(
+                      font: uzFontBold,
+                      fontSize: 13,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 32, bottom: 24),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "«____» _____ 2024 йил",
+                  style: TextStyle(
+                    font: uzFont,
+                    fontSize: 11,
+                  ),
+                ),
+                Text(
+                  "Навоий шаҳар",
+                  style: TextStyle(
+                    font: uzFont,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          RichText(
+            textAlign: TextAlign.justify,
+            text: TextSpan(
+              style: TextStyle(
+                font: uzFont,
+                fontSize: 12,
               ),
-               Container(
-                width: double.infinity,
-                margin: EdgeInsets.only(top: 24),
-                child: Text(
-                  "Қ A P O P\n Банк сирини ташкил этувчи маълумотлар олишга қаратилган тезкор-қидиpyв тадбирини ўтказиш ҳақида",
+              children: [
+                TextSpan(
+                    text:
+                        "          Навоий вилояти ИИБ ТҚХ Киберхавфсизлик бўлинмаси катта мутахасисси катта сержант Б.Э.Нормуродов, Навоий шаҳар ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган"),
+                TextSpan(text: " 11882"),
+                TextSpan(
+                    text:
+                        "-сонли мурожаат юзасидан тўпланган ҳужжатлар билан танишиб чиқиб, қуйидагиларни"),
+              ],
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.only(top: 20, bottom: 10),
+            child: Text(
+              "A  H  И  Қ  Л  A  Д  И  M:",
+              style: TextStyle(
+                font: uzFontBold,
+                fontSize: 13,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          RichText(
+            textAlign: TextAlign.justify,
+            text: TextSpan(
+              style: TextStyle(
+                font: uzFont,
+                fontSize: 12,
+              ),
+              children: [
+                TextSpan(
+                    text:
+                        "          2024 йил 27 июнь куни Навоий шаҳарда яшовчи Рўзиев Азизбек Ҳайрулло ўғли телефон орқали, ўзига тегишли"),
+                TextSpan(
+                  text: " 9860 6004 1082 0721",
                   style: TextStyle(
                     font: uzFontBold,
                     fontSize: 13,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-              ),
-            ],
+                TextSpan(
+                    text:
+                        " рақамли пластик картаси ҳисобидан 24.07.2024 куни соат 14:50 да"),
+                TextSpan(
+                  text: " 10 000 000",
+                  style: TextStyle(
+                    font: uzFontBold,
+                    fontSize: 13,
+                  ),
+                ),
+                TextSpan(
+                    text:
+                        " сўм пуллари номаълум тарзда ечиб олинганлиги аниқланди."),
+              ],
+            ),
           ),
-        ),
-        build: (context) => [
           RichText(
-              text: TextSpan(
-            children: [
-             
-            ],
-          ))
+            textAlign: TextAlign.justify,
+            text: TextSpan(
+              style: TextStyle(
+                font: uzFont,
+                fontSize: 12,
+              ),
+              children: [
+                TextSpan(
+                    text:
+                        "          Мазкур ҳолат юзасидан Навоий шаҳар ИИБ Навбатчилик қисмининг Шaкл-1 китобида рўйхатга олинган"),
+                TextSpan(
+                  text: " 11882 ",
+                ),
+                TextSpan(
+                    text:
+                        "рақами билан рўйхатдан ўтказилган, холат бўйича Навоий вилоят ИИБ ТҚХ Киберхавфсизлик ходимлари томонидан тезкор қидирув тадбирлари олиб борилмоқда."),
+              ],
+            ),
+          ),
+          RichText(
+            textAlign: TextAlign.justify,
+            text: TextSpan(
+              style: TextStyle(
+                font: uzFont,
+                fontSize: 12,
+              ),
+              children: [
+                TextSpan(
+                    text:
+                        "          Терговга қадар текширув жараёнини тўла, ҳар томонлама тўлиқ ва холисона олиб борилишини таъминлаш мақсадида "),
+                TextSpan(
+                  text: "9860 6004 1082 0721",
+                  style: TextStyle(
+                    font: uzFontBold,
+                    fontSize: 13,
+                  ),
+                ),
+                TextSpan(
+                    text:
+                        " рақамли банк карталари билан боғлиқ электрон тўлов тизимларидан, ушбу картадан бошқа ҳисобларга йўналтирилган пуллар билан боғлиқ банк сирига оид барча маълумотларни, амалга оширилган транзакциялар, мазкур банк картасига юборилган пул маблағларини ўтказган банк карталари эгаларининг шахсига оид маълумотлари ҳамда уларнинг фойдаланувидаги қурилмаларнинг техник маълумотлари тўғрисида тўлов хизматларини етказиб берувчи операторлар ҳисобланган Марказий банк, банклар, тўлов ташкилотлари, тўлов агентларида мавжуд бўлган барча маълумотларни олиш бўйича «Маълумотларни тўплаш» тезкор-қидирув тадбирини ўтказиш лозим."),
+              ],
+            ),
+          ),
+          Text(
+            "          Юқоридагиларни инобатга олиб ҳамда ЖПКнинг 391,2, 382-моддалари ва «Банк сири тўғрисида»ги қонуннинг 9-моддаси, «Тезкор-қидирув фаолияти тўғрисида»ги Қонуннинг 14-16-моддаларини қўллаб,",
+            style: TextStyle(
+              font: uzFont,
+              fontSize: 12,
+            ),
+            textAlign: TextAlign.justify,
+          ),
         ],
       ),
     );
