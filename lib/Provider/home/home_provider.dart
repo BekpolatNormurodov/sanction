@@ -1,4 +1,4 @@
-import 'package:sanctions/library.dart';
+import 'package:sanction/library.dart';
 
 class HomeProvider with ChangeNotifier {
   int activeIndex = 1;

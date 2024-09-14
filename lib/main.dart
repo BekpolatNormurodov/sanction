@@ -1,4 +1,4 @@
-import 'package:sanctions/library.dart';
+import 'package:sanction/library.dart';
 
 main(List<String> args) {
   runApp(MultiProvider(

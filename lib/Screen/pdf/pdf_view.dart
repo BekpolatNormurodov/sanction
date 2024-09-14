@@ -6,8 +6,8 @@ import 'package:pdf/widgets.dart';
 import 'package:intl/intl.dart' as intl;
 import 'dart:io';
 import 'package:intl/intl.dart';
-import 'package:sanctions/Screen/pdf/pdf_model.dart';
-import 'package:sanctions/Screen/pdf/pdf_save.dart';
+import 'package:sanction/Screen/pdf/pdf_model.dart';
+import 'package:sanction/Screen/pdf/pdf_save.dart';
 
 class PdfView {
   static Future<File> generate(PdfModel model) async {

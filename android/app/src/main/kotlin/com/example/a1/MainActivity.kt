@@ -1,4 +1,4 @@
-package com.example.sanctions
+package com.example.sanction
 
 import io.flutter.embedding.android.FlutterActivity
 

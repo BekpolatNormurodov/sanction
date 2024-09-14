@@ -1,4 +1,4 @@
-import 'package:sanctions/library.dart';
+import 'package:sanction/library.dart';
 
 class SignedProvider with ChangeNotifier {
   List<bool> starList = List.generate(1000, (i) => false);

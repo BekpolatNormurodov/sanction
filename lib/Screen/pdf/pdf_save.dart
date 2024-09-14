@@ -1,4 +1,4 @@
-import 'package:sanctions/library.dart';
+import 'package:sanction/library.dart';
 import 'package:pdf/widgets.dart';
 import 'dart:io';
 

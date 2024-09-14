@@ -21,27 +21,27 @@ export 'package:printing/printing.dart';
 
 
 // Screen
-export 'package:sanctions/Screen/home/home_page.dart';
-export 'package:sanctions/Screen/home/sended_page.dart';
-export 'package:sanctions/Screen/home/signed_page.dart';
-export 'package:sanctions/Screen/home/defined_page.dart';
-export 'package:sanctions/Screen/home/create_page.dart';
-export 'package:sanctions/Screen/pdf/pdf_page.dart';
-export 'package:sanctions/Screen/pdf/pdf_model.dart';
-export 'package:sanctions/Screen/pdf/pdf_view.dart';
+export 'package:sanction/Screen/home/home_page.dart';
+export 'package:sanction/Screen/home/sended_page.dart';
+export 'package:sanction/Screen/home/signed_page.dart';
+export 'package:sanction/Screen/home/defined_page.dart';
+export 'package:sanction/Screen/home/create_page.dart';
+export 'package:sanction/Screen/pdf/pdf_page.dart';
+export 'package:sanction/Screen/pdf/pdf_model.dart';
+export 'package:sanction/Screen/pdf/pdf_view.dart';
 
 
 // Class
-export 'package:sanctions/Class/home/search_appbar_class.dart';
-export 'package:sanctions/Class/home/sanksions_listview_class.dart';
-export 'package:sanctions/Class/home/home_Button_class.dart';
+export 'package:sanction/Class/home/search_appbar_class.dart';
+export 'package:sanction/Class/home/sanksions_listview_class.dart';
+export 'package:sanction/Class/home/home_Button_class.dart';
 
 
 
 // Provider
 export 'Provider/home/home_provider.dart';
-export 'package:sanctions/Provider/home/signed_provider.dart';
-export 'package:sanctions/Provider/home/defined_provider.dart';
+export 'package:sanction/Provider/home/signed_provider.dart';
+export 'package:sanction/Provider/home/defined_provider.dart';
 
 
 

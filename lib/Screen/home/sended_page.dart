@@ -1,4 +1,4 @@
-import 'package:sanctions/library.dart';
+import 'package:sanction/library.dart';
 
 class SendedPage extends StatefulWidget {
   const SendedPage({super.key});

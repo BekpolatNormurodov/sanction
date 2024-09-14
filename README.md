@@ -1,2 +1,2 @@
-# sanctions
-Sanctions for Desktop 
+# sanction
+sanction for Desktop 

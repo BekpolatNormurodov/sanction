@@ -1,4 +1,4 @@
-import 'package:sanctions/library.dart';
+import 'package:sanction/library.dart';
 
 class SearchAppBarClass {
   searchAppBar(title, controller) {

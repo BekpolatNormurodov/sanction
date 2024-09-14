@@ -1,4 +1,4 @@
-import 'package:sanctions/library.dart';
+import 'package:sanction/library.dart';
 
 class CreatePage extends StatefulWidget {
   const CreatePage({super.key});
