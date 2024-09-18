@@ -1,12 +1,13 @@
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pdf/pdf.dart';
 // import 'package:pdf/widgets.dart' as pw;
-import 'package:pdf/widgets.dart';
-import 'package:intl/intl.dart' as intl;
+// import 'package:intl/intl.dart' as intl;
+// import 'package:intl/intl.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter/services.dart';
+import 'package:pdf/pdf.dart';
 import 'dart:io';
-import 'package:intl/intl.dart';
+import 'package:pdf/widgets.dart';
 import 'package:sanction/Screen/pdf/pdf_model.dart';
+import 'package:sanction/Screen/pdf/pdf_post.dart';
 import 'package:sanction/Screen/pdf/pdf_save.dart';
 
 class PdfView {
@@ -437,7 +438,13 @@ class PdfView {
     //   ),
     // );
 
+    await PdfPost().pdfPost(
+                    title: '',
+                    logo: 'logo',
+                    pdf:  ,
+                  );
+
     return await PdfSave.saveDocument(
-        name: '${model.phoneNumber}.pdf', pdf: pdf);
+        name: '${model.id}.pdf', pdf: pdf);
   }
 }

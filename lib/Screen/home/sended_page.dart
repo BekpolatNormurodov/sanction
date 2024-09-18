@@ -1,3 +1,4 @@
+import 'package:sanction/Screen/pdf/pdf_provider.dart';
 import 'package:sanction/library.dart';
 
 class SendedPage extends StatefulWidget {
@@ -10,6 +11,20 @@ class SendedPage extends StatefulWidget {
 class _SendedPageState extends State<SendedPage> {
   late TextEditingController controller = TextEditingController();
   List<bool> isHoverList = List.generate(100, (i) => false);
+
+  PdfProvider? pdfProvider;
+  @override
+  void initState() {
+    pdfProvider = context.read<PdfProvider>();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      pdfProvider!.getData();
+    });
+    pdfProvider?.addListener(() {
+      setState(() {});
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +43,7 @@ class _SendedPageState extends State<SendedPage> {
               color: Colors.grey.shade200,
             ),
             child: ListView.builder(
-              itemCount: 20,
+              itemCount: pdfProvider!.data.length,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
                 return InkWell(

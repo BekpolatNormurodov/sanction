@@ -760,20 +760,9 @@ class _CreatePageState extends State<CreatePage> {
               margin: EdgeInsets.only(top: 200),
               child: ElevatedButton.icon(
                 onPressed: () async {
-                  // await UserPost().userPost(
-                  //   isCourt: sud!,
-                  //   isCar: car!,
-                  //   name: nameController!.text,
-                  //   surname: surnameController!.text,
-                  //   fathername: fathernameController!.text,
-                  //   birthday: birthdayController!.text,
-                  //   passportNumber: passportNumberController!.text,
-                  //   idNumber: idNumberController!.text,
-                  //   about: aboutController!.text,
-                  //   username: Constant.username,
-                  // );
+                  
                   // Get.to(SearchPage());
-                  PdfView.generate(PdfModel(fullname: "bekpolatnormurodov", phoneNumber: "+998 94 679 22 20"));
+                  PdfView.generate(PdfModel());
                   Get.snackbar('Successful !!!', 'The Suspect added',
                       backgroundColor: Colors.green);
 

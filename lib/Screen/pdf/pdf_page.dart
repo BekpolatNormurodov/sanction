@@ -1,18 +1,56 @@
 import 'package:sanction/library.dart';
 
 class PdfPage extends StatefulWidget {
-  const PdfPage({super.key});
+  int? index;
+   PdfPage({required this.index});
 
   @override
   State<PdfPage> createState() => _PdfPageState();
 }
 
 class _PdfPageState extends State<PdfPage> {
-  String pdfLink = "assets/pdf/Bekpolat Normurodov.pdf";
   double zoom = 0.0;
+
+  PdfProvider? pdfProvider;
+  @override
+  void initState() {
+    pdfProvider = context.read<PdfProvider>();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      pdfProvider!.getData();
+    });
+    pdfProvider?.addListener(() {
+      setState(() {});
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+        // pdfProvider!.state == pdfProvider.intial
+        //     ? Container()
+        //     : pdfProvider!.state == pdfProvider.waiting
+        //         ? Center(
+        //             child: CircularProgressIndicator(
+        //               color: Colors.green.shade200,
+        //               backgroundColor: Colors.green.shade800,
+        //               strokeWidth: 20.w,
+        //             ),
+        //           )
+        //         : pdfProvider!.state == pdfProvider.error
+        //             ? Center(
+        //                 child: Text(
+        //                   "Malumotlar mavjud emas!!!",
+        //                   style: TextStyle(
+        //                     color: Colors.white,
+        //                     fontSize: 24.sp,
+        //                     fontWeight: FontWeight.bold,
+        //                   ),
+        //                 ),
+        //               )
+        //             :
+        Scaffold(
       backgroundColor: Colors.grey.shade400,
       body: Shortcuts(
         child: Center(
@@ -35,9 +73,9 @@ class _PdfPageState extends State<PdfPage> {
                   )
                 ],
               ),
-              child: SfPdfViewer.asset(
+              child: SfPdfViewer.network(
                 pageSpacing: 10,
-                pdfLink,
+                pdfProvider!.data[widget.index!].pdf_url!,
               ),
             ),
           ),
@@ -78,7 +116,7 @@ class _PdfPageState extends State<PdfPage> {
           ),
           FloatingActionButton(
             onPressed: () async {
-              final pdf = await rootBundle.load(pdfLink);
+              final pdf = await rootBundle.load(pdfProvider!.data[widget.index!].pdf_url!);
               await Printing.layoutPdf(
                 onLayout: (_) => pdf.buffer.asUint8List(),
               );
@@ -87,6 +125,7 @@ class _PdfPageState extends State<PdfPage> {
           ),
         ],
       ),
+   
     );
   }
 }

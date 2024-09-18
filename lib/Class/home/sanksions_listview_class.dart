@@ -12,7 +12,7 @@ class SanksionsListViewClass {
     SignedProvider signedProvider = Provider.of<SignedProvider>(context);
     DefinedProvider definedProvider = Provider.of<DefinedProvider>(context);
     return InkWell(
-      onTap: () => Get.to(PdfPage()),
+      onTap: () => Get.to(PdfPage(index: index)),
       child: Container(
         margin: EdgeInsets.only(
           left: 50,
