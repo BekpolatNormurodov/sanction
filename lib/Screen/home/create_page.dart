@@ -8,10 +8,23 @@ class CreatePage extends StatefulWidget {
 }
 
 class _CreatePageState extends State<CreatePage> {
-  String? valueRegion;
-  String? valueType;
-  String? valueApk;
-  bool valueCard = false;
+  String valueRegion = '...';
+  TextEditingController shak1Controller = TextEditingController();
+  String telDate = '...';
+  TextEditingController telTimeController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController fullnameController = TextEditingController();
+  String birthday = '...';
+  String hackType = '...';
+  String hackApk = '...';
+  TextEditingController infoController = TextEditingController();
+  TextEditingController fromCardController = TextEditingController();
+  TextEditingController inCardController = TextEditingController();
+  TextEditingController cardFullnameController = TextEditingController();
+  bool isOwner = false;
+  String loseDate = '...';
+  TextEditingController loseTimeController = TextEditingController();
+  TextEditingController lossController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +69,7 @@ class _CreatePageState extends State<CreatePage> {
                       regionIIB("Zarafshon shahar"),
                       regionIIB("Uchquduq tumani"),
                       regionIIB("Nurota tumani"),
-                      regionIIB("Tomdi"),
+                      regionIIB("Tomdi tumani"),
                       regionIIB("G'azg'on tumani"),
                     ],
                     onChanged: (e) {
@@ -70,6 +83,7 @@ class _CreatePageState extends State<CreatePage> {
                   width: 140,
                   height: 42,
                   child: TextFormField(
+                    controller: shak1Controller,
                     style: TextStyle(fontSize: 14, color: Colors.black),
                     cursorColor: Colors.black,
                     cursorWidth: .8,
@@ -82,7 +96,9 @@ class _CreatePageState extends State<CreatePage> {
                       labelText: "Shakl-1",
                       labelStyle: GoogleFonts.roboto(
                         textStyle: TextStyle(
-                            color: Colors.black.withOpacity(.8), fontSize: 14),
+                          color: Colors.black.withOpacity(.8),
+                          fontSize: 14,
+                        ),
                       ),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(6),
@@ -125,9 +141,8 @@ class _CreatePageState extends State<CreatePage> {
                       ),
                     ),
                     onComplete: (date) {
-                      setState(() {
-                        // _date = date;
-                      });
+                      telDate = "${date!.year}.${date.month}.${date.day}";
+                      setState(() {});
                     },
                   ),
                 ),
@@ -136,9 +151,11 @@ class _CreatePageState extends State<CreatePage> {
                   width: 142,
                   height: 42,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black.withOpacity(.5)),
-                      borderRadius: BorderRadius.circular(6)),
+                    border: Border.all(color: Colors.black.withOpacity(.5)),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
                   child: TextFormField(
+                    controller: telTimeController,
                     inputFormatters: [
                       TextInputMask(
                         mask: '\\ 99:99',
@@ -146,7 +163,6 @@ class _CreatePageState extends State<CreatePage> {
                         maxPlaceHolders: 8,
                       )
                     ],
-                    // controller: birthdayController,
                     cursorColor: Colors.black.withOpacity(.5),
                     cursorWidth: 1,
                     keyboardType: TextInputType.phone,
@@ -181,7 +197,7 @@ class _CreatePageState extends State<CreatePage> {
                   width: 380,
                   height: 44,
                   child: TextFormField(
-                    // controller: nameController,
+                    controller: addressController,
                     cursorColor: Colors.black.withOpacity(.6),
                     cursorWidth: 1.2,
                     keyboardType: TextInputType.name,
@@ -205,7 +221,7 @@ class _CreatePageState extends State<CreatePage> {
                       ),
                       contentPadding: EdgeInsets.symmetric(horizontal: 12),
                       border: InputBorder.none,
-                      labelText: 'Adress',
+                      labelText: 'Address',
                       labelStyle: TextStyle(
                         fontSize: 14,
                         color: Colors.black.withOpacity(.8),
@@ -222,7 +238,7 @@ class _CreatePageState extends State<CreatePage> {
                   width: 366,
                   height: 44,
                   child: TextFormField(
-                    // controller: nameController,
+                    controller: fullnameController,
                     cursorColor: Colors.black.withOpacity(.6),
                     cursorWidth: 1.2,
                     keyboardType: TextInputType.name,
@@ -284,9 +300,8 @@ class _CreatePageState extends State<CreatePage> {
                       ),
                     ),
                     onComplete: (date) {
-                      setState(() {
-                        // _date = date;
-                      });
+                      birthday = "${date!.year}.${date.month}.${date.day}";
+                      setState(() {});
                     },
                   ),
                 ),
@@ -325,7 +340,7 @@ class _CreatePageState extends State<CreatePage> {
                       typeHack("Boshqa"),
                     ],
                     onChanged: (e) {
-                      valueType = e!;
+                      hackType = e!;
                       setState(() {});
                     },
                   ),
@@ -361,7 +376,7 @@ class _CreatePageState extends State<CreatePage> {
                       typeApk("Boshqa"),
                     ],
                     onChanged: (e) {
-                      valueType = e!;
+                      hackApk = e!;
                       setState(() {});
                     },
                   ),
@@ -371,7 +386,7 @@ class _CreatePageState extends State<CreatePage> {
                   width: 590,
                   height: 44,
                   child: TextFormField(
-                    // controller: nameController,
+                    controller: infoController,
                     cursorColor: Colors.black.withOpacity(.6),
                     cursorWidth: 1.2,
                     keyboardType: TextInputType.name,
@@ -440,7 +455,7 @@ class _CreatePageState extends State<CreatePage> {
                                 maxPlaceHolders: 18,
                               )
                             ],
-                            // controller: idNumberController,
+                            controller: fromCardController,
                             cursorColor: Colors.black.withOpacity(.8),
                             cursorWidth: .8,
                             keyboardType: TextInputType.phone,
@@ -506,7 +521,7 @@ class _CreatePageState extends State<CreatePage> {
                                 maxPlaceHolders: 18,
                               )
                             ],
-                            // controller: idNumberController,
+                            controller: inCardController,
                             cursorColor: Colors.black.withOpacity(.8),
                             cursorWidth: .8,
                             keyboardType: TextInputType.phone,
@@ -561,7 +576,7 @@ class _CreatePageState extends State<CreatePage> {
                           width: 366,
                           height: 44,
                           child: TextFormField(
-                            // controller: nameController,
+                            controller: cardFullnameController,
                             cursorColor: Colors.black.withOpacity(.6),
                             cursorWidth: 1.2,
                             keyboardType: TextInputType.name,
@@ -609,14 +624,14 @@ class _CreatePageState extends State<CreatePage> {
                           ),
                           child: CheckboxListTile(
                             contentPadding: EdgeInsets.only(left: 10),
-                            activeColor:  Colors.black.withOpacity(.6),
+                            activeColor: Colors.black.withOpacity(.6),
                             title: Text(
                               "O'ziga tegishli",
                               style: TextStyle(fontSize: 14),
                             ),
-                            value: valueCard,
+                            value: isOwner,
                             onChanged: (bool? e) {
-                              valueCard = e!;
+                              isOwner = e!;
                               setState(() {});
                             },
                           ),
@@ -655,9 +670,9 @@ class _CreatePageState extends State<CreatePage> {
                               ),
                             ),
                             onComplete: (date) {
-                              setState(() {
-                                // _date = date;
-                              });
+                              loseDate =
+                                  "${date!.year}.${date.month}.${date.day}";
+                              setState(() {});
                             },
                           ),
                         ),
@@ -666,10 +681,12 @@ class _CreatePageState extends State<CreatePage> {
                           width: 144,
                           height: 42,
                           decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black.withOpacity(.6)),
-                              borderRadius: BorderRadius.circular(6)),
+                            border:
+                                Border.all(color: Colors.black.withOpacity(.6)),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
                           child: TextFormField(
+                            controller: loseTimeController,
                             inputFormatters: [
                               TextInputMask(
                                 mask: '\\ 99:99',
@@ -708,6 +725,7 @@ class _CreatePageState extends State<CreatePage> {
                           width: 180,
                           height: 42,
                           child: TextFormField(
+                            controller: lossController,
                             style: TextStyle(fontSize: 14, color: Colors.black),
                             cursorColor: Colors.black,
                             cursorWidth: .8,
@@ -760,12 +778,28 @@ class _CreatePageState extends State<CreatePage> {
               margin: EdgeInsets.only(top: 200),
               child: ElevatedButton.icon(
                 onPressed: () async {
-                  
-                  // Get.to(SearchPage());
-                  PdfView.generate(PdfModel());
+                  await PdfView.generate(
+                    region: valueRegion,
+                    shakl1: shak1Controller.text,
+                    telDate: telDate,
+                    telTime: telTimeController.text,
+                    adress: addressController.text,
+                    fullname: fullnameController.text,
+                    birthday: birthday,
+                    hackType: hackType,
+                    hackApk: hackApk,
+                    info: infoController.text,
+                    fromCard: fromCardController.text,
+                    inCard: inCardController.text,
+                    cardFullname: cardFullnameController.text,
+                    owner: isOwner,
+                    loseDate: loseDate,
+                    loseTime: loseTimeController.text,
+                    loss: lossController.text,
+                    model: PdfModel(),
+                  );
                   Get.snackbar('Successful !!!', 'The Suspect added',
                       backgroundColor: Colors.green);
-
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.greenAccent.shade700),

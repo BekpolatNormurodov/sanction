@@ -1,4 +1,3 @@
-import 'package:sanction/Screen/pdf/pdf_provider.dart';
 import 'package:sanction/library.dart';
 
 main(List<String> args) {

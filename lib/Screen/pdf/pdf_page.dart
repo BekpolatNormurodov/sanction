@@ -116,7 +116,8 @@ class _PdfPageState extends State<PdfPage> {
           ),
           FloatingActionButton(
             onPressed: () async {
-              final pdf = await rootBundle.load(pdfProvider!.data[widget.index!].pdf_url!);
+              print(pdfProvider!.data.length);
+              final pdf = await rootBundle.load(pdfProvider!.data[0].pdf!);
               await Printing.layoutPdf(
                 onLayout: (_) => pdf.buffer.asUint8List(),
               );

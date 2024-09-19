@@ -30,7 +30,9 @@ class PdfPost {
     request.files.add(pdfFile);
 
     http.StreamedResponse response = await request.send();
-    if (response.statusCode == 200) {
+    print(response.statusCode);
+    print("response");
+    if (response.statusCode == 201) {
       var data = await response.stream.bytesToString();
       return jsonDecode(data);
     }

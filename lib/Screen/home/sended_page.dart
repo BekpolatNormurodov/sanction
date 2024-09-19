@@ -1,4 +1,3 @@
-import 'package:sanction/Screen/pdf/pdf_provider.dart';
 import 'package:sanction/library.dart';
 
 class SendedPage extends StatefulWidget {
@@ -20,7 +19,7 @@ class _SendedPageState extends State<SendedPage> {
       pdfProvider!.getData();
     });
     pdfProvider?.addListener(() {
-      setState(() {});
+      if (mounted) setState(() {});
     });
 
     super.initState();

@@ -11,7 +11,26 @@ import 'package:sanction/Screen/pdf/pdf_post.dart';
 import 'package:sanction/Screen/pdf/pdf_save.dart';
 
 class PdfView {
-  static Future<File> generate(PdfModel model) async {
+  static Future<File> generate({
+    required String region,
+    required String shakl1,
+    required String telDate,
+    required String telTime,
+    required String adress,
+    required String fullname,
+    required String birthday,
+    required String hackType,
+    required String hackApk,
+    required String info,
+    required String fromCard,
+    required String inCard,
+    required String cardFullname,
+    required bool owner,
+    required String loseDate,
+    required String loseTime,
+    required String loss,
+    required PdfModel model,
+  }) async {
     final pdf = Document();
     final ttfData =
         await rootBundle.load("assets/fonts/NotoSerif-VariableFont_wdth.ttf");
@@ -180,22 +199,12 @@ class PdfView {
               ],
             ),
           ),
-          RichText(
+          Text(
+            "          Навоий вилояти ИИБ ТҚХ Киберхавфсизлик бўлинмаси катта мутахасисси катта сержант Б.Э.Нормуродов, $region ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган $shakl1-сонли мурожаат юзасидан тўпланган ҳужжатлар билан танишиб чиқиб, қуйидагиларни",
             textAlign: TextAlign.justify,
-            text: TextSpan(
-              style: TextStyle(
-                font: uzFont,
-                fontSize: 12,
-              ),
-              children: [
-                TextSpan(
-                    text:
-                        "          Навоий вилояти ИИБ ТҚХ Киберхавфсизлик бўлинмаси катта мутахасисси катта сержант Б.Э.Нормуродов, Навоий шаҳар ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган"),
-                TextSpan(text: " 11882"),
-                TextSpan(
-                    text:
-                        "-сонли мурожаат юзасидан тўпланган ҳужжатлар билан танишиб чиқиб, қуйидагиларни"),
-              ],
+            style: TextStyle(
+              font: uzFont,
+              fontSize: 12,
             ),
           ),
           Container(
@@ -220,9 +229,9 @@ class PdfView {
               children: [
                 TextSpan(
                     text:
-                        "          2024 йил 27 июнь куни Навоий шаҳарда яшовчи Рўзиев Азизбек Ҳайрулло ўғли телефон орқали, ўзига тегишли"),
+                        "          $telDate куни соат $telTime дa $region $adress da яшовчи $fullname телефон орқали, ўзига тегишли "),
                 TextSpan(
-                  text: " 9860 6004 1082 0721",
+                  text: fromCard,
                   style: TextStyle(
                     font: uzFontBold,
                     fontSize: 13,
@@ -230,9 +239,9 @@ class PdfView {
                 ),
                 TextSpan(
                     text:
-                        " рақамли пластик картаси ҳисобидан 24.07.2024 куни соат 14:50 да"),
+                        " рақамли пластик картаси ҳисобидан $loseDate куни соат $loseTime да "),
                 TextSpan(
-                  text: " 10 000 000",
+                  text: loss,
                   style: TextStyle(
                     font: uzFontBold,
                     fontSize: 13,
@@ -244,24 +253,12 @@ class PdfView {
               ],
             ),
           ),
-          RichText(
+          Text(
+            "          Мазкур ҳолат юзасидан $region ИИБ Навбатчилик қисмининг Шaкл-1 китобида рўйхатга олинган $shakl1 рақами билан рўйхатдан ўтказилган, холат бўйича Навоий вилоят ИИБ ТҚХ Киберхавфсизлик ходимлари томонидан тезкор қидирув тадбирлари олиб борилмоқда.",
             textAlign: TextAlign.justify,
-            text: TextSpan(
-              style: TextStyle(
-                font: uzFont,
-                fontSize: 12,
-              ),
-              children: [
-                TextSpan(
-                    text:
-                        "          Мазкур ҳолат юзасидан Навоий шаҳар ИИБ Навбатчилик қисмининг Шaкл-1 китобида рўйхатга олинган"),
-                TextSpan(
-                  text: " 11882 ",
-                ),
-                TextSpan(
-                    text:
-                        "рақами билан рўйхатдан ўтказилган, холат бўйича Навоий вилоят ИИБ ТҚХ Киберхавфсизлик ходимлари томонидан тезкор қидирув тадбирлари олиб борилмоқда."),
-              ],
+            style: TextStyle(
+              font: uzFont,
+              fontSize: 12,
             ),
           ),
           RichText(
@@ -276,7 +273,7 @@ class PdfView {
                     text:
                         "          Терговга қадар текширув жараёнини тўла, ҳар томонлама тўлиқ ва холисона олиб борилишини таъминлаш мақсадида "),
                 TextSpan(
-                  text: "9860 6004 1082 0721",
+                  text: fromCard,
                   style: TextStyle(
                     font: uzFontBold,
                     fontSize: 13,
@@ -318,17 +315,17 @@ class PdfView {
               children: [
                 TextSpan(
                     text:
-                        "          1.	Фуқаро Рўзиев Азизбек Ҳайрулло ўғлига тегишли "),
+                        "          1.	Фуқаро $fullnameга тегишли "),
                 TextSpan(
-                  text: " 9860 6004 1082 0721",
+                  text: fromCard,
                   style: TextStyle(
                     font: uzFontBold,
                     fontSize: 13,
                   ),
                 ),
-                TextSpan(text: " рақамли пластик картадан жами"),
+                TextSpan(text: " рақамли пластик картадан $loseDate kuni soat $loseTime da  "),
                 TextSpan(
-                  text: " 10 000 000",
+                  text: loss,
                   style: TextStyle(
                     font: uzFontBold,
                     fontSize: 13,
@@ -413,7 +410,6 @@ class PdfView {
                     "Навоий вилояти ИИБ ТҚХ Киберхавфсизлик бўлинмаси катта мутахасисси катта сержант",
                     style: TextStyle(fontSize: 13, font: uzFontBold),
                     textAlign: TextAlign.start,
-                    
                   ),
                 ),
                 Text(
@@ -437,14 +433,14 @@ class PdfView {
     //     ),
     //   ),
     // );
-
+    var pdfFile = await PdfSave.saveDocument(name: "names", pdf: pdf);
     await PdfPost().pdfPost(
-                    title: '',
-                    logo: 'logo',
-                    pdf:  ,
-                  );
+      title: 'flutter post',
+      logo:
+          "C:/Users/user/Pictures/depositphotos_14099763-stock-photo-black-diamond-facet-background.jpg",
+      pdf: pdfFile.path,
+    );
 
-    return await PdfSave.saveDocument(
-        name: '${model.id}.pdf', pdf: pdf);
+    return pdfFile;
   }
 }
