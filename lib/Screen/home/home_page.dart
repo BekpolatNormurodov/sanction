@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     HomeProvider homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(248, 248, 248, 1),
+      backgroundColor: Colors.grey.shade200,
       body: Row(
         children: [
           Container(

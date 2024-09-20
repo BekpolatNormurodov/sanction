@@ -1,4 +1,5 @@
 import 'package:sanction/library.dart';
+import 'package:http/http.dart' as http;
 
 class PdfPage extends StatefulWidget {
   int? index;
@@ -80,7 +81,6 @@ class _PdfPageState extends State<PdfPage> {
             ),
           ),
         ),
-        // The widget receiving focus
         shortcuts: <ShortcutActivator, Intent>{},
       ),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
@@ -116,14 +116,13 @@ class _PdfPageState extends State<PdfPage> {
           ),
           FloatingActionButton(
             onPressed: () async {
-              print(pdfProvider!.data.length);
-              final pdf = await rootBundle.load(pdfProvider!.data[0].pdf!);
+              final pdf = await http.readBytes(Uri.parse(pdfProvider!.data[widget.index!].pdf_url!));
               await Printing.layoutPdf(
                 onLayout: (_) => pdf.buffer.asUint8List(),
               );
             },
             child: Icon(Icons.print),
-          ),
+          ),  
         ],
       ),
    

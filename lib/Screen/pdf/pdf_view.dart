@@ -15,7 +15,6 @@ class PdfView {
     required String region,
     required String shakl1,
     required String telDate,
-    required String telTime,
     required String adress,
     required String fullname,
     required String birthday,
@@ -229,7 +228,7 @@ class PdfView {
               children: [
                 TextSpan(
                     text:
-                        "          $telDate куни соат $telTime дa $region $adress da яшовчи $fullname телефон орқали, ўзига тегишли "),
+                        "          $telDate куни $region ${adress}da яшовчи $fullname телефон орқали, ўзига тегишли "),
                 TextSpan(
                   text: fromCard,
                   style: TextStyle(
@@ -436,8 +435,6 @@ class PdfView {
     var pdfFile = await PdfSave.saveDocument(name: "names", pdf: pdf);
     await PdfPost().pdfPost(
       title: 'flutter post',
-      logo:
-          "C:/Users/user/Pictures/depositphotos_14099763-stock-photo-black-diamond-facet-background.jpg",
       pdf: pdfFile.path,
     );
 
