@@ -12,6 +12,7 @@ analyzer:
     unused_import: ignore
     prefer_const_constructors_in_immutables: ignore
     must_be_immutable: ignore
+    deprecated_member_use: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

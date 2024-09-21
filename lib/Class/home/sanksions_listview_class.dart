@@ -5,7 +5,9 @@ class SanksionsListViewClass {
     context, {
     required int index,
     required int indexActive,
-    required String number,
+    required String hackType,
+    required String region,
+    required String shakl1,
     required String date,
     required bool isHover,
   }) {
@@ -35,7 +37,8 @@ class SanksionsListViewClass {
             BoxShadow(
               offset: Offset(1, 2),
               blurRadius: 4,
-              color: isHover ? Colors.transparent : Colors.black.withOpacity(.1),
+              color:
+                  isHover ? Colors.transparent : Colors.black.withOpacity(.1),
             ),
           ],
         ),
@@ -81,7 +84,8 @@ class SanksionsListViewClass {
                               color: signedProvider.starList[index]
                                   ? Colors.orange
                                   : isHover
-                                      ? Colors.deepPurple.shade800.withOpacity(.6)
+                                      ? Colors.deepPurple.shade800
+                                          .withOpacity(.6)
                                       : Colors.grey,
                             ),
                           )
@@ -101,12 +105,11 @@ class SanksionsListViewClass {
                 Container(
                   width: 160,
                   child: Text(
-                    "Pul ko'paytirish:",
+                    hackType,
                     style: TextStyle(
                       fontSize: 14,
-                      color: isHover
-                          ? Colors.deepPurple.shade700
-                          : Colors.black,
+                      color:
+                          isHover ? Colors.deepPurple.shade700 : Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -116,19 +119,17 @@ class SanksionsListViewClass {
             Row(
               children: [
                 Text(
-                  "Навбаҳор тумани ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган  ",
+                  "$region ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган  ",
                   style: TextStyle(
                     fontSize: 16,
-                    color:
-                          isHover ? Colors.deepPurple.shade700 : Colors.black,
+                    color: isHover ? Colors.deepPurple.shade700 : Colors.black,
                   ),
                 ),
                 Text(
-                  number,
+                  shakl1,
                   style: TextStyle(
-                    fontSize: 16,
-                    color:
-                          isHover ? Colors.deepPurple.shade700 : Colors.black,
+                    fontSize: 15,
+                    color: isHover ? Colors.deepPurple.shade700 : Colors.black,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -136,8 +137,7 @@ class SanksionsListViewClass {
                   " -сонли мурожаат",
                   style: TextStyle(
                     fontSize: 16,
-                    color:
-                        isHover ? Colors.deepPurple.shade700 : Colors.black,
+                    color: isHover ? Colors.deepPurple.shade700 : Colors.black,
                   ),
                 ),
               ],

@@ -59,8 +59,10 @@ class _SendedPageState extends State<SendedPage> {
                     context,
                     index: index,
                     indexActive: 1,
-                    number: "19148",
-                    date: "22.08.2024",
+                    hackType: pdfProvider!.data[index].hackType!,
+                    region: pdfProvider!.data[index].region!,
+                    shakl1: pdfProvider!.data[index].shakl1!,
+                    date: pdfProvider!.data[index].date!,
                     isHover: isHoverList[index],
                   ),
                 );

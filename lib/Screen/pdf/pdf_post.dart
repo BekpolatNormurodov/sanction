@@ -4,7 +4,9 @@ import 'package:http/http.dart' as http;
 
 class PdfPost {
   Future pdfPost({
-    required String title,
+    required String hackType,
+    required String region,
+    required String shakl1,
     required String pdf,
   }) async {
     var request = http.MultipartRequest(
@@ -17,8 +19,8 @@ class PdfPost {
       await File(pdf).readAsBytes(),
       filename: pdf.split('/').last,
     );
-    
-    request.fields.addAll({'title': title});
+
+    request.fields.addAll({'hackType': hackType, 'region': region, 'shakl1': shakl1});
     request.files.add(pdfFile);
 
     http.StreamedResponse response = await request.send();

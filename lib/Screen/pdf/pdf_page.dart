@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class PdfPage extends StatefulWidget {
   int? index;
-   PdfPage({required this.index});
+  PdfPage({required this.index});
 
   @override
   State<PdfPage> createState() => _PdfPageState();
@@ -11,7 +11,6 @@ class PdfPage extends StatefulWidget {
 
 class _PdfPageState extends State<PdfPage> {
   double zoom = 0.0;
-
   PdfProvider? pdfProvider;
   @override
   void initState() {
@@ -25,6 +24,8 @@ class _PdfPageState extends State<PdfPage> {
 
     super.initState();
   }
+
+  final GlobalKey<SfPdfViewerState> _pdfKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -53,79 +54,91 @@ class _PdfPageState extends State<PdfPage> {
         //             :
         Scaffold(
       backgroundColor: Colors.grey.shade400,
-      body: Shortcuts(
-        child: Center(
-          child: Material(
-            elevation: 20,
-            child: Container(
-              width: 750.0 + zoom,
-              height: Get.height - 20,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(1, 1),
-                    color: Colors.black.withOpacity(.3),
-                    blurRadius: 8,
-                  ),
-                  BoxShadow(
-                    offset: Offset(-1, -1),
-                    color: Colors.black.withOpacity(.3),
-                    blurRadius: 8,
-                  )
-                ],
-              ),
-              child: SfPdfViewer.network(
-                pageSpacing: 10,
-                pdfProvider!.data[widget.index!].pdf_url!,
-              ),
+      body: Center(
+        child: Material(
+          elevation: 20,
+          child: Container(
+            width: 750.0 + zoom,
+            height: Get.height - 20,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(1, 1),
+                  color: Colors.black.withOpacity(.3),
+                  blurRadius: 8,
+                ),
+                BoxShadow(
+                  offset: Offset(-1, -1),
+                  color: Colors.black.withOpacity(.3),
+                  blurRadius: 8,
+                )
+              ],
+            ),
+            child: SfPdfViewer.network(
+              key: _pdfKey,
+              pageSpacing: 10,
+              pdfProvider!.data[widget.index!].pdf_url!,
             ),
           ),
         ),
-        shortcuts: <ShortcutActivator, Intent>{},
       ),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 40, right: 10),
+          Container(
+            margin: EdgeInsets.only(top: 26, left: 32),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FloatingActionButton(
-                  backgroundColor: Colors.red,
-                  onPressed: () async {
-                    setState(() {
-                      zoom = zoom + 200.0;
-                    });
-                  },
-                  child: Icon(Icons.zoom_in, size: 30),
+                  mini: true,
+                  backgroundColor: Colors.grey.shade300,
+                  onPressed: () => Get.back(),
+                  child: Icon(Icons.arrow_back),
                 ),
-                SizedBox(width: 20),
-                FloatingActionButton(
-                  onPressed: () async {
-                    setState(() {
-                      if (zoom >= -500.0) zoom = zoom - 200.0;
-                    });
-                  },
-                  child: Icon(Icons.zoom_out, size: 30),
+                Row(
+                  children: [
+                    FloatingActionButton(
+                      mini: true,
+                      backgroundColor: Colors.grey.shade300,
+                      onPressed: () async {
+                        setState(() {
+                          zoom = zoom + 200.0;
+                        });
+                      },
+                      child: Icon(Icons.zoom_in),
+                    ),
+                    SizedBox(width: 14),
+                    FloatingActionButton(
+                      mini: true,
+                      backgroundColor: Colors.grey.shade300,
+                      onPressed: () async {
+                        setState(() {
+                          if (zoom >= -500.0) zoom = zoom - 200.0;
+                        });
+                      },
+                      child: Icon(Icons.zoom_out),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
           FloatingActionButton(
+            backgroundColor: Colors.grey.shade300,
             onPressed: () async {
-              final pdf = await http.readBytes(Uri.parse(pdfProvider!.data[widget.index!].pdf_url!));
+              final pdf = await http.readBytes(
+                  Uri.parse(pdfProvider!.data[widget.index!].pdf_url!));
               await Printing.layoutPdf(
                 onLayout: (_) => pdf.buffer.asUint8List(),
               );
             },
-            child: Icon(Icons.print),
-          ),  
+            child: Icon(Icons.print, size: 26),
+          ),
         ],
       ),
-   
     );
   }
 }

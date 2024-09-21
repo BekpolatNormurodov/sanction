@@ -38,7 +38,6 @@ class PdfSave {
     }
 
     await file.writeAsBytes(bytes);
-    print(file.path);
     return file;
   }
 

@@ -49,6 +49,7 @@ dependencies:
   pdf: ^3.11.1
   open_file: ^3.5.3
   printing: ^5.13.2
+  hawk_fab_menu: ^1.2.0
 
 dev_dependencies:
   flutter_test:

@@ -432,9 +432,11 @@ class PdfView {
     //     ),
     //   ),
     // );
-    var pdfFile = await PdfSave.saveDocument(name: "names", pdf: pdf);
+    var pdfFile = await PdfSave.saveDocument(name: shakl1, pdf: pdf);
     await PdfPost().pdfPost(
-      title: 'flutter post',
+      hackType: hackType,
+      region: region,
+      shakl1: shakl1,
       pdf: pdfFile.path,
     );
 
