@@ -50,6 +50,9 @@ dependencies:
   open_file: ^3.5.3
   printing: ^5.13.2
   hawk_fab_menu: ^1.2.0
+  typewritertext: ^3.0.9
+  flutter_gradient_animation_text: ^1.0.2
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -77,7 +80,6 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/
-    - assets/pdf/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
