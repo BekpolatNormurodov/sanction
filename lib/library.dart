@@ -44,16 +44,16 @@ export 'package:sanction/intro_page.dart';
 
 
 // Class
-export 'package:sanction/Class/home/search_appbar_class.dart';
-export 'package:sanction/Class/home/sanksions_listview_class.dart';
-export 'package:sanction/Class/home/home_Button_class.dart';
+export 'package:sanction/Class/search_appbar_class.dart';
+export 'package:sanction/Class/sanksions_listview_class.dart';
+export 'package:sanction/Class/home_Button_class.dart';
 
 
 
 // Provider
-export 'Provider/home/home_provider.dart';
-export 'package:sanction/Provider/home/signed_provider.dart';
-export 'package:sanction/Provider/home/defined_provider.dart';
+export 'Provider/home_provider.dart';
+export 'package:sanction/Provider/signed_provider.dart';
+export 'package:sanction/Provider/defined_provider.dart';
 
 
 
