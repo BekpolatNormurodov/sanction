@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Icon(Icons.lock, color: Colors.white, size: 120),
+        child: Icon(Icons.lock, color: Colors.red.shade600, size: 120),
       ),
     );
   }
@@ -114,8 +114,8 @@ class _LoginPageState extends State<LoginPage> {
         // }
         else {
           Get.snackbar(
-            'Error !!!',
-            'Password is wrong',
+            'Error:',
+            'Login yoki parol xato !!!',
             backgroundColor: Colors.red.shade600,
             margin: EdgeInsets.only(left: 100, right: 100, top: 30),
           );
@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
       style: ElevatedButton.styleFrom(
         shape: StadiumBorder(),
         backgroundColor: Colors.white.withOpacity(.9),
-        padding: EdgeInsets.symmetric(vertical: 18),
+        padding: EdgeInsets.only(top: 20, bottom: 16),
       ),
       child: SizedBox(
         width: double.infinity,
@@ -134,14 +134,9 @@ class _LoginPageState extends State<LoginPage> {
           style: TextStyle(
             fontSize: 18,
             color: Colors.deepPurpleAccent.shade700,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w700,
             letterSpacing: 1,
-            shadows: const [
-              BoxShadow(
-                offset: Offset(1, 1),
-                color: Colors.deepPurple,
-              )
-            ],
+            
           ),
         ),
       ),
