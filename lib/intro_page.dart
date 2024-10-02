@@ -23,7 +23,7 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
     });
     Future.delayed(Duration(seconds: 5), () {
       Navigator.pushAndRemoveUntil(
-          context, AnimationRouter(HomePage(), 1), (route) => false);
+          context, AnimationRouter(LoginPage(), 1), (route) => false);
     });
     super.initState();
   }
