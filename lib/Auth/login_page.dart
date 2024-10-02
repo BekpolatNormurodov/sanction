@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
       onPressed: () async {
         if (passwordController.text == usersPassword) {
           Get.offAll(HomePage());
-          Get.snackbar('Successful !!!', '',
+          Get.snackbar('Successful !!!', "Login va Parol to'g'ri kiritildi",
               backgroundColor: Colors.green.withOpacity(.8));
           // var response = await WorkersPost().workersPost(
           //   username: usernameController.text,
