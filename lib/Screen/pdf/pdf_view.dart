@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'dart:io';
 import 'package:pdf/widgets.dart';
-import 'package:sanction/Screen/pdf/pdf_model.dart';
-import 'package:sanction/Screen/pdf/pdf_post.dart';
+import 'package:sanction/Api/sended/sended_model.dart';
+import 'package:sanction/Api/sended/sended_post.dart';
 import 'package:sanction/Screen/pdf/pdf_save.dart';
 
 class PdfView {
@@ -28,7 +28,7 @@ class PdfView {
     required String loseDate,
     required String loseTime,
     required String loss,
-    required PdfModel model,
+    required SendedModel model,
   }) async {
     final pdf = Document();
     final ttfData =
@@ -433,7 +433,7 @@ class PdfView {
     //   ),
     // );
     var pdfFile = await PdfSave.saveDocument(name: shakl1, pdf: pdf);
-    await PdfPost().pdfPost(
+    await SendedPost().sendedPost(
       hackType: hackType,
       region: region,
       shakl1: shakl1,

@@ -11,8 +11,8 @@ class SanksionsListViewClass {
     required String date,
     required bool isHover,
   }) {
-    SignedProvider signedProvider = Provider.of<SignedProvider>(context);
-    DefinedProvider definedProvider = Provider.of<DefinedProvider>(context);
+    SignedStateProvider signedProvider = Provider.of<SignedStateProvider>(context);
+    DefinedStateProvider definedProvider = Provider.of<DefinedStateProvider>(context);
     return InkWell(
       onTap: () => Get.to(PdfPage(index: index)),
       child: Container(
@@ -90,7 +90,9 @@ class SanksionsListViewClass {
                             ),
                           )
                         : GestureDetector(
-                            onTap: () => definedProvider.onClickStar(index),
+                            onTap: (){
+                              // definedProvider.onClickStar(index);
+                            },
                             child: Icon(
                               definedProvider.starList[index]
                                   ? Icons.star_border_outlined

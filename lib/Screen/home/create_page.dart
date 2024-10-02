@@ -783,7 +783,7 @@ class _CreatePageState extends State<CreatePage> {
                       loseDate: loseDate,
                       loseTime: loseTimeController.text,
                       loss: lossController.text,
-                      model: PdfModel(),
+                      model: SendedModel(),
                     );
                     Get.snackbar(
                       'Successful !!!',

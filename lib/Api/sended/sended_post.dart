@@ -2,8 +2,8 @@ import 'package:sanction/library.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
-class PdfPost {
-  Future pdfPost({
+class SendedPost {
+  Future sendedPost({
     required String hackType,
     required String region,
     required String shakl1,

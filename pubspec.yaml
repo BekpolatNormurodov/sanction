@@ -53,6 +53,7 @@ dependencies:
   typewritertext: ^3.0.9
   flutter_gradient_animation_text: ^1.0.2
   shimmer: ^3.0.0
+  auto_animated: ^3.2.0
 
 dev_dependencies:
   flutter_test:

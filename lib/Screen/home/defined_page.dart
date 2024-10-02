@@ -11,6 +11,38 @@ class _DefinedPageState extends State<DefinedPage> {
   late TextEditingController controller = TextEditingController();
   List<bool> isHoverList = List.generate(100, (i) => false);
 
+  DefinedProvider? provider;
+  Timer? _timer;
+
+   @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn); 
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    provider = context.read<DefinedProvider>();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      provider!.getData();
+      _timer = Timer.periodic(Duration(seconds: 10), (timer) {
+        provider!.getData();
+      });
+    });
+    provider?.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +61,7 @@ class _DefinedPageState extends State<DefinedPage> {
               color: Colors.grey.shade200,
             ),
             child: ListView.builder(
-              itemCount: 20,
+              itemCount: provider!.data.length,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
                 return InkWell(
@@ -46,10 +78,10 @@ class _DefinedPageState extends State<DefinedPage> {
                     context,
                     index: index,
                     indexActive: 3,
-                    hackType: "Fishing",
-                    region: "Xatirchi tumani",
-                    shakl1: "12872",
-                    date: "12.08.2024",
+                    hackType: provider!.data[index].hackType!,
+                    region: provider!.data[index].region!,
+                    shakl1: provider!.data[index].shakl1!,
+                    date: provider!.data[index].date!,
                     isHover: isHoverList[index],
                   ),
                 );

@@ -11,10 +11,10 @@ class PdfPage extends StatefulWidget {
 
 class _PdfPageState extends State<PdfPage> {
   double zoom = 0.0;
-  PdfProvider? pdfProvider;
+  SendedProvider? pdfProvider;
   @override
   void initState() {
-    pdfProvider = context.read<PdfProvider>();
+    pdfProvider = context.read<SendedProvider>();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       pdfProvider!.getData();
     });

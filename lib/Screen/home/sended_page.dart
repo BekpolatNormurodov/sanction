@@ -11,18 +11,37 @@ class _SendedPageState extends State<SendedPage> {
   late TextEditingController controller = TextEditingController();
   List<bool> isHoverList = List.generate(100, (i) => false);
 
-  PdfProvider? pdfProvider;
+  SendedProvider? provider;
+  Timer? _timer;
+
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   @override
   void initState() {
-    pdfProvider = context.read<PdfProvider>();
+    provider = context.read<SendedProvider>();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      pdfProvider!.getData();
+      provider!.getData();
+      _timer = Timer.periodic(Duration(seconds: 5), (timer) {
+        provider!.getData();
+        setState(() {});
+      });
     });
-    pdfProvider?.addListener(() {
-      if (mounted) setState(() {});
+    provider?.addListener(() {
+      setState(() {});
     });
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer?.cancel();
   }
 
   @override
@@ -42,7 +61,7 @@ class _SendedPageState extends State<SendedPage> {
               color: Colors.grey.shade200,
             ),
             child: ListView.builder(
-              itemCount: pdfProvider!.data.length,
+              itemCount: provider!.data.length,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
                 return InkWell(
@@ -59,10 +78,10 @@ class _SendedPageState extends State<SendedPage> {
                     context,
                     index: index,
                     indexActive: 1,
-                    hackType: pdfProvider!.data[index].hackType!,
-                    region: pdfProvider!.data[index].region!,
-                    shakl1: pdfProvider!.data[index].shakl1!,
-                    date: pdfProvider!.data[index].date!,
+                    hackType: provider!.data[index].hackType!,
+                    region: provider!.data[index].region!,
+                    shakl1: provider!.data[index].shakl1!,
+                    date: provider!.data[index].date!,
                     isHover: isHoverList[index],
                   ),
                 );

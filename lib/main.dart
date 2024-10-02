@@ -6,14 +6,20 @@ main(List<String> args) {
       ChangeNotifierProvider<HomeProvider>(
         create: (context) => HomeProvider(),
       ),
-      ChangeNotifierProvider<SignedProvider>(
+      ChangeNotifierProvider<SignedStateProvider>(
+        create: (context) => SignedStateProvider(),
+      ),
+      ChangeNotifierProvider<DefinedStateProvider>(
+        create: (context) => DefinedStateProvider(),
+      ),
+       ChangeNotifierProvider<SendedProvider>(
+        create: (context) => SendedProvider(),
+      ),
+        ChangeNotifierProvider<SignedProvider>(
         create: (context) => SignedProvider(),
       ),
       ChangeNotifierProvider<DefinedProvider>(
         create: (context) => DefinedProvider(),
-      ),
-       ChangeNotifierProvider<PdfProvider>(
-        create: (context) => PdfProvider(),
       ),
     ],
     child: MyApp(),

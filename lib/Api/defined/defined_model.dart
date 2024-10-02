@@ -1,4 +1,4 @@
-class PdfModel {
+class DefinedModel {
   int? id;
   String? date;
   String? hackType;
@@ -7,9 +7,9 @@ class PdfModel {
   String? pdf;
   String? pdf_url;
 
-  PdfModel({this.id, this.date, this.hackType, this.region, this.shakl1, this.pdf});
+  DefinedModel({this.id, this.date, this.hackType, this.region, this.shakl1, this.pdf});
 
-  PdfModel.fromJson(Map<String, dynamic> json) {
+  DefinedModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     date = json['date'];
     hackType = json['hackType'];
