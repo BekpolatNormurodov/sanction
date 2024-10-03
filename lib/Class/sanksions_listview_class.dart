@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:sanction/library.dart';
 
 class SanksionsListViewClass {
@@ -11,8 +12,10 @@ class SanksionsListViewClass {
     required String date,
     required bool isHover,
   }) {
-    SignedStateProvider signedProvider = Provider.of<SignedStateProvider>(context);
-    DefinedStateProvider definedProvider = Provider.of<DefinedStateProvider>(context);
+    SignedStateProvider signedProvider =
+        Provider.of<SignedStateProvider>(context);
+    DefinedStateProvider definedProvider =
+        Provider.of<DefinedStateProvider>(context);
     return InkWell(
       onTap: () => Get.to(PdfPage(index: index)),
       child: Container(
@@ -22,7 +25,7 @@ class SanksionsListViewClass {
           bottom: 8,
           top: index == 0 ? 28 : 8,
         ),
-        padding: EdgeInsets.only(left: 14, right: 10),
+        padding: EdgeInsets.only(left: 16, right: 12),
         width: Get.width,
         height: 54,
         decoration: BoxDecoration(
@@ -35,10 +38,10 @@ class SanksionsListViewClass {
           ),
           boxShadow: [
             BoxShadow(
-              offset: Offset(1, 2),
-              blurRadius: 4,
+              offset: Offset(1, 1),
+              blurRadius: 1,
               color:
-                  isHover ? Colors.transparent : Colors.black.withOpacity(.1),
+                  isHover ? Colors.transparent : Colors.black.withOpacity(.3),
             ),
           ],
         ),
@@ -57,9 +60,9 @@ class SanksionsListViewClass {
                           borderRadius: BorderRadius.circular(8),
                           boxShadow: [
                             BoxShadow(
-                              offset: Offset(2, 2),
-                              blurRadius: 4,
-                              color: Colors.grey.shade300,
+                              offset: Offset(1, 1),
+                              blurRadius: 1,
+                              color: Colors.black.withOpacity(.5),
                             )
                           ],
                         ),
@@ -75,7 +78,20 @@ class SanksionsListViewClass {
                       )
                     : indexActive == 2
                         ? GestureDetector(
-                            onTap: () => signedProvider.onClickStar(index),
+                            onTap: () async {
+                              signedProvider.onClickStar(index);
+                              // final pdf = Document();
+                              // var pdfFile = await PdfSave.saveDocument(
+                              //   name: shakl1,
+                              //   pdf: pdf,
+                              // );
+                              // await DefinedPost().definedPost(
+                              //   hackType: hackType,
+                              //   region: region,
+                              //   shakl1: shakl1,
+                              //   pdf: pdfFile.path,
+                              // );
+                            },
                             child: Icon(
                               signedProvider.starList[index]
                                   ? Icons.star
@@ -90,7 +106,7 @@ class SanksionsListViewClass {
                             ),
                           )
                         : GestureDetector(
-                            onTap: (){
+                            onTap: () {
                               // definedProvider.onClickStar(index);
                             },
                             child: Icon(
