@@ -6,6 +6,7 @@ class SignedModel {
   String? shakl1;
   String? pdf;
   String? pdf_url;
+  bool star = false; 
 
   SignedModel({this.id, this.date, this.hackType, this.region, this.shakl1, this.pdf});
 

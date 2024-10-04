@@ -163,6 +163,8 @@ class _SendedPageState extends State<SendedPage> {
                     shakl1: provider!.data[index].shakl1!,
                     date: provider!.data[index].date!,
                     isHover: isHoverList[index],
+                    starId: provider!.data[index].id!,
+                    star: false,
                   ),
                 );
               },

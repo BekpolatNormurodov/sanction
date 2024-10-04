@@ -11,9 +11,11 @@ class SanksionsListViewClass {
     required String shakl1,
     required String date,
     required bool isHover,
+    required int starId,
+    required bool star,
   }) {
-    SignedStateProvider signedProvider =
-        Provider.of<SignedStateProvider>(context);
+    // SignedStateProvider signedProvider =
+    //     Provider.of<SignedStateProvider>(context);
     DefinedStateProvider definedProvider =
         Provider.of<DefinedStateProvider>(context);
     return InkWell(
@@ -79,25 +81,17 @@ class SanksionsListViewClass {
                     : indexActive == 2
                         ? GestureDetector(
                             onTap: () async {
-                              signedProvider.onClickStar(index);
-                              // final pdf = Document();
-                              // var pdfFile = await PdfSave.saveDocument(
-                              //   name: shakl1,
-                              //   pdf: pdf,
-                              // );
-                              // await DefinedPost().definedPost(
-                              //   hackType: hackType,
-                              //   region: region,
-                              //   shakl1: shakl1,
-                              //   pdf: pdfFile.path,
-                              // );
+                              // signedProvider.onClickStar(index);
+                              await DefinedPost().definedPost(
+                                starId: starId,
+                              );
                             },
                             child: Icon(
-                              signedProvider.starList[index]
+                              star
                                   ? Icons.star
                                   : Icons.star_border_outlined,
                               size: 26,
-                              color: signedProvider.starList[index]
+                              color: star
                                   ? Colors.orange
                                   : isHover
                                       ? Colors.deepPurple.shade800
@@ -107,10 +101,10 @@ class SanksionsListViewClass {
                           )
                         : GestureDetector(
                             onTap: () {
-                              // definedProvider.onClickStar(index);
+                              definedProvider.onClickStar(index);
                             },
                             child: Icon(
-                              definedProvider.starList[index]
+                              star
                                   ? Icons.star_border_outlined
                                   : Icons.star,
                               size: 26,

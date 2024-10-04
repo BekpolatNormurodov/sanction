@@ -6,9 +6,9 @@ main(List<String> args) {
       ChangeNotifierProvider<HomeProvider>(
         create: (context) => HomeProvider(),
       ),
-      ChangeNotifierProvider<SignedStateProvider>(
-        create: (context) => SignedStateProvider(),
-      ),
+      // ChangeNotifierProvider<SignedStateProvider>(
+      //   create: (context) => SignedStateProvider(),
+      // ),
       ChangeNotifierProvider<DefinedStateProvider>(
         create: (context) => DefinedStateProvider(),
       ),

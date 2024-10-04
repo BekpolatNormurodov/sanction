@@ -10,8 +10,10 @@ class DefinedPage extends StatefulWidget {
 class _DefinedPageState extends State<DefinedPage> {
   late TextEditingController controller = TextEditingController();
   List<bool> isHoverList = List.generate(100, (i) => false);
+  List<bool> isStarList = List.generate(100, (i) => false);
 
-  DefinedProvider? provider;
+  SignedProvider? provider;
+  DefinedProvider? starProvider;
   Timer? _timer;
 
   @override
@@ -24,7 +26,7 @@ class _DefinedPageState extends State<DefinedPage> {
   @override
   void initState() {
     super.initState();
-    provider = context.read<DefinedProvider>();
+    provider = context.read<SignedProvider>();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       provider!.getData();
       _timer = Timer.periodic(Duration(seconds: 10), (timer) {
@@ -32,6 +34,17 @@ class _DefinedPageState extends State<DefinedPage> {
       });
     });
     provider?.addListener(() {
+      setState(() {});
+    });
+
+    starProvider = context.read<DefinedProvider>();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      starProvider!.getData();
+      _timer = Timer.periodic(Duration(seconds: 10), (timer) {
+        starProvider!.getData();
+      });
+    });
+    starProvider?.addListener(() {
       setState(() {});
     });
   }
@@ -42,8 +55,21 @@ class _DefinedPageState extends State<DefinedPage> {
     _timer?.cancel();
   }
 
+ List<SignedModel> getSelectedItems(List<SignedModel> data, List<DefinedModel> stars) {
+    List sortedStars = stars
+        .map((star) {
+          return star.starId;
+        })
+        .toSet()
+        .toList();
+    return data.where((item) {
+      return sortedStars.contains(item.id);
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    List<SignedModel> uiData = getSelectedItems(provider!.data, starProvider!.data);
     return Container(
       child: Column(
         children: [
@@ -139,7 +165,7 @@ class _DefinedPageState extends State<DefinedPage> {
               color: Colors.grey.shade200,
             ),
             child: ListView.builder(
-              itemCount: provider!.data.length,
+              itemCount: uiData.length,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
                 return InkWell(
@@ -156,11 +182,13 @@ class _DefinedPageState extends State<DefinedPage> {
                     context,
                     index: index,
                     indexActive: 3,
-                    hackType: provider!.data[index].hackType!,
-                    region: provider!.data[index].region!,
-                    shakl1: provider!.data[index].shakl1!,
-                    date: provider!.data[index].date!,
+                    hackType: uiData[index].hackType!,
+                    region: uiData[index].region!,
+                    shakl1: uiData[index].shakl1!,
+                    date: uiData[index].date!,
                     isHover: isHoverList[index],
+                    starId: uiData[index].id!,
+                    star: true,
                   ),
                 );
               },
