@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:sanction/Screen/settings/edit_settings.dart';
 import 'package:sanction/library.dart';
 
 class HomePage extends StatefulWidget {
@@ -35,7 +37,6 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 // LOGO Box
                 Material(
                   elevation: 1,
@@ -176,7 +177,18 @@ class _HomePageState extends State<HomePage> {
       child: Container(
         alignment: Alignment.bottomCenter,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            // showCupertinoDialog(
+            //   barrierDismissible: true,
+            //   context: context,
+            //   builder: (context) {
+            //     return AlertDialog(
+            //       content: Settings(),
+            //     );
+            //   },
+            // );
+            Get.to(Get.to(EditSettings()));
+          },
           onHover: (e) {
             isHoverSettings = e;
             setState(() {});

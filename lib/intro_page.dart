@@ -21,59 +21,60 @@ class _IntroPageState extends State<IntroPage> with TickerProviderStateMixin {
     _controller!.addListener(() {
       setState(() {});
     });
-    Future.delayed(Duration(seconds: 5), () {
-      Navigator.pushAndRemoveUntil(
-          context, AnimationRouter(LoginPage(), 1), (route) => false);
-    });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: Get.width,
-        height: Get.height,
-        color: Color.fromRGBO(68, 68, 68, 1),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 1057.0,
-                  height: 1000.0 * _controller!.value,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/images/IIV-logo.png"),
-                      fit: BoxFit.fill,
+      body: InkWell(
+        onTap: () {
+          Get.offAll(LoginPage());
+        },
+        child: Container(
+          width: Get.width,
+          height: Get.height,
+          color: Color.fromRGBO(68, 68, 68, 1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 1057.0,
+                    height: 1000.0 * _controller!.value,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/IIV-logo.png"),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  width: 692.0,
-                  height: 1000.0 * _controller!.value,
-                  alignment: Alignment.center,
-                  child: TypeWriter.text(
-                    "O'ZBEKISTON RESPUBLIKASI ICHKI ISHLAR VAZIRLIGI KIBERXAVFSIZLIK   MARKAZI",
-                    style: TextStyle(
-                        color: Colors.yellow.shade600,
-                        fontSize: 50.0,
-                        shadows: [
-                          Shadow(
-                            offset: Offset(3, 2),
-                            color: Colors.red,
-                            blurRadius: 1,
-                          ),
-                        ]),
-                    textAlign: TextAlign.justify,
-                    duration: const Duration(milliseconds: 20),
+                  Container(
+                    width: 692.0,
+                    height: 1000.0 * _controller!.value,
+                    alignment: Alignment.center,
+                    child: TypeWriter.text(
+                      "O'ZBEKISTON RESPUBLIKASI ICHKI ISHLAR VAZIRLIGI KIBERXAVFSIZLIK   MARKAZI",
+                      style: TextStyle(
+                          color: Colors.yellow.shade600,
+                          fontSize: 50.0,
+                          shadows: [
+                            Shadow(
+                              offset: Offset(3, 2),
+                              color: Colors.red,
+                              blurRadius: 1,
+                            ),
+                          ]),
+                      textAlign: TextAlign.justify,
+                      duration: const Duration(milliseconds: 20),
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

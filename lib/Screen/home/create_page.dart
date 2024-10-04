@@ -30,20 +30,27 @@ class _CreatePageState extends State<CreatePage> {
     return Container(
       width: Get.width - 280,
       alignment: Alignment.center,
+      color: Colors.grey.shade400,
       child: Container(
-        width: 1400.w,
+        width: 1200.w,
         height: Get.height - 80,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.grey.shade100,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(1, 1),
-                color: Colors.black.withOpacity(.6),
-                blurRadius: 10,
-              )
-            ]),
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(8),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(1, 1),
+              color: Colors.black.withOpacity(.1),
+              blurRadius: 8,
+            ),
+            BoxShadow(
+              offset: Offset(-1, -1),
+              color: Colors.black.withOpacity(.1),
+              blurRadius: 8,
+            )
+          ],
+        ),
         child: Container(
           width: 1080,
           child: Column(
@@ -161,7 +168,8 @@ class _CreatePageState extends State<CreatePage> {
                             ),
                           ),
                           onComplete: (date) {
-                            telDate = "${date!.day > 9 ? date.day : "0${date.day}"}.${date.month > 9 ? date.month : "0${date.month}"}.${date.year}";
+                            telDate =
+                                "${date!.day > 9 ? date.day : "0${date.day}"}.${date.month > 9 ? date.month : "0${date.month}"}.${date.year}";
                             setState(() {});
                           },
                         ),
@@ -240,7 +248,8 @@ class _CreatePageState extends State<CreatePage> {
                             ),
                           ),
                           onComplete: (date) {
-                            birthday = "${date!.day > 9 ? date.day : "0${date.day}"}.${date.month > 9 ? date.month : "0${date.month}"}.${date.year}";
+                            birthday =
+                                "${date!.day > 9 ? date.day : "0${date.day}"}.${date.month > 9 ? date.month : "0${date.month}"}.${date.year}";
                             setState(() {});
                           },
                         ),
@@ -657,7 +666,8 @@ class _CreatePageState extends State<CreatePage> {
                                     ),
                                   ),
                                   onComplete: (date) {
-                                    loseDate = "${date!.day > 9 ? date.day : "0${date.day}"}.${date.month > 9 ? date.month : "0${date.month}"}.${date.year}";
+                                    loseDate =
+                                        "${date!.day > 9 ? date.day : "0${date.day}"}.${date.month > 9 ? date.month : "0${date.month}"}.${date.year}";
                                     setState(() {});
                                   },
                                 ),
@@ -792,19 +802,13 @@ class _CreatePageState extends State<CreatePage> {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey.shade400,
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
-                  ),
-                  icon: Icon(
-                    Icons.add,
-                    color: Colors.black.withOpacity(.7),
-                    size: 28,
-                  ),
+                      backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8))),
                   label: Text(
                     "Sanksiya yaratish",
                     style: TextStyle(
-                      color: Colors.black.withOpacity(.7),
+                      color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),

@@ -53,11 +53,13 @@ class _DefinedPageState extends State<DefinedPage> {
             padding: EdgeInsets.symmetric(horizontal: 50),
             decoration: BoxDecoration(
               color: Colors.green,
-              border: Border(
-                bottom: BorderSide(
-                  color: Colors.black.withOpacity(.3),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 1),
+                  color: Colors.black.withOpacity(.7),
+                  blurRadius: 2.5,
                 ),
-              ),
+              ],
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -131,7 +133,8 @@ class _DefinedPageState extends State<DefinedPage> {
           // Sanktions List
           Container(
             width: Get.width - 280,
-            height: Get.height - 64,
+            height: Get.height - 68,
+            margin: EdgeInsets.only(top: 6),
             decoration: BoxDecoration(
               color: Colors.grey.shade200,
             ),

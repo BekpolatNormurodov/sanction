@@ -53,22 +53,16 @@ class _SendedPageState extends State<SendedPage> {
           Container(
             width: Get.width - 280,
             padding: EdgeInsets.symmetric(horizontal: 50),
-            decoration: BoxDecoration(color: Colors.green,  border: Border(
-                bottom: BorderSide(
-                  color: Colors.black.withOpacity(.3),
+            decoration: BoxDecoration(
+              color: Colors.green,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 1),
+                  color: Colors.black.withOpacity(.7),
+                  blurRadius: 2.5,
                 ),
-              ),
-                // border: Border(
-                //   bottom: BorderSide(
-                //     color: Colors.black.withOpacity(.5),
-                //     width: 1.4,
-                //   ),
-                //   top: BorderSide(
-                //     color: Colors.green.shade700,
-                //     width: 1.4,
-                //   ),
-                // ),
-                ),
+              ],
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -141,7 +135,8 @@ class _SendedPageState extends State<SendedPage> {
           // Sanktions List
           Container(
             width: Get.width - 280,
-            height: Get.height - 64,
+            margin: EdgeInsets.only(top: 6),
+            height: Get.height - 68,
             decoration: BoxDecoration(
               color: Colors.grey.shade200,
             ),

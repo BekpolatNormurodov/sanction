@@ -1,4 +1,5 @@
 // import 'package:blacklist/Repository/workers/worker_post.dart';
+import 'package:sanction/Screen/settings/create_settings.dart';
 import 'package:sanction/library.dart';
 
 class LoginPage extends StatefulWidget {
@@ -53,9 +54,9 @@ class _LoginPageState extends State<LoginPage> {
   Widget _icon() {
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.white, width: 2),
-          borderRadius: BorderRadius.circular(10),
-          ),
+        border: Border.all(color: Colors.white, width: 2),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Icon(Icons.lock, color: Colors.red.shade600, size: 120),
@@ -66,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _inputField(
       String hintText, TextEditingController controller, isPassword) {
     var border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(18),
+      borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(color: Colors.white),
     );
 
@@ -88,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
     return ElevatedButton(
       onPressed: () async {
         if (passwordController.text == usersPassword) {
-          Get.offAll(HomePage());
+          Get.offAll(CreateSettings());
           Get.snackbar('Successful !!!', "Login va Parol to'g'ri kiritildi",
               backgroundColor: Colors.green.withOpacity(.8));
           // var response = await WorkersPost().workersPost(
@@ -122,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
       style: ElevatedButton.styleFrom(
-        shape: StadiumBorder(),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         backgroundColor: Colors.white.withOpacity(.9),
         padding: EdgeInsets.only(top: 20, bottom: 16),
       ),
@@ -136,7 +137,6 @@ class _LoginPageState extends State<LoginPage> {
             color: Colors.deepPurpleAccent.shade700,
             fontWeight: FontWeight.w700,
             letterSpacing: 1,
-            
           ),
         ),
       ),

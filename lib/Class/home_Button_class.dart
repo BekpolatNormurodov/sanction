@@ -76,12 +76,12 @@ class HomeButtonClass {
         decoration: BoxDecoration(
           border: Border.all(
             color: isHover
-                ? (indexActive == 4 ? Colors.greenAccent : Colors.redAccent)
+                ? Colors.redAccent
                 : Colors.red.withOpacity(.2),
             width: .8,
           ),
           color: isHover
-              ? (indexActive == 4 ? Colors.green : Colors.transparent)
+              ? Colors.transparent
               : Colors.blueGrey.withOpacity(.2),
           borderRadius: BorderRadius.circular(4),
         ),

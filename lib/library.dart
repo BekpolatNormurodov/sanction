@@ -21,7 +21,8 @@ export 'package:open_file/open_file.dart';
 export 'package:printing/printing.dart';
 export 'package:typewritertext/typewritertext.dart';
 export 'package:shimmer/shimmer.dart';
-
+export 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
+export 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 
 // Screen

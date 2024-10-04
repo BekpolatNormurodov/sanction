@@ -134,34 +134,35 @@ class SanksionsListViewClass {
                 ),
               ],
             ),
-            Row(
-              children: [
-                Text(
-                  "$region ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган  ",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: isHover ? Colors.deepPurple.shade700 : Colors.black,
+            Container(
+              width: 900,
+              child: Row(
+                children: [
+                  Text(
+                    "$region ИИБ Навбатчилик қисмининг Шакл-1 китобида рўйхатга олинган  ",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: isHover ? Colors.deepPurple.shade700 : Colors.black,
+                    ),
                   ),
-                ),
-                Text(
-                  shakl1,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: isHover ? Colors.deepPurple.shade700 : Colors.black,
-                    fontWeight: FontWeight.w600,
+                  Text(
+                    shakl1,
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: isHover ? Colors.deepPurple.shade700 : Colors.black,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-                Text(
-                  " -сонли мурожаат",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: isHover ? Colors.deepPurple.shade700 : Colors.black,
+                  Text(
+                    " -сонли мурожаат",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: isHover ? Colors.deepPurple.shade700 : Colors.black,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            Container(),
-            Container(),
             Container(
               alignment: Alignment.bottomRight,
               padding: EdgeInsets.only(bottom: 3),
