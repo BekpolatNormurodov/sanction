@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
     return ElevatedButton(
       onPressed: () async {
         if (passwordController.text == usersPassword) {
-          Get.offAll(CreateSettings());
+          Get.offAll(Hive.box('data').isEmpty ? CreateSettings() : HomePage());
           Get.snackbar('Successful !!!', "Login va Parol to'g'ri kiritildi",
               backgroundColor: Colors.green.withOpacity(.8));
           // var response = await WorkersPost().workersPost(

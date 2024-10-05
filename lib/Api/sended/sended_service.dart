@@ -12,7 +12,7 @@ class SendedService {
         return jsonDecode(_response.body);
       }
     } catch (e) {
-      print('${e}');
+      // print('${e}');
     }
     return null;
   }

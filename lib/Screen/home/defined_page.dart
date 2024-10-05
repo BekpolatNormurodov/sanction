@@ -188,7 +188,6 @@ class _DefinedPageState extends State<DefinedPage> {
                     date: uiData[index].date!,
                     isHover: isHoverList[index],
                     starId: uiData[index].id!,
-                    star: true,
                   ),
                 );
               },

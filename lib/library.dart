@@ -6,6 +6,7 @@ export 'dart:async';
 
 
 // pubspec.yaml
+export 'package:hive_flutter/hive_flutter.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:pattern_formatter/pattern_formatter.dart';
 export 'package:date_format_field/date_format_field.dart';

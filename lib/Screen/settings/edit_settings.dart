@@ -15,14 +15,21 @@ class _EditSettingsState extends State<EditSettings> {
   TextEditingController? unvonController;
   TextEditingController? phoneController;
 
+  String name = Hive.box('data').get('name');
+  String surname = Hive.box('data').get('surname');
+  String fatherName = Hive.box('data').get('fatherName');
+  String office = Hive.box('data').get('office');
+  String unvon = Hive.box('data').get('unvon');
+  String phone = Hive.box('data').get('phone');
+
   @override
   void initState() {
-    nameController = TextEditingController();
-    surnameController = TextEditingController();
-    fathernameController = TextEditingController();
-    officeController = TextEditingController();
-    unvonController = TextEditingController();
-    phoneController = TextEditingController();
+    nameController = TextEditingController(text: name);
+    surnameController = TextEditingController(text: surname);
+    fathernameController = TextEditingController(text: fatherName);
+    officeController = TextEditingController(text: office);
+    unvonController = TextEditingController(text: unvon);
+    phoneController = TextEditingController(text: phone);
     super.initState();
   }
 
@@ -280,6 +287,78 @@ class _EditSettingsState extends State<EditSettings> {
                                 ),
                               ),
                             ),
+                            Container(
+                              width: Get.width,
+                              margin: EdgeInsets.only(top: 40),
+                              alignment: Alignment.centerRight,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.redAccent,
+                                ),
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        content: Container(
+                                          width: double.infinity,
+                                          height: 40,
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            'Tasdiqlash:',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                        ),
+                                        actions: <Widget>[
+                                          Container(
+                                            width: double.infinity,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    Hive.box('data').clear();
+                                                    Get.to(LoginPage());
+                                                    Navigator.of(
+                                                            Get.overlayContext!,
+                                                            rootNavigator: true)
+                                                        .pop();
+                                                  },
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        Colors.grey.shade100,
+                                                  ),
+                                                  child: Text(' Ha '),
+                                                ),
+                                                SizedBox(width: 20),
+                                                ElevatedButton(
+                                                  onPressed: () {
+                                                    Navigator.pop(
+                                                        context); //close Dialog
+                                                  },
+                                                  style:
+                                                      ElevatedButton.styleFrom(
+                                                    backgroundColor:
+                                                        Colors.grey.shade100,
+                                                  ),
+                                                  child: Text('Yoq'),
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Text(
+                                  "Chiqish",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -293,23 +372,22 @@ class _EditSettingsState extends State<EditSettings> {
                         ),
                         child: ElevatedButton.icon(
                           onPressed: () async {
-                            // await UserUpdate().userUpdate(
-                            //   image: image?.path,
-                            //   isCourt: sud!,
-                            //   isCar: car!,
-                            //   name: nameController!.text,
-                            //   surname: surnameController!.text,
-                            //   fathername: fathernameController!.text,
-                            //   birthday: birthdayController!.text,
-                            //   passportNumber: passportNumberController!.text,
-                            //   idNumber: idNumberController!.text,
-                            //   about: aboutController!.text,
-                            //   id: widget.data.id!,
-                            // );
-                            // Get.to(SearchPage());
+                            await Hive.box('data')
+                                .put('name', nameController!.text);
+                            await Hive.box('data')
+                                .put('surname', surnameController!.text);
+                            await Hive.box('data')
+                                .put('fatherName', fathernameController!.text);
+                            await Hive.box('data')
+                                .put('office', officeController!.text);
+                            await Hive.box('data')
+                                .put('unvon', unvonController!.text);
+                            await Hive.box('data')
+                                .put('phone', phoneController!.text);
+                            Get.to(HomePage());
                             Get.snackbar(
-                              'Successful !!!',
-                              'The Suspect Edit',
+                              'Successful',
+                              'Malumotlar saqlandi !!!',
                               backgroundColor: Colors.green,
                             );
                           },

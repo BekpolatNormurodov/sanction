@@ -24,8 +24,6 @@ class SendedPost {
     request.files.add(pdfFile);
 
     http.StreamedResponse response = await request.send();
-    print(response.statusCode);
-    print("response");
     if (response.statusCode == 201) {
       var data = await response.stream.bytesToString();
       return jsonDecode(data);

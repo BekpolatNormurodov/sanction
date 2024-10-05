@@ -164,7 +164,6 @@ class _SendedPageState extends State<SendedPage> {
                     date: provider!.data[index].date!,
                     isHover: isHoverList[index],
                     starId: provider!.data[index].id!,
-                    star: false,
                   ),
                 );
               },

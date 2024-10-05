@@ -31,7 +31,7 @@ class _CreateSettingsState extends State<CreateSettings> {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
 
     return Scaffold(
-      backgroundColor:  Color.fromRGBO(68, 68, 68, 1),
+      backgroundColor: Color.fromRGBO(68, 68, 68, 1),
       body: SafeArea(
         child: Container(
           width: double.infinity,
@@ -290,19 +290,12 @@ class _CreateSettingsState extends State<CreateSettings> {
                         ),
                         child: ElevatedButton.icon(
                           onPressed: () async {
-                            // await UserUpdate().userUpdate(
-                            //   image: image?.path,
-                            //   isCourt: sud!,
-                            //   isCar: car!,
-                            //   name: nameController!.text,
-                            //   surname: surnameController!.text,
-                            //   fathername: fathernameController!.text,
-                            //   birthday: birthdayController!.text,
-                            //   passportNumber: passportNumberController!.text,
-                            //   idNumber: idNumberController!.text,
-                            //   about: aboutController!.text,
-                            //   id: widget.data.id!,
-                            // );
+                            await Hive.box('data').put('name', nameController!.text);
+                            await Hive.box('data').put('surname', surnameController!.text);
+                            await Hive.box('data').put('fatherName', fathernameController!.text);
+                            await Hive.box('data').put('office', officeController!.text);
+                            await Hive.box('data').put('unvon', unvonController!.text);
+                            await Hive.box('data').put('phone', phoneController!.text);
                             Get.to(HomePage());
                             Get.snackbar(
                               'Successful',
@@ -317,7 +310,7 @@ class _CreateSettingsState extends State<CreateSettings> {
                             ),
                           ),
                           label: Text(
-                            "Saqlash",
+                            "Next",
                             style: TextStyle(
                               color: Colors.black.withOpacity(.8),
                               fontSize: 16,

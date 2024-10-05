@@ -12,12 +12,11 @@ class SanksionsListViewClass {
     required String date,
     required bool isHover,
     required int starId,
-    required bool star,
   }) {
-    // SignedStateProvider signedProvider =
-    //     Provider.of<SignedStateProvider>(context);
-    DefinedStateProvider definedProvider =
-        Provider.of<DefinedStateProvider>(context);
+    SignedStateProvider signedProvider =
+        Provider.of<SignedStateProvider>(context);
+    // DefinedStateProvider definedProvider =
+    //     Provider.of<DefinedStateProvider>(context);
     return InkWell(
       onTap: () => Get.to(PdfPage(index: index)),
       child: Container(
@@ -81,17 +80,17 @@ class SanksionsListViewClass {
                     : indexActive == 2
                         ? GestureDetector(
                             onTap: () async {
-                              // signedProvider.onClickStar(index);
+                              signedProvider.onClickStar(index);
                               await DefinedPost().definedPost(
                                 starId: starId,
                               );
                             },
                             child: Icon(
-                              star
+                              signedProvider.starList[index]
                                   ? Icons.star
                                   : Icons.star_border_outlined,
                               size: 26,
-                              color: star
+                              color: signedProvider.starList[index]
                                   ? Colors.orange
                                   : isHover
                                       ? Colors.deepPurple.shade800
@@ -101,16 +100,17 @@ class SanksionsListViewClass {
                           )
                         : GestureDetector(
                             onTap: () {
-                              definedProvider.onClickStar(index);
+                              // definedProvider.onClickStar(index);
                             },
                             child: Icon(
-                              star
-                                  ? Icons.star_border_outlined
-                                  : Icons.star,
-                              size: 26,
-                              color: definedProvider.starList[index]
-                                  ? Colors.grey
-                                  : Colors.orange,
+                              Icons.star, color: Colors.orange,
+                              // signedProvider.starList[index]
+                              //     ? Icons.star_border_outlined
+                              //     : Icons.star,
+                              // size: 26,
+                              // color: definedProvider.starList[index]
+                              //     ? Colors.grey
+                              //     : Colors.orange,
                             ),
                           ),
                 SizedBox(width: 20),

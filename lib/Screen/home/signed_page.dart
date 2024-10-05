@@ -12,6 +12,8 @@ class _SignedPageState extends State<SignedPage> {
   List<bool> isHoverList = List.generate(100, (i) => false);
   String valueType = '';
   String valueRegion = '';
+  String valueShakl1 = '';
+  String valueDate = '';
 
   SignedProvider? provider;
   Timer? _timer;
@@ -139,10 +141,138 @@ class _SignedPageState extends State<SignedPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                typeFilter(valueType),
-                region(valueRegion),
-                numberFilter(),
-                dateFilter(),
+                Container(
+                  width: 160,
+                  height: 48,
+                  child: DropdownButtonFormField(
+                    focusColor: Colors.transparent,
+                    hint: Text(
+                      "Usuli",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                      ),
+                    ),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(left: 2, top: 10),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.black.withOpacity(.5)),
+                      ),
+                    ),
+                    items: [
+                      typeHack("Hammasi"),
+                      typeHack("Zararli dastur"),
+                      typeHack("Fishing"),
+                      typeHack("Pul ko'paytirish"),
+                      typeHack("Onlayn savdo"),
+                      typeHack("Boshqa"),
+                    ],
+                    onChanged: (e) {
+                      valueType = e!;
+                      setState(() {});
+                    },
+                  ),
+                ),
+                Container(
+                  width: 200,
+                  height: 48,
+                  child: DropdownButtonFormField(
+                    focusColor: Colors.transparent,
+                    hint: Text(
+                      "Shahar-tumanlar",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                      ),
+                    ),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(left: 2, top: 10),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black.withOpacity(.5),
+                        ),
+                      ),
+                    ),
+                    items: [
+                      regionIIB("Hammasi"),
+                      regionIIB("Navoiy shahar"),
+                      regionIIB("Karmana tumani"),
+                      regionIIB("Navbahor tumani"),
+                      regionIIB("Konimex tumani"),
+                      regionIIB("Qiziltepa tumani"),
+                      regionIIB("Xatirchi tumani"),
+                      regionIIB("Zarafshon shahar"),
+                      regionIIB("Uchquduq tumani"),
+                      regionIIB("Nurota tumani"),
+                      regionIIB("Tomdi tumani"),
+                      regionIIB("G'azg'on tumani"),
+                    ],
+                    onChanged: (e) {
+                      valueRegion = e!;
+                      setState(() {});
+                    },
+                  ),
+                ),
+                Container(
+                  width: 200,
+                  height: 48,
+                  padding: const EdgeInsets.all(3),
+                  child: TextFormField(
+                    onChanged: (e) {
+                      valueShakl1 = e;
+                      setState(() {});
+                    },
+                    cursorColor: Colors.black.withOpacity(.8),
+                    cursorWidth: 1.2,
+                    cursorHeight: 20,
+                    decoration: InputDecoration(
+                      labelText: "Murojat raqami",
+                      labelStyle: TextStyle(color: Colors.black, fontSize: 13),
+                      suffixIcon: Icon(Icons.search),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Colors.black.withOpacity(.5)),
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 160,
+                  height: 48,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextField(
+                        onChanged: (e) {
+                          valueDate = e;
+                          print(e);
+                          setState(() {});
+                        },
+                        cursorColor: Colors.black.withOpacity(.8),
+                        cursorWidth: 1.2,
+                        cursorHeight: 20,
+                        decoration: InputDecoration(
+                          contentPadding: EdgeInsets.only(left: 2, top: 16),
+                          suffixIcon: Icon(Icons.date_range),
+                          hintText: "Sana",
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.black.withOpacity(.5)),
+                          ),
+                        ),
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          DateInputFormatter(),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
@@ -167,18 +297,28 @@ class _SignedPageState extends State<SignedPage> {
                     }
                     setState(() {});
                   },
-                  child: SanksionsListViewClass().sanksionsListView(
-                    context,
-                    index: index,
-                    indexActive: 2,
-                    hackType: provider!.data[index].hackType!,
-                    region: provider!.data[index].region!,
-                    shakl1: provider!.data[index].shakl1!,
-                    date: provider!.data[index].date!,
-                    isHover: isHoverList[index],
-                    starId: provider!.data[index].id!,
-                    star: true,
-                  ),
+                  child: (valueType == provider!.data[index].hackType! ||
+                              valueType == '' ||
+                              valueType == 'Hammasi') &&
+                          (valueRegion == provider!.data[index].region! ||
+                              valueRegion == '' ||
+                              valueRegion == 'Hammasi') &&
+                          (valueShakl1 == provider!.data[index].shakl1! ||
+                              valueShakl1 == '') &&
+                          (valueDate == provider!.data[index].date! ||
+                              valueDate == '')
+                      ? SanksionsListViewClass().sanksionsListView(
+                          context,
+                          index: index,
+                          indexActive: 2,
+                          hackType: provider!.data[index].hackType!,
+                          region: provider!.data[index].region!,
+                          shakl1: provider!.data[index].shakl1!,
+                          date: provider!.data[index].date!,
+                          isHover: isHoverList[index],
+                          starId: provider!.data[index].id!,
+                        )
+                      : Container(),
                 );
               },
             ),
@@ -189,136 +329,136 @@ class _SignedPageState extends State<SignedPage> {
   }
 
   // TYPE
-  typeFilter(valueType) {
-    return Container(
-      width: 160,
-      height: 48,
-      child: DropdownButtonFormField(
-        focusColor: Colors.transparent,
-        hint: Text(
-          "Usuli",
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.black,
-          ),
-        ),
-        decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 2, top: 10),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
-          ),
-        ),
-        items: [
-          typeHack("Zararli dastur"),
-          typeHack("Fishing"),
-          typeHack("Pul ko'paytirish"),
-          typeHack("Onlayn savdo"),
-          typeHack("Boshqa"),
-        ],
-        onChanged: (e) {
-          valueType = e!;
-          setState(() {});
-        },
-      ),
-    );
-  }
+  // typeFilter(valueType) {
+  //   return Container(
+  //     width: 160,
+  //     height: 48,
+  //     child: DropdownButtonFormField(
+  //       focusColor: Colors.transparent,
+  //       hint: Text(
+  //         "Usuli",
+  //         style: TextStyle(
+  //           fontSize: 14,
+  //           color: Colors.black,
+  //         ),
+  //       ),
+  //       decoration: InputDecoration(
+  //         contentPadding: EdgeInsets.only(left: 2, top: 10),
+  //         focusedBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
+  //         ),
+  //       ),
+  //       items: [
+  //         typeHack("Zararli dastur"),
+  //         typeHack("Fishing"),
+  //         typeHack("Pul ko'paytirish"),
+  //         typeHack("Onlayn savdo"),
+  //         typeHack("Boshqa"),
+  //       ],
+  //       onChanged: (e) {
+  //         valueType = e!;
+  //         setState(() {});
+  //       },
+  //     ),
+  //   );
+  // }
 
 // REGION
-  region(valueRegion) {
-    return Container(
-      width: 200,
-      height: 48,
-      child: DropdownButtonFormField(
-        focusColor: Colors.transparent,
-        hint: Text(
-          "Shahar-tumanlar",
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.black,
-          ),
-        ),
-       decoration: InputDecoration(
-          contentPadding: EdgeInsets.only(left: 2, top: 10),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
-          ),
-        ),
-        items: [
-          regionIIB("Navoiy shahar"),
-          regionIIB("Karmana tumani"),
-          regionIIB("Navbahor tumani"),
-          regionIIB("Konimex tumani"),
-          regionIIB("Qiziltepa tumani"),
-          regionIIB("Xatirchi tumani"),
-          regionIIB("Zarafshon shahar"),
-          regionIIB("Uchquduq tumani"),
-          regionIIB("Nurota tumani"),
-          regionIIB("Tomdi tumani"),
-          regionIIB("G'azg'on tumani"),
-        ],
-        onChanged: (e) {
-          valueRegion = e!;
-          setState(() {});
-        },
-      ),
-    );
-  }
+  // region(valueRegion) {
+  //   return Container(
+  //     width: 200,
+  //     height: 48,
+  //     child: DropdownButtonFormField(
+  //       focusColor: Colors.transparent,
+  //       hint: Text(
+  //         "Shahar-tumanlar",
+  //         style: TextStyle(
+  //           fontSize: 14,
+  //           color: Colors.black,
+  //         ),
+  //       ),
+  //       decoration: InputDecoration(
+  //         contentPadding: EdgeInsets.only(left: 2, top: 10),
+  //         focusedBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
+  //         ),
+  //       ),
+  //       items: [
+  //         regionIIB("Navoiy shahar"),
+  //         regionIIB("Karmana tumani"),
+  //         regionIIB("Navbahor tumani"),
+  //         regionIIB("Konimex tumani"),
+  //         regionIIB("Qiziltepa tumani"),
+  //         regionIIB("Xatirchi tumani"),
+  //         regionIIB("Zarafshon shahar"),
+  //         regionIIB("Uchquduq tumani"),
+  //         regionIIB("Nurota tumani"),
+  //         regionIIB("Tomdi tumani"),
+  //         regionIIB("G'azg'on tumani"),
+  //       ],
+  //       onChanged: (e) {
+  //         valueRegion = e!;
+  //         setState(() {});
+  //       },
+  //     ),
+  //   );
+  // }
 
   // NUMBER
-  numberFilter() {
-    return Container(
-      width: 200,
-      height: 48,
-      padding: const EdgeInsets.all(3),
-      child: TextFormField(
-        cursorColor: Colors.black.withOpacity(.8),
-        cursorWidth: 1.2,
-        cursorHeight: 20,
-        decoration: InputDecoration(
-          labelText: "Murojat raqami",
-          labelStyle: TextStyle(color: Colors.black, fontSize: 13),
-          suffixIcon: Icon(Icons.search),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
-          ),
-        ),
-        keyboardType: TextInputType.number,
-        inputFormatters: <TextInputFormatter>[
-          FilteringTextInputFormatter.digitsOnly
-        ],
-      ),
-    );
-  }
+  // numberFilter() {
+  //   return Container(
+  //     width: 200,
+  //     height: 48,
+  //     padding: const EdgeInsets.all(3),
+  //     child: TextFormField(
+  //       cursorColor: Colors.black.withOpacity(.8),
+  //       cursorWidth: 1.2,
+  //       cursorHeight: 20,
+  //       decoration: InputDecoration(
+  //         labelText: "Murojat raqami",
+  //         labelStyle: TextStyle(color: Colors.black, fontSize: 13),
+  //         suffixIcon: Icon(Icons.search),
+  //         focusedBorder: UnderlineInputBorder(
+  //           borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
+  //         ),
+  //       ),
+  //       keyboardType: TextInputType.number,
+  //       inputFormatters: <TextInputFormatter>[
+  //         FilteringTextInputFormatter.digitsOnly
+  //       ],
+  //     ),
+  //   );
+  // }
 
   // DATE
-  dateFilter() {
-    return Container(
-      width: 160,
-      height: 48,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextField(
-            cursorColor: Colors.black.withOpacity(.8),
-            cursorWidth: 1.2,
-            cursorHeight: 20,
-            decoration: InputDecoration(
-              contentPadding: EdgeInsets.only(left: 2, top: 16),
-              suffixIcon: Icon(Icons.date_range),
-              hintText: "Sana",
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
-              ),
-            ),
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              DateInputFormatter(),
-            ],
-          )
-        ],
-      ),
-    );
-  }
+  // dateFilter() {
+  //   return Container(
+  //     width: 160,
+  //     height: 48,
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         TextField(
+  //           cursorColor: Colors.black.withOpacity(.8),
+  //           cursorWidth: 1.2,
+  //           cursorHeight: 20,
+  //           decoration: InputDecoration(
+  //             contentPadding: EdgeInsets.only(left: 2, top: 16),
+  //             suffixIcon: Icon(Icons.date_range),
+  //             hintText: "Sana",
+  //             focusedBorder: UnderlineInputBorder(
+  //               borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
+  //             ),
+  //           ),
+  //           keyboardType: TextInputType.number,
+  //           inputFormatters: [
+  //             DateInputFormatter(),
+  //           ],
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 
   DropdownMenuItem typeHack(type) => DropdownMenuItem(
         child: Text(
