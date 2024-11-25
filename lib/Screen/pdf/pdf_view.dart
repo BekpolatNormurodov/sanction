@@ -37,9 +37,9 @@ class PdfView {
     final ttfDataBold =
         await rootBundle.load("assets/fonts/NotoSerif_Condensed-Bold.ttf");
     final uzFontBold = Font.ttf(ttfDataBold);
-    // final logoPng = (await rootBundle.load('assets/images/IIV-logo.png'))
-    //     .buffer
-    //     .asUint8List();
+    final logoPng = (await rootBundle.load('assets/images/IIV-logo.png'))
+        .buffer
+        .asUint8List();
 
     pdf.addPage(
       MultiPage(
@@ -49,6 +49,13 @@ class PdfView {
           Container(
             child: Column(
               children: [
+                Positioned(
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    child: Image(MemoryImage(logoPng)),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -165,7 +172,7 @@ class PdfView {
                   width: double.infinity,
                   margin: EdgeInsets.only(top: 24),
                   child: Text(
-                    "Қ A P O P\n Банк сирини ташкил этувчи маълумотлар олишга қаратилган тезкор-қидиpyв тадбирини ўтказиш ҳақида",
+                    "Q A R O R\n Bank sirini tashkil etuvhci ma'lumotlarni ",
                     style: TextStyle(
                       font: uzFontBold,
                       fontSize: 13,
@@ -312,9 +319,7 @@ class PdfView {
                 fontSize: 12,
               ),
               children: [
-                TextSpan(
-                    text:
-                        "          1.	Фуқаро $fullnameга тегишли "),
+                TextSpan(text: "          1.	Фуқаро $fullnameга тегишли "),
                 TextSpan(
                   text: fromCard,
                   style: TextStyle(
@@ -322,7 +327,9 @@ class PdfView {
                     fontSize: 13,
                   ),
                 ),
-                TextSpan(text: " рақамли пластик картадан $loseDate kuni soat $loseTime da  "),
+                TextSpan(
+                    text:
+                        " рақамли пластик картадан $loseDate kuni soat $loseTime da  "),
                 TextSpan(
                   text: loss,
                   style: TextStyle(
