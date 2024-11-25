@@ -25,6 +25,13 @@ class _PdfPageState extends State<PdfPage> {
     super.initState();
   }
 
+  @override
+  void setState(VoidCallback fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
   final GlobalKey<SfPdfViewerState> _pdfKey = GlobalKey();
 
   @override
@@ -61,6 +68,7 @@ class _PdfPageState extends State<PdfPage> {
             width: 750.0 + zoom,
             height: Get.height - 20,
             decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage("assets/images/pechat.png")),
               boxShadow: [
                 BoxShadow(
                   offset: Offset(1, 1),
@@ -74,10 +82,21 @@ class _PdfPageState extends State<PdfPage> {
                 )
               ],
             ),
-            child: SfPdfViewer.network(
-              key: _pdfKey,
-              pageSpacing: 10,
-              pdfProvider!.data[widget.index!].pdf_url!,
+            child: Stack(
+              children: [
+                Positioned(
+                  child: Container(
+                    width: 60.0,
+                    height: 60.0,
+                    color: Colors.redAccent,
+                  ),
+                ),
+                SfPdfViewer.network(
+                  key: _pdfKey,
+                  pageSpacing: 10,
+                  pdfProvider!.data[widget.index!].pdf_url!,
+                ),
+              ],
             ),
           ),
         ),
@@ -93,6 +112,7 @@ class _PdfPageState extends State<PdfPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FloatingActionButton(
+                  key: Key("back"),
                   mini: true,
                   backgroundColor: Colors.grey.shade300,
                   onPressed: () => Get.back(),
@@ -101,6 +121,7 @@ class _PdfPageState extends State<PdfPage> {
                 Row(
                   children: [
                     FloatingActionButton(
+                      key: Key("zoom in"),
                       mini: true,
                       backgroundColor: Colors.grey.shade300,
                       onPressed: () async {
@@ -112,6 +133,7 @@ class _PdfPageState extends State<PdfPage> {
                     ),
                     SizedBox(width: 14),
                     FloatingActionButton(
+                      key: Key("zoom out"),
                       mini: true,
                       backgroundColor: Colors.grey.shade300,
                       onPressed: () async {
@@ -127,6 +149,7 @@ class _PdfPageState extends State<PdfPage> {
             ),
           ),
           FloatingActionButton(
+            key: Key("printer"),
             backgroundColor: Colors.grey.shade300,
             onPressed: () async {
               final pdf = await http.readBytes(
