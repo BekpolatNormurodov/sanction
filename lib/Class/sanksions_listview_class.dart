@@ -18,7 +18,7 @@ class SanksionsListViewClass {
     // DefinedStateProvider definedProvider =
     //     Provider.of<DefinedStateProvider>(context);
     return InkWell(
-      onTap: () => Get.to(PdfPage(index: index)),
+      onTap: () => Get.to(PdfPage(index: index, indexActive: indexActive)),
       child: Container(
         margin: EdgeInsets.only(
           left: 50,

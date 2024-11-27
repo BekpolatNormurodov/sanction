@@ -1,3 +1,6 @@
+import 'package:sanction/Api/Signed/Signed_model.dart';
+import 'package:sanction/Api/sign/sign_model.dart';
+import 'package:sanction/Api/sign/sign_provider.dart';
 import 'package:sanction/library.dart';
 
 class SignedPage extends StatefulWidget {
@@ -16,6 +19,7 @@ class _SignedPageState extends State<SignedPage> {
   String valueDate = '';
 
   SignedProvider? provider;
+  SignProvider? _provider;
   Timer? _timer;
 
   @override
@@ -38,6 +42,26 @@ class _SignedPageState extends State<SignedPage> {
     provider?.addListener(() {
       setState(() {});
     });
+
+    _provider = context.read<SignProvider>();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _provider!.getData();
+      _timer = Timer.periodic(Duration(seconds: 10), (timer) {
+        _provider!.getData();
+      });
+    });
+    _provider?.addListener(() {
+      setState(() {});
+    });
+  }
+
+  List<SignModel> getListUI() {
+    if (provider == null || _provider == null) {
+      return [];
+    }
+    List listShakl1 = provider!.data.map((e) => e.shakl1).toList();
+
+    return _provider!.data.where((e) => listShakl1.contains(e.shakl1)).toList();
   }
 
   @override
@@ -48,6 +72,7 @@ class _SignedPageState extends State<SignedPage> {
 
   @override
   Widget build(BuildContext context) {
+    List<SignModel> data = getListUI();
     return Container(
       child: Column(
         children: [
@@ -284,7 +309,7 @@ class _SignedPageState extends State<SignedPage> {
               color: Colors.grey.shade200,
             ),
             child: ListView.builder(
-              itemCount: provider!.data.length,
+              itemCount: data.length,
               padding: EdgeInsets.only(bottom: 28),
               itemBuilder: (context, index) {
                 return InkWell(
@@ -297,26 +322,26 @@ class _SignedPageState extends State<SignedPage> {
                     }
                     setState(() {});
                   },
-                  child: (valueType == provider!.data[index].hackType! ||
+                  child: (valueType == _provider!.data[index].hackType! ||
                               valueType == '' ||
                               valueType == 'Hammasi') &&
-                          (valueRegion == provider!.data[index].region! ||
+                          (valueRegion == _provider!.data[index].region! ||
                               valueRegion == '' ||
                               valueRegion == 'Hammasi') &&
-                          (valueShakl1 == provider!.data[index].shakl1! ||
+                          (valueShakl1 == _provider!.data[index].shakl1! ||
                               valueShakl1 == '') &&
-                          (valueDate == provider!.data[index].date! ||
+                          (valueDate == _provider!.data[index].date! ||
                               valueDate == '')
                       ? SanksionsListViewClass().sanksionsListView(
                           context,
                           index: index,
                           indexActive: 2,
-                          hackType: provider!.data[index].hackType!,
-                          region: provider!.data[index].region!,
-                          shakl1: provider!.data[index].shakl1!,
-                          date: provider!.data[index].date!,
+                          hackType: data[index].hackType!,
+                          region: data[index].region!,
+                          shakl1: data[index].shakl1!,
+                          date: data[index].date!,
                           isHover: isHoverList[index],
-                          starId: provider!.data[index].id!,
+                          starId: data[index].id!,
                         )
                       : Container(),
                 );
@@ -327,138 +352,6 @@ class _SignedPageState extends State<SignedPage> {
       ),
     );
   }
-
-  // TYPE
-  // typeFilter(valueType) {
-  //   return Container(
-  //     width: 160,
-  //     height: 48,
-  //     child: DropdownButtonFormField(
-  //       focusColor: Colors.transparent,
-  //       hint: Text(
-  //         "Usuli",
-  //         style: TextStyle(
-  //           fontSize: 14,
-  //           color: Colors.black,
-  //         ),
-  //       ),
-  //       decoration: InputDecoration(
-  //         contentPadding: EdgeInsets.only(left: 2, top: 10),
-  //         focusedBorder: UnderlineInputBorder(
-  //           borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
-  //         ),
-  //       ),
-  //       items: [
-  //         typeHack("Zararli dastur"),
-  //         typeHack("Fishing"),
-  //         typeHack("Pul ko'paytirish"),
-  //         typeHack("Onlayn savdo"),
-  //         typeHack("Boshqa"),
-  //       ],
-  //       onChanged: (e) {
-  //         valueType = e!;
-  //         setState(() {});
-  //       },
-  //     ),
-  //   );
-  // }
-
-// REGION
-  // region(valueRegion) {
-  //   return Container(
-  //     width: 200,
-  //     height: 48,
-  //     child: DropdownButtonFormField(
-  //       focusColor: Colors.transparent,
-  //       hint: Text(
-  //         "Shahar-tumanlar",
-  //         style: TextStyle(
-  //           fontSize: 14,
-  //           color: Colors.black,
-  //         ),
-  //       ),
-  //       decoration: InputDecoration(
-  //         contentPadding: EdgeInsets.only(left: 2, top: 10),
-  //         focusedBorder: UnderlineInputBorder(
-  //           borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
-  //         ),
-  //       ),
-  //       items: [
-  //         regionIIB("Navoiy shahar"),
-  //         regionIIB("Karmana tumani"),
-  //         regionIIB("Navbahor tumani"),
-  //         regionIIB("Konimex tumani"),
-  //         regionIIB("Qiziltepa tumani"),
-  //         regionIIB("Xatirchi tumani"),
-  //         regionIIB("Zarafshon shahar"),
-  //         regionIIB("Uchquduq tumani"),
-  //         regionIIB("Nurota tumani"),
-  //         regionIIB("Tomdi tumani"),
-  //         regionIIB("G'azg'on tumani"),
-  //       ],
-  //       onChanged: (e) {
-  //         valueRegion = e!;
-  //         setState(() {});
-  //       },
-  //     ),
-  //   );
-  // }
-
-  // NUMBER
-  // numberFilter() {
-  //   return Container(
-  //     width: 200,
-  //     height: 48,
-  //     padding: const EdgeInsets.all(3),
-  //     child: TextFormField(
-  //       cursorColor: Colors.black.withOpacity(.8),
-  //       cursorWidth: 1.2,
-  //       cursorHeight: 20,
-  //       decoration: InputDecoration(
-  //         labelText: "Murojat raqami",
-  //         labelStyle: TextStyle(color: Colors.black, fontSize: 13),
-  //         suffixIcon: Icon(Icons.search),
-  //         focusedBorder: UnderlineInputBorder(
-  //           borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
-  //         ),
-  //       ),
-  //       keyboardType: TextInputType.number,
-  //       inputFormatters: <TextInputFormatter>[
-  //         FilteringTextInputFormatter.digitsOnly
-  //       ],
-  //     ),
-  //   );
-  // }
-
-  // DATE
-  // dateFilter() {
-  //   return Container(
-  //     width: 160,
-  //     height: 48,
-  //     child: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         TextField(
-  //           cursorColor: Colors.black.withOpacity(.8),
-  //           cursorWidth: 1.2,
-  //           cursorHeight: 20,
-  //           decoration: InputDecoration(
-  //             contentPadding: EdgeInsets.only(left: 2, top: 16),
-  //             suffixIcon: Icon(Icons.date_range),
-  //             hintText: "Sana",
-  //             focusedBorder: UnderlineInputBorder(
-  //               borderSide: BorderSide(color: Colors.black.withOpacity(.5)),
-  //             ),
-  //           ),
-  //           keyboardType: TextInputType.number,
-  //           inputFormatters: [
-  //             DateInputFormatter(),
-  //           ],
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 
   DropdownMenuItem typeHack(type) => DropdownMenuItem(
         child: Text(

@@ -1,3 +1,4 @@
+import 'package:sanction/Api/sign/sign_provider.dart';
 import 'package:sanction/library.dart';
 
 
@@ -20,6 +21,9 @@ main(List<String> args) async {
       ),
       ChangeNotifierProvider<SignedProvider>(
         create: (context) => SignedProvider(),
+      ),
+      ChangeNotifierProvider<SignProvider>(
+        create: (context) => SignProvider(),
       ),
       ChangeNotifierProvider<DefinedProvider>(
         create: (context) => DefinedProvider(),

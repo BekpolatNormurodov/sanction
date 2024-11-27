@@ -43,7 +43,6 @@ export 'package:sanction/Api/sended/sended_model.dart';
 export 'package:sanction/Api/sended/sended_service.dart';
 export 'package:sanction/Api/sended/sended_provider.dart';
 export 'package:sanction/Api/sended/sended_post.dart';
-export 'package:sanction/Api/signed/signed_model.dart';
 export 'package:sanction/Api/signed/signed_service.dart';
 export 'package:sanction/Api/signed/signed_provider.dart';
 export 'package:sanction/Api/defined/defined_model.dart';

@@ -1,3 +1,6 @@
+import 'package:sanction/Api/Signed/Signed_model.dart';
+import 'package:sanction/Api/sign/sign_model.dart';
+import 'package:sanction/Screen/pdf/pdf_sign_view.dart';
 import 'package:sanction/library.dart';
 
 class CreatePage extends StatefulWidget {
@@ -794,6 +797,25 @@ class _CreatePageState extends State<CreatePage> {
                       loseTime: loseTimeController.text,
                       loss: lossController.text,
                       model: SendedModel(),
+                    );
+                    await PdfSignView.generate(
+                      region: valueRegion,
+                      shakl1: shak1Controller.text,
+                      telDate: telDate,
+                      adress: addressController.text,
+                      fullname: fullnameController.text,
+                      birthday: birthday,
+                      hackType: hackType,
+                      hackApk: hackApk,
+                      info: infoController.text,
+                      fromCard: fromCardController.text,
+                      inCard: inCardController.text,
+                      cardFullname: cardFullnameController.text,
+                      owner: isOwner,
+                      loseDate: loseDate,
+                      loseTime: loseTimeController.text,
+                      loss: lossController.text,
+                      model: SignModel(),
                     );
                     Get.snackbar(
                       'Successful !!!',

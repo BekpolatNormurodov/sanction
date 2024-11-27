@@ -1,3 +1,4 @@
+import 'package:sanction/Api/Signed/Signed_model.dart';
 import 'package:sanction/library.dart';
 
 enum SignedState { intial, waiting, success, error }

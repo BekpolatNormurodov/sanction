@@ -1,9 +1,14 @@
+import 'package:sanction/Api/sign/sign_provider.dart';
 import 'package:sanction/library.dart';
 import 'package:http/http.dart' as http;
 
 class PdfPage extends StatefulWidget {
   int? index;
-  PdfPage({required this.index});
+  int? indexActive;
+  PdfPage({
+    required this.index,
+    required this.indexActive,
+  });
 
   @override
   State<PdfPage> createState() => _PdfPageState();
@@ -12,6 +17,7 @@ class PdfPage extends StatefulWidget {
 class _PdfPageState extends State<PdfPage> {
   double zoom = 0.0;
   SendedProvider? pdfProvider;
+  SignProvider? pdfProvider2;
   @override
   void initState() {
     pdfProvider = context.read<SendedProvider>();
@@ -19,6 +25,14 @@ class _PdfPageState extends State<PdfPage> {
       pdfProvider!.getData();
     });
     pdfProvider?.addListener(() {
+      setState(() {});
+    });
+
+    pdfProvider2 = context.read<SignProvider>();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      pdfProvider2!.getData();
+    });
+    pdfProvider2?.addListener(() {
       setState(() {});
     });
 
@@ -68,7 +82,7 @@ class _PdfPageState extends State<PdfPage> {
             width: 750.0 + zoom,
             height: Get.height - 20,
             decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage("assets/images/pechat.png")),
+              // image: DecorationImage(image: AssetImage("assets/images/pechat.png")),
               boxShadow: [
                 BoxShadow(
                   offset: Offset(1, 1),
@@ -94,7 +108,9 @@ class _PdfPageState extends State<PdfPage> {
                 SfPdfViewer.network(
                   key: _pdfKey,
                   pageSpacing: 10,
-                  pdfProvider!.data[widget.index!].pdf_url!,
+                  widget.indexActive == 1
+                      ? pdfProvider!.data[widget.index!].pdf_url!
+                      : pdfProvider2!.data[widget.index!].pdf_url!,
                 ),
               ],
             ),

@@ -1,4 +1,4 @@
-import 'package:pdf/widgets.dart' as pw;
+// import 'package:pdf/widgets.dart' as pw;
 // import 'package:intl/intl.dart' as intl;
 // import 'package:intl/intl.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,11 +6,12 @@ import 'package:flutter/services.dart';
 import 'package:pdf/pdf.dart';
 import 'dart:io';
 import 'package:pdf/widgets.dart';
-import 'package:sanction/Api/sended/sended_model.dart';
-import 'package:sanction/Api/sended/sended_post.dart';
+import 'package:sanction/Api/Signed/Signed_model.dart';
+import 'package:sanction/Api/sign/sign_model.dart';
+import 'package:sanction/Api/sign/sign_post.dart';
 import 'package:sanction/Screen/pdf/pdf_save.dart';
 
-class PdfView {
+class PdfSignView {
   static Future<File> generate({
     required String region,
     required String shakl1,
@@ -28,7 +29,7 @@ class PdfView {
     required String loseDate,
     required String loseTime,
     required String loss,
-    required SendedModel model,
+    required SignModel model,
   }) async {
     final pdf = Document();
     final ttfData =
@@ -37,6 +38,9 @@ class PdfView {
     final ttfDataBold =
         await rootBundle.load("assets/fonts/NotoSerif_Condensed-Bold.ttf");
     final uzFontBold = Font.ttf(ttfDataBold);
+    final logoPng = (await rootBundle.load('assets/images/pechat.png'))
+        .buffer
+        .asUint8List();
 
     pdf.addPage(
       MultiPage(
@@ -50,63 +54,83 @@ class PdfView {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: Container(
-                        padding: EdgeInsets.only(right: 36),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                        
-                            Text(
-                              "#\n\n#",
-                              style: TextStyle(
-                                font: uzFontBold,
-                                fontSize: 13,
-                                color: PdfColors.white,
-                              ),
-                              textAlign: TextAlign.justify,
-                            ),
-                            Container(
-                              width: double.infinity,
-                              margin: EdgeInsets.only(top: 4, bottom: 12),
-                              child: Text(
-                                "«ТАСДИҚЛАЙМАН»",
-                                style: TextStyle(
-                                  font: uzFontBold,
-                                  fontSize: 13,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            bottom: 8,
+                            left: 40,
+                            child: Container(
+                                width: 60.0,
+                                height: 60.0,
+                                child: Image(MemoryImage(logoPng))),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(right: 36, bottom: 24),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "#\n\n#",
+                                  style: TextStyle(
+                                    font: uzFontBold,
+                                    fontSize: 13,
+                                    color: PdfColors.white,
+                                  ),
+                                  textAlign: TextAlign.justify,
                                 ),
-                                textAlign: TextAlign.center,
-                              ),
+                                Container(
+                                  width: double.infinity,
+                                  margin: EdgeInsets.only(top: 4, bottom: 14),
+                                  child: Text(
+                                    "«ТАСДИҚЛАЙМАН»",
+                                    style: TextStyle(
+                                      font: uzFontBold,
+                                      fontSize: 13,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                Text(
+                                  "Навоий вилояти ИИБ бошлиғининг биринчи ўринбосари подполковник",
+                                  style: TextStyle(
+                                    font: uzFontBold,
+                                    fontSize: 13,
+                                  ),
+                                  textAlign: TextAlign.justify,
+                                ),
+                                SizedBox(height: 24),
+                                Text(
+                                  " ________________Б.Ж.Ахмедов",
+                                  style: TextStyle(
+                                    font: uzFontBold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                                Text(
+                                  " 2024 йил «______» ceнтябpь",
+                                  style: TextStyle(
+                                    font: uzFontBold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text(
-                              "Навоий вилояти ИИБ бошлиғининг биринчи ўринбосари подполковник",
-                              style: TextStyle(
-                                font: uzFontBold,
-                                fontSize: 13,
-                              ),
-                              textAlign: TextAlign.justify,
-                            ),
-                            SizedBox(height: 24),
-                            Text(
-                              " ________________Б.Ж.Ахмедов",
-                              style: TextStyle(
-                                font: uzFontBold,
-                                fontSize: 13,
-                              ),
-                            ),
-                            Text(
-                              " 2024 йил «______» ceнтябpь",
-                              style: TextStyle(
-                                font: uzFontBold,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                     Expanded(
-                      child: Container(
-                        padding: EdgeInsets.only(left: 16),
+                        child: Stack(children: [
+                      Positioned(
+                        bottom: 8,
+                        left: 60,
+                        child: Container(
+                            width: 60.0,
+                            height: 60.0,
+                            child: Image(MemoryImage(logoPng))),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(left: 16, bottom: 24),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -156,12 +180,11 @@ class PdfView {
                           ],
                         ),
                       ),
-                    ),
+                    ])),
                   ],
                 ),
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 24),
                   child: Text(
                     "Қ A P O P\n Банк сирини ташкил этувчи маълумотлар олишга қаратилган тезкор-қидиpyв тадбирини ўтказиш ҳақида",
                     style: TextStyle(
@@ -431,7 +454,7 @@ class PdfView {
     //   ),
     // );
     var pdfFile = await PdfSave.saveDocument(name: shakl1, pdf: pdf);
-    await SendedPost().sendedPost(
+    await SignPost().signPost(
       hackType: hackType,
       region: region,
       shakl1: shakl1,

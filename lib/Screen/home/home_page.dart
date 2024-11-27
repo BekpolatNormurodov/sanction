@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:sanction/Screen/settings/edit_settings.dart';
 import 'package:sanction/library.dart';
 
