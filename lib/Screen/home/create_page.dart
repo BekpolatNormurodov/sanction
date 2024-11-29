@@ -1,6 +1,6 @@
 import 'package:sanction/Api/Signed/Signed_model.dart';
 import 'package:sanction/Api/sign/sign_model.dart';
-import 'package:sanction/Screen/pdf/pdf_sign_view.dart';
+import 'package:sanction/Screen/pdf/pdf_2_view.dart';
 import 'package:sanction/library.dart';
 
 class CreatePage extends StatefulWidget {
