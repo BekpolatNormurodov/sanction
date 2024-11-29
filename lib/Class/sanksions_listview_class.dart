@@ -104,13 +104,6 @@ class SanksionsListViewClass {
                             },
                             child: Icon(
                               Icons.star, color: Colors.orange,
-                              // signedProvider.starList[index]
-                              //     ? Icons.star_border_outlined
-                              //     : Icons.star,
-                              // size: 26,
-                              // color: definedProvider.starList[index]
-                              //     ? Colors.grey
-                              //     : Colors.orange,
                             ),
                           ),
                 SizedBox(width: 20),
