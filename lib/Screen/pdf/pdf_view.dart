@@ -38,6 +38,10 @@ class PdfView {
         await rootBundle.load("assets/fonts/NotoSerif_Condensed-Bold.ttf");
     final uzFontBold = Font.ttf(ttfDataBold);
 
+    final logoPng = (await rootBundle.load('assets/images/IIV-logo.png'))
+        .buffer
+        .asUint8List();
+
     pdf.addPage(
       MultiPage(
         pageFormat: PdfPageFormat.a4,
@@ -46,6 +50,13 @@ class PdfView {
           Container(
             child: Column(
               children: [
+                Positioned(
+                  child: Container(
+                    width: 100,
+                    height: 100,
+                    child: Image(MemoryImage(logoPng)),
+                  ),
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -163,7 +174,7 @@ class PdfView {
                   width: double.infinity,
                   margin: EdgeInsets.only(top: 24),
                   child: Text(
-                    "Қ A P O P\n Банк сирини ташкил этувчи маълумотлар олишга қаратилган тезкор-қидиpyв тадбирини ўтказиш ҳақида",
+                    "Q A R O R\n Bank sirini tashkil etuvhci ma'lumotlarni ",
                     style: TextStyle(
                       font: uzFontBold,
                       fontSize: 13,
