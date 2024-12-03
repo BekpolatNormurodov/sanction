@@ -38,9 +38,7 @@ class PdfView {
         await rootBundle.load("assets/fonts/NotoSerif_Condensed-Bold.ttf");
     final uzFontBold = Font.ttf(ttfDataBold);
 
-    final logoPng = (await rootBundle.load('assets/images/IIV-logo.png'))
-        .buffer
-        .asUint8List();
+
 
     pdf.addPage(
       MultiPage(
@@ -50,13 +48,7 @@ class PdfView {
           Container(
             child: Column(
               children: [
-                Positioned(
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    child: Image(MemoryImage(logoPng)),
-                  ),
-                ),
+               
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
